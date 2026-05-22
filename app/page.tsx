@@ -154,12 +154,12 @@ export default function Home() {
     }
 
     if (data.sandbox_init_point) {
-  window.location.href = data.sandbox_init_point;
-} else if (data.init_point) {
-  window.location.href = data.init_point;
-} else {
-  alert("Pagamento criado, mas o link do checkout não foi retornado.");
-}
+      window.location.href = data.sandbox_init_point;
+    } else if (data.init_point) {
+      window.location.href = data.init_point;
+    } else {
+      alert("Pagamento criado, mas o link do checkout não foi retornado.");
+    }
   } catch {
     alert("Erro ao conectar com o Mercado Pago. Verifique a API.");
   }
