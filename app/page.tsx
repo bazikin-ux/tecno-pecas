@@ -1,0 +1,338 @@
+"use client";
+
+import { useMemo, useState } from "react";
+
+type Product = {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  oldPrice: number;
+  stock: number;
+  specs: string;
+  tag: string;
+  rating: number;
+  sold: number;
+  image: string;
+};
+
+type CartItem = Product & { quantity: number };
+
+const img = {
+  cpu: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=900&q=80",
+  gpu: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80",
+  ram: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80",
+  ssd: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80",
+  motherboard: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
+  psu: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=900&q=80",
+  case: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80",
+  peripherals: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=900&q=80",
+  monitor: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80",
+  pc: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=80",
+};
+
+const products: Product[] = [
+  { id: 1, name: "Ryzen 5 5600", category: "Processadores", price: 699.9, oldPrice: 949.9, stock: 35, specs: "6 núcleos, 12 threads, AM4, até 4.4GHz", tag: "Custo-benefício", rating: 4.8, sold: 821, image: img.cpu },
+  { id: 2, name: "Ryzen 7 5700X", category: "Processadores", price: 1099.9, oldPrice: 1399.9, stock: 18, specs: "8 núcleos, 16 threads, AM4, até 4.6GHz", tag: "Promoção", rating: 4.9, sold: 612, image: img.cpu },
+  { id: 3, name: "Intel Core i5-12400F", category: "Processadores", price: 799.9, oldPrice: 999.9, stock: 20, specs: "6 núcleos, 12 threads, LGA1700", tag: "Barato e forte", rating: 4.7, sold: 444, image: img.cpu },
+  { id: 4, name: "Ryzen 7 5700X3D", category: "Processadores", price: 1499.9, oldPrice: 1799.9, stock: 12, specs: "8 núcleos, 16 threads, 3D V-Cache", tag: "FPS alto", rating: 4.9, sold: 390, image: img.cpu },
+
+  { id: 5, name: "RTX 4060 8GB", category: "Placas de Vídeo", price: 1999.9, oldPrice: 2499.9, stock: 12, specs: "8GB GDDR6, DLSS 3, baixo consumo", tag: "Mais vendida", rating: 4.8, sold: 1012, image: img.gpu },
+  { id: 6, name: "RX 6600 8GB", category: "Placas de Vídeo", price: 1199.9, oldPrice: 1499.9, stock: 20, specs: "8GB GDDR6, ideal para Full HD", tag: "Custo-benefício", rating: 4.7, sold: 902, image: img.gpu },
+  { id: 7, name: "RTX 4070 12GB", category: "Placas de Vídeo", price: 3999.9, oldPrice: 4599.9, stock: 8, specs: "12GB GDDR6X, 1440p ultra, DLSS 3", tag: "Premium", rating: 4.9, sold: 266, image: img.gpu },
+  { id: 8, name: "RX 7800 XT 16GB", category: "Placas de Vídeo", price: 3799.9, oldPrice: 4399.9, stock: 6, specs: "16GB GDDR6, 1440p/4K", tag: "16GB barato", rating: 4.8, sold: 311, image: img.gpu },
+
+  { id: 9, name: "Memória RAM 16GB DDR4", category: "Memórias RAM", price: 199.9, oldPrice: 299.9, stock: 60, specs: "16GB, 3200MHz, CL16", tag: "Oferta", rating: 4.7, sold: 1300, image: img.ram },
+  { id: 10, name: "Kit 32GB DDR4 RGB", category: "Memórias RAM", price: 449.9, oldPrice: 599.9, stock: 30, specs: "2x16GB, RGB, 3200MHz", tag: "Gamer", rating: 4.8, sold: 841, image: img.ram },
+  { id: 11, name: "Kit 32GB DDR5", category: "Memórias RAM", price: 699.9, oldPrice: 899.9, stock: 22, specs: "2x16GB, DDR5, 5600MHz", tag: "Nova geração", rating: 4.7, sold: 335, image: img.ram },
+
+  { id: 12, name: "SSD NVMe 1TB", category: "Armazenamento", price: 349.9, oldPrice: 499.9, stock: 42, specs: "1TB, M.2 NVMe, até 3500MB/s", tag: "Mais vendido", rating: 4.9, sold: 1504, image: img.ssd },
+  { id: 13, name: "SSD SATA 480GB", category: "Armazenamento", price: 169.9, oldPrice: 239.9, stock: 80, specs: "480GB, SATA III, upgrade barato", tag: "Barato", rating: 4.6, sold: 986, image: img.ssd },
+  { id: 14, name: "HD 2TB 7200RPM", category: "Armazenamento", price: 399.9, oldPrice: 529.9, stock: 35, specs: "2TB, SATA, 7200RPM", tag: "Backup", rating: 4.5, sold: 388, image: img.ssd },
+
+  { id: 15, name: "Placa-mãe B550M", category: "Placas-mãe", price: 549.9, oldPrice: 749.9, stock: 22, specs: "AM4, DDR4, PCIe 4.0, M.2", tag: "AM4 ideal", rating: 4.7, sold: 611, image: img.motherboard },
+  { id: 16, name: "Placa-mãe H610M", category: "Placas-mãe", price: 449.9, oldPrice: 599.9, stock: 20, specs: "LGA1700, DDR4, M.2", tag: "Intel entrada", rating: 4.5, sold: 415, image: img.motherboard },
+  { id: 17, name: "Placa-mãe B650M", category: "Placas-mãe", price: 999.9, oldPrice: 1299.9, stock: 15, specs: "AM5, DDR5, PCIe 4.0", tag: "AM5", rating: 4.8, sold: 212, image: img.motherboard },
+
+  { id: 18, name: "Fonte 650W 80 Plus Bronze", category: "Fontes", price: 289.9, oldPrice: 399.9, stock: 45, specs: "650W, PFC ativo, ideal RTX 4060", tag: "Custo-benefício", rating: 4.7, sold: 725, image: img.psu },
+  { id: 19, name: "Fonte 750W 80 Plus Gold", category: "Fontes", price: 549.9, oldPrice: 699.9, stock: 20, specs: "750W, modular, alta eficiência", tag: "Gold", rating: 4.8, sold: 344, image: img.psu },
+  { id: 20, name: "Fonte 850W ATX 3.0 Gold", category: "Fontes", price: 849.9, oldPrice: 1099.9, stock: 10, specs: "850W, 12VHPWR, placas modernas", tag: "RTX moderna", rating: 4.9, sold: 155, image: img.psu },
+
+  { id: 21, name: "Gabinete Airflow 3 Fans", category: "Gabinetes", price: 249.9, oldPrice: 379.9, stock: 28, specs: "ATX, frente mesh, 3 fans", tag: "Custo-benefício", rating: 4.6, sold: 508, image: img.case },
+  { id: 22, name: "Gabinete Aquário RGB", category: "Gabinetes", price: 349.9, oldPrice: 499.9, stock: 20, specs: "ATX, vidro temperado, RGB", tag: "Visual premium", rating: 4.8, sold: 472, image: img.case },
+  { id: 23, name: "Gabinete Branco RGB", category: "Gabinetes", price: 399.9, oldPrice: 549.9, stock: 18, specs: "ATX, branco, fans RGB", tag: "Setup branco", rating: 4.7, sold: 270, image: img.case },
+
+  { id: 24, name: "Mouse Gamer 12000 DPI", category: "Periféricos", price: 89.9, oldPrice: 149.9, stock: 70, specs: "RGB, 6 botões, 12000 DPI", tag: "Barato e bom", rating: 4.6, sold: 2100, image: img.peripherals },
+  { id: 25, name: "Teclado Mecânico RGB", category: "Periféricos", price: 179.9, oldPrice: 279.9, stock: 50, specs: "Switch Blue, ABNT2, RGB", tag: "Oferta gamer", rating: 4.7, sold: 1222, image: img.peripherals },
+  { id: 26, name: "Headset Gamer 7.1 USB", category: "Periféricos", price: 159.9, oldPrice: 249.9, stock: 40, specs: "Som 7.1, microfone, USB", tag: "Promoção", rating: 4.6, sold: 877, image: img.peripherals },
+
+  { id: 27, name: "Monitor Gamer 24 144Hz", category: "Monitores", price: 749.9, oldPrice: 999.9, stock: 22, specs: "Full HD, 144Hz, 1ms", tag: "FPS competitivo", rating: 4.8, sold: 690, image: img.monitor },
+  { id: 28, name: "Monitor Gamer 27 165Hz", category: "Monitores", price: 1099.9, oldPrice: 1399.9, stock: 15, specs: "Full HD, 165Hz, 1ms", tag: "Gamer", rating: 4.7, sold: 420, image: img.monitor },
+  { id: 29, name: "Monitor 27 QHD 75Hz", category: "Monitores", price: 1199.9, oldPrice: 1499.9, stock: 12, specs: "QHD, IPS, produtividade", tag: "Produtividade", rating: 4.6, sold: 188, image: img.monitor },
+
+  { id: 30, name: "PC Ryzen 5 5600G", category: "PCs Montados", price: 1799.9, oldPrice: 2399.9, stock: 10, specs: "16GB RAM, SSD 500GB, vídeo integrado", tag: "Sem placa de vídeo", rating: 4.7, sold: 320, image: img.pc },
+  { id: 31, name: "PC Gamer Ryzen 5 + RX 6600", category: "PCs Montados", price: 2899.9, oldPrice: 3599.9, stock: 8, specs: "RX 6600, 16GB RAM, SSD", tag: "Melhor custo-benefício", rating: 4.8, sold: 410, image: img.pc },
+  { id: 32, name: "PC Gamer Ryzen 5 + RTX 4060", category: "PCs Montados", price: 3399.9, oldPrice: 4199.9, stock: 7, specs: "RTX 4060, 16GB RAM, SSD NVMe", tag: "Mais vendido", rating: 4.9, sold: 533, image: img.pc },
+];
+
+function formatPrice(value: number) {
+  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+export default function Home() {
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("Todos");
+  const [payment, setPayment] = useState("Pix");
+  const [email, setEmail] = useState("");
+  const [coupon, setCoupon] = useState("");
+  const [appliedCoupon, setAppliedCoupon] = useState(false);
+  const [maxPrice, setMaxPrice] = useState(10000);
+
+  const categories = useMemo(() => ["Todos", ...Array.from(new Set(products.map((p) => p.category)))], []);
+
+  const filtered = useMemo(() => {
+    return products.filter((p) => {
+      const text = `${p.name} ${p.category} ${p.specs} ${p.tag}`.toLowerCase();
+      return text.includes(search.toLowerCase()) && (category === "Todos" || p.category === category) && p.price <= maxPrice;
+    });
+  }, [search, category, maxPrice]);
+
+  const bestSellers = useMemo(() => [...products].sort((a, b) => b.sold - a.sold).slice(0, 4), []);
+
+  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const discount = appliedCoupon ? subtotal * 0.1 : 0;
+  const shipping = subtotal >= 500 || subtotal === 0 ? 0 : 39.9;
+  const total = subtotal - discount + shipping;
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+  function addToCart(product: Product) {
+    const found = cart.find((item) => item.id === product.id);
+    if (found) {
+      setCart(cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
+      return;
+    }
+    setCart([...cart, { ...product, quantity: 1 }]);
+  }
+
+  function removeFromCart(id: number) {
+    setCart(cart.filter((item) => item.id !== id));
+  }
+
+  function applyCoupon() {
+    if (coupon.trim().toUpperCase() === "TECNO10") {
+      setAppliedCoupon(true);
+      alert("Cupom TECNO10 aplicado: 10% de desconto!");
+      return;
+    }
+    alert("Cupom inválido. Use TECNO10.");
+  }
+
+  async function checkout() {
+  if (cart.length === 0) return alert("Adicione um produto ao carrinho.");
+
+  try {
+    const response = await fetch("/api/create-preference", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cart,
+        payment,
+        customerEmail: email,
+        coupon: appliedCoupon ? "TECNO10" : "",
+        total,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.error || "Erro ao criar pagamento.");
+      return;
+    }
+
+    if (data.init_point) {
+      window.location.href = data.init_point;
+    } else {
+      alert("Pagamento criado, mas o link do checkout não foi retornado.");
+    }
+  } catch {
+    alert("Erro ao conectar com o Mercado Pago. Verifique a API.");
+  }
+}
+
+  return (
+    <main className="min-h-screen bg-[#313338] text-[#f2f3f5]">
+      <div className="grid min-h-screen md:grid-cols-[78px_250px_1fr_370px]">
+        <aside className="hidden bg-[#1e1f22] p-3 md:block">
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5865f2] text-xl font-black">TP</div>
+          {categories.filter((c) => c !== "Todos").map((cat) => (
+            <button key={cat} onClick={() => setCategory(cat)} className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2b2d31] text-xs font-bold hover:bg-[#5865f2]">
+              {cat.slice(0, 2)}
+            </button>
+          ))}
+        </aside>
+
+        <aside className="hidden bg-[#2b2d31] p-4 md:block">
+          <h1 className="text-2xl font-black text-white">Tecno Peças</h1>
+          <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
+
+          <button onClick={() => setCategory("Todos")} className="mb-2 w-full rounded-lg bg-[#404249] px-3 py-2 text-left font-bold hover:bg-[#5865f2]"># todos-produtos</button>
+          {categories.filter((c) => c !== "Todos").map((cat) => (
+            <button key={cat} onClick={() => setCategory(cat)} className="mb-2 w-full rounded-lg px-3 py-2 text-left text-[#dbdee1] hover:bg-[#404249]">
+              # {cat.toLowerCase()}
+            </button>
+          ))}
+
+          <div className="mt-6 rounded-xl bg-[#232428] p-3">
+            <p className="text-sm font-bold">Login rápido</p>
+            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@email.com" className="mt-2 w-full rounded-md bg-[#1e1f22] px-3 py-2 text-sm outline-none" />
+          </div>
+
+          <div className="mt-4 rounded-xl bg-[#232428] p-3">
+            <p className="text-sm font-bold">Cupom</p>
+            <p className="text-xs text-[#b5bac1]">Use TECNO10 para 10% OFF.</p>
+          </div>
+        </aside>
+
+        <section className="bg-[#313338]">
+          <header className="sticky top-0 z-20 border-b border-[#1e1f22] bg-[#313338] px-5 py-4">
+            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <h2 className="text-2xl font-black"># {category === "Todos" ? "promoções" : category.toLowerCase()}</h2>
+                <p className="text-sm text-[#b5bac1]">Peças, categorias, promoções, pagamento e carrinho estilo Discord.</p>
+              </div>
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar produto..." className="rounded-lg bg-[#1e1f22] px-4 py-3 outline-none lg:w-80" />
+            </div>
+          </header>
+
+          <section className="p-5">
+            <div className="mb-6 rounded-2xl bg-gradient-to-r from-[#5865f2] to-[#4752c4] p-6">
+              <h3 className="text-4xl font-black">Ofertas gamer da Tecno Peças</h3>
+              <p className="mt-2 text-[#eef0ff]">Pix, cartão, boleto e Mercado Pago. Frete grátis acima de R$500.</p>
+            </div>
+
+            <div className="mb-6 rounded-2xl bg-[#2b2d31] p-4">
+              <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                <div>
+                  <h3 className="text-xl font-black">Mais vendidos</h3>
+                  <p className="text-sm text-[#b5bac1]">Produtos com maior saída na loja.</p>
+                </div>
+                <div>
+                  <label className="text-sm text-[#b5bac1]">Preço máximo: {formatPrice(maxPrice)}</label>
+                  <input type="range" min="100" max="10000" step="100" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="block w-72" />
+                </div>
+              </div>
+
+              <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                {bestSellers.map((product) => (
+                  <button key={product.id} onClick={() => addToCart(product)} className="rounded-xl bg-[#1e1f22] p-3 text-left hover:bg-[#404249]">
+                    <p className="font-bold">{product.name}</p>
+                    <p className="text-sm text-[#23a559]">{formatPrice(product.price)}</p>
+                    <p className="text-xs text-[#b5bac1]">{product.sold} vendidos</p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {categories.filter((cat) => cat !== "Todos").map((cat) => {
+              const items = filtered.filter((p) => p.category === cat);
+              if (!items.length) return null;
+
+              return (
+                <div key={cat} className="mb-9">
+                  <h3 className="mb-4 text-xl font-black text-white"># {cat}</h3>
+                  <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                    {items.map((product) => (
+                      <div key={product.id} className="overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg">
+                        <img src={product.image} alt={product.name} className="h-40 w-full object-cover" />
+                        <div className="p-4">
+                          <div className="mb-2 flex items-center justify-between gap-2">
+                            <span className="rounded-full bg-[#5865f2] px-2 py-1 text-xs font-bold">{product.tag}</span>
+                            <span className="text-xs text-[#b5bac1]">⭐ {product.rating}</span>
+                          </div>
+
+                          <h4 className="min-h-14 text-lg font-black text-white">{product.name}</h4>
+                          <p className="min-h-10 text-sm text-[#b5bac1]">{product.specs}</p>
+
+                          <p className="mt-3 text-sm text-[#8e9297] line-through">{formatPrice(product.oldPrice)}</p>
+                          <p className="text-2xl font-black text-[#23a559]">{formatPrice(product.price)}</p>
+                          <p className="text-xs text-[#b5bac1]">Estoque: {product.stock} • {product.sold} vendidos</p>
+
+                          <button onClick={() => addToCart(product)} className="mt-4 w-full rounded-lg bg-[#5865f2] py-3 font-black hover:bg-[#4752c4]">
+                            Adicionar ao carrinho
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+        </section>
+
+        <aside className="bg-[#2b2d31] p-4">
+          <h2 className="text-2xl font-black">Carrinho</h2>
+          <p className="text-sm text-[#b5bac1]">{totalItems} item(ns)</p>
+
+          <div className="mt-4 space-y-3">
+            {cart.length === 0 && <p className="rounded-xl bg-[#1e1f22] p-4 text-[#b5bac1]">Seu carrinho está vazio.</p>}
+
+            {cart.map((item) => (
+              <div key={item.id} className="rounded-xl bg-[#1e1f22] p-3">
+                <div className="flex justify-between gap-2">
+                  <div>
+                    <p className="font-bold">{item.name}</p>
+                    <p className="text-sm text-[#b5bac1]">Qtd: {item.quantity}</p>
+                    <p className="font-bold text-[#23a559]">{formatPrice(item.price * item.quantity)}</p>
+                  </div>
+                  <button onClick={() => removeFromCart(item.id)} className="font-black text-red-400">X</button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
+            <p className="mb-2 font-bold">Cupom de desconto</p>
+            <div className="flex gap-2">
+              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="TECNO10" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+              <button onClick={applyCoupon} className="rounded-lg bg-[#5865f2] px-3 font-bold">OK</button>
+            </div>
+
+            <p className="mb-2 mt-4 font-bold">Forma de pagamento</p>
+            <select value={payment} onChange={(e) => setPayment(e.target.value)} className="w-full rounded-lg bg-[#313338] px-3 py-3 outline-none">
+              <option>Pix</option>
+              <option>Cartão de Crédito</option>
+              <option>Boleto</option>
+              <option>Mercado Pago</option>
+            </select>
+
+            <div className="mt-5 space-y-1 text-sm">
+              <div className="flex justify-between"><span>Subtotal</span><span>{formatPrice(subtotal)}</span></div>
+              <div className="flex justify-between"><span>Desconto</span><span>- {formatPrice(discount)}</span></div>
+              <div className="flex justify-between"><span>Frete</span><span>{shipping === 0 ? "Grátis" : formatPrice(shipping)}</span></div>
+            </div>
+
+            <div className="mt-4 flex justify-between text-xl font-black">
+              <span>Total</span>
+              <span>{formatPrice(total)}</span>
+            </div>
+
+            <button onClick={checkout} className="mt-4 w-full rounded-lg bg-[#23a559] py-3 font-black hover:bg-[#1f8f4d]">
+              Finalizar compra
+            </button>
+
+            {cart.length > 0 && (
+              <button onClick={() => setCart([])} className="mt-3 w-full rounded-lg bg-[#da373c] py-2 font-bold hover:bg-[#b92d32]">
+                Limpar carrinho
+              </button>
+            )}
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}
