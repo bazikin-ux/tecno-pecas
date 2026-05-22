@@ -6,22 +6,24 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY || ""
 );
 
-export async function GET() {
-  const { data, error } = await supabase
-    .from("products")
-    .select("*")
-    .order("id", { ascending: false });
-
-  if (error) return NextResponse.json({ error: "Erro ao buscar produtos.", details: error }, { status: 500 });
-  return NextResponse.json(data);
+function authorized(request: Request) {
+  return request.headers.get("x-admin-password") === process.env.ADMIN_PASSWORD;
 }
 
-export async function POST(request: Request) {
+export async function PATCH(
+  request: Request,
+  context: { params: Promise<{ id: string }> }
+) {
+  if (!authorized(request)) {
+    return NextResponse.json({ error: "Acesso negado." }, { status: 401 });
+  }
+
+  const { id } = await context.params;
   const body = await request.json();
 
   const { data, error } = await supabase
     .from("products")
-    .insert({
+    .update({
       name: body.name,
       category: body.category,
       price: Number(body.price),
@@ -30,11 +32,34 @@ export async function POST(request: Request) {
       specs: body.specs || "",
       tag: body.tag || "Produto",
       image: body.image || "",
-      active: true,
+      active: Boolean(body.active ?? true),
     })
+    .eq("id", id)
     .select()
     .single();
 
-  if (error) return NextResponse.json({ error: "Erro ao criar produto.", details: error }, { status: 500 });
+  if (error) {
+    return NextResponse.json({ error: "Erro ao atualizar produto.", details: error }, { status: 500 });
+  }
+
   return NextResponse.json(data);
+}
+
+export async function DELETE(
+  request: Request,
+  context: { params: Promise<{ id: string }> }
+) {
+  if (!authorized(request)) {
+    return NextResponse.json({ error: "Acesso negado." }, { status: 401 });
+  }
+
+  const { id } = await context.params;
+
+  const { error } = await supabase.from("products").delete().eq("id", id);
+
+  if (error) {
+    return NextResponse.json({ error: "Erro ao excluir produto.", details: error }, { status: 500 });
+  }
+
+  return NextResponse.json({ ok: true });
 }
