@@ -153,10 +153,10 @@ export default function Home() {
       return;
     }
 
-    if (data.sandbox_init_point) {
-      window.location.href = data.sandbox_init_point;
-    } else if (data.init_point) {
+    if (data.init_point) {
       window.location.href = data.init_point;
+    } else if (data.sandbox_init_point) {
+      window.location.href = data.sandbox_init_point;
     } else {
       alert("Pagamento criado, mas o link do checkout não foi retornado.");
     }
