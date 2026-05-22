@@ -1,38 +1,24 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL || "";
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-const mercadoPagoToken = process.env.MERCADO_PAGO_ACCESS_TOKEN || "";
+const supabase = createClient(
+  process.env.SUPABASE_URL || "",
+  process.env.SUPABASE_SERVICE_ROLE_KEY || ""
+);
 
-const supabase =
-  supabaseUrl && supabaseServiceKey
-    ? createClient(supabaseUrl, supabaseServiceKey)
-    : null;
+const mercadoPagoToken = process.env.MERCADO_PAGO_ACCESS_TOKEN || "";
 
 export async function POST(request: Request) {
   try {
-    if (!supabase || !mercadoPagoToken) {
-      return NextResponse.json({ error: "Variáveis de ambiente ausentes." }, { status: 500 });
-    }
-
     const body = await request.json();
 
-    const paymentId =
-      body?.data?.id ||
-      body?.id ||
-      new URL(request.url).searchParams.get("data.id");
+    const paymentId = body?.data?.id;
 
-    const topic =
-      body?.type ||
-      body?.topic ||
-      new URL(request.url).searchParams.get("topic");
-
-    if (!paymentId || (topic && !String(topic).includes("payment"))) {
-      return NextResponse.json({ received: true });
+    if (!paymentId) {
+      return NextResponse.json({ ok: true });
     }
 
-    const paymentResponse = await fetch(
+    const mpResponse = await fetch(
       `https://api.mercadopago.com/v1/payments/${paymentId}`,
       {
         headers: {
@@ -41,19 +27,19 @@ export async function POST(request: Request) {
       }
     );
 
-    const payment = await paymentResponse.json();
+    const payment = await mpResponse.json();
 
-    if (!paymentResponse.ok) {
+    if (!mpResponse.ok) {
       return NextResponse.json(
-        { error: "Erro ao consultar pagamento no Mercado Pago.", details: payment },
+        { error: "Erro ao consultar pagamento.", details: payment },
         { status: 500 }
       );
     }
 
-    const orderId = payment.external_reference || payment.metadata?.order_id;
+    const orderId = payment.external_reference;
 
     if (!orderId) {
-      return NextResponse.json({ received: true, warning: "Pagamento sem order_id." });
+      return NextResponse.json({ ok: true, warning: "Sem orderId" });
     }
 
     const statusMap: Record<string, string> = {
@@ -66,7 +52,7 @@ export async function POST(request: Request) {
       charged_back: "charged_back",
     };
 
-    const newStatus = statusMap[payment.status] || payment.status || "unknown";
+    const newStatus = statusMap[payment.status] || payment.status;
 
     const { error } = await supabase
       .from("orders")
@@ -81,12 +67,12 @@ export async function POST(request: Request) {
 
     if (error) {
       return NextResponse.json(
-        { error: "Erro ao atualizar pedido no Supabase.", details: error },
+        { error: "Erro ao atualizar pedido.", details: error.message },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ received: true, order_id: orderId, status: newStatus });
+    return NextResponse.json({ ok: true, orderId, status: newStatus });
   } catch (error) {
     return NextResponse.json(
       {
@@ -99,5 +85,5 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  return NextResponse.json({ ok: true, route: "Mercado Pago webhook Tecno Peças" });
+  return NextResponse.json({ ok: true, route: "Mercado Pago Webhook" });
 }

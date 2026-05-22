@@ -40,27 +40,19 @@ export default function AdminPage() {
   const [password, setPassword] = useState("");
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("tecno_admin_password");
-    if (saved) {
-      setPassword(saved);
-      setIsLogged(true);
-    }
+    localStorage.removeItem("tecno_admin_password");
   }, []);
 
-  useEffect(() => {
-    if (isLogged && password) loadProducts();
-  }, [isLogged, password]);
-
-  async function loadProducts() {
+  async function loadProducts(currentPassword = password) {
     const response = await fetch("/api/admin/products", {
-      headers: { "x-admin-password": password },
+      headers: { "x-admin-password": currentPassword },
     });
 
     if (!response.ok) {
       alert("Senha inválida ou acesso negado.");
-      localStorage.removeItem("tecno_admin_password");
       setIsLogged(false);
       return;
     }
@@ -69,14 +61,13 @@ export default function AdminPage() {
     setProducts(Array.isArray(data) ? data : []);
   }
 
-  function login() {
+  async function login() {
     if (!password.trim()) return alert("Digite a senha.");
-    localStorage.setItem("tecno_admin_password", password);
     setIsLogged(true);
+    await loadProducts(password);
   }
 
   function logout() {
-    localStorage.removeItem("tecno_admin_password");
     setPassword("");
     setIsLogged(false);
     setProducts([]);
@@ -84,6 +75,31 @@ export default function AdminPage() {
 
   function updateField(field: keyof Product, value: string) {
     setForm({ ...form, [field]: value });
+  }
+
+  async function uploadImage(file: File) {
+    setUploading(true);
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/admin/upload-image", {
+      method: "POST",
+      headers: { "x-admin-password": password },
+      body: formData,
+    });
+
+    setUploading(false);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      alert(data.error || "Erro ao enviar imagem.");
+      return;
+    }
+
+    setForm({ ...form, image: data.url });
+    alert("Imagem enviada com sucesso!");
   }
 
   async function saveProduct() {
@@ -200,12 +216,39 @@ export default function AdminPage() {
             <input className="rounded-lg bg-[#1e1f22] p-3 outline-none" placeholder="Preço antigo" type="number" value={form.old_price} onChange={(e) => updateField("old_price", e.target.value)} />
             <input className="rounded-lg bg-[#1e1f22] p-3 outline-none" placeholder="Estoque" type="number" value={form.stock} onChange={(e) => updateField("stock", e.target.value)} />
             <input className="rounded-lg bg-[#1e1f22] p-3 outline-none" placeholder="Etiqueta" value={form.tag} onChange={(e) => updateField("tag", e.target.value)} />
-            <input className="rounded-lg bg-[#1e1f22] p-3 outline-none md:col-span-2" placeholder="URL da imagem" value={form.image} onChange={(e) => updateField("image", e.target.value)} />
+
+            <div className="rounded-lg bg-[#1e1f22] p-3 md:col-span-2">
+              <label className="mb-2 block text-sm font-bold text-[#b5bac1]">Imagem do produto</label>
+
+              <input
+                type="file"
+                accept="image/png,image/jpeg,image/jpg,image/webp"
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  if (file) uploadImage(file);
+                }}
+                className="w-full rounded-lg bg-[#313338] p-3"
+              />
+
+              <input
+                className="mt-3 w-full rounded-lg bg-[#313338] p-3 outline-none"
+                placeholder="Ou cole uma URL da imagem"
+                value={form.image}
+                onChange={(e) => updateField("image", e.target.value)}
+              />
+
+              {uploading && <p className="mt-2 text-yellow-400">Enviando imagem...</p>}
+
+              {form.image && (
+                <img src={form.image} alt="Prévia" className="mt-4 h-40 w-40 rounded-xl object-cover" />
+              )}
+            </div>
+
             <textarea className="rounded-lg bg-[#1e1f22] p-3 outline-none md:col-span-2" placeholder="Especificações" value={form.specs} onChange={(e) => updateField("specs", e.target.value)} />
           </div>
 
           <div className="mt-5 flex gap-3">
-            <button disabled={loading} onClick={saveProduct} className="rounded-lg bg-[#23a559] px-5 py-3 font-black">
+            <button disabled={loading || uploading} onClick={saveProduct} className="rounded-lg bg-[#23a559] px-5 py-3 font-black">
               {loading ? "Salvando..." : "Salvar produto"}
             </button>
 
