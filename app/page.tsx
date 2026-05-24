@@ -1,6 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  calculateCoupon,
+  estimateShipping,
+  formatCurrency,
+  slugify,
+  type ShippingQuote,
+} from "@/app/lib/commerce";
 
 type Product = {
   id: number;
@@ -14,9 +23,36 @@ type Product = {
   rating: number;
   sold: number;
   image: string;
+  slug?: string;
 };
 
 type CartItem = Product & { quantity: number };
+
+type CustomerAccount = {
+  name: string;
+  email: string;
+  phone: string;
+  password: string;
+};
+
+const customerSessionKey = "tecno-pecas-customer-session";
+const customerAccountsKey = "tecno-pecas-customer-accounts";
+
+function loadSavedCustomer() {
+  if (typeof window === "undefined") return null;
+
+  const savedCustomer = localStorage.getItem(customerSessionKey);
+
+  if (!savedCustomer) return null;
+
+  try {
+    const parsedCustomer = JSON.parse(savedCustomer) as CustomerAccount;
+    return parsedCustomer.email ? parsedCustomer : null;
+  } catch {
+    localStorage.removeItem(customerSessionKey);
+    return null;
+  }
+}
 
 const img = {
   cpu: "https://images.unsplash.com/photo-1555617981-dac3880eac6e?auto=format&fit=crop&w=900&q=80",
@@ -75,34 +111,79 @@ const products: Product[] = [
   { id: 32, name: "PC Gamer Ryzen 5 + RTX 4060", category: "PCs Montados", price: 3399.9, oldPrice: 4199.9, stock: 7, specs: "RTX 4060, 16GB RAM, SSD NVMe", tag: "Mais vendido", rating: 4.9, sold: 533, image: img.pc },
 ];
 
-function formatPrice(value: number) {
-  return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
-}
+const defaultShippingQuote = estimateShipping("01001000", 0);
 
 export default function Home() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Todos");
   const [payment, setPayment] = useState("Pix");
+  const [customer, setCustomer] = useState<CustomerAccount | null>(null);
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cep, setCep] = useState("");
   const [coupon, setCoupon] = useState("");
-  const [appliedCoupon, setAppliedCoupon] = useState(false);
+  const [appliedCoupon, setAppliedCoupon] = useState("");
+  const [shippingQuote, setShippingQuote] = useState<ShippingQuote>(defaultShippingQuote);
+  const [calculatingShipping, setCalculatingShipping] = useState(false);
   const [maxPrice, setMaxPrice] = useState(10000);
+  const [storeProducts, setStoreProducts] = useState<Product[]>(products);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+  const [authName, setAuthName] = useState("");
+  const [authEmail, setAuthEmail] = useState("");
+  const [authPhone, setAuthPhone] = useState("");
+  const [authPassword, setAuthPassword] = useState("");
 
-  const categories = useMemo(() => ["Todos", ...Array.from(new Set(products.map((p) => p.category)))], []);
+  useEffect(() => {
+    async function loadProducts() {
+      try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+
+        if (response.ok && Array.isArray(data) && data.length > 0) {
+          setStoreProducts(data);
+        }
+      } catch {
+        setStoreProducts(products);
+      }
+    }
+
+    loadProducts();
+  }, []);
+
+  useEffect(() => {
+    const savedCustomer = loadSavedCustomer();
+
+    if (!savedCustomer) return;
+
+    queueMicrotask(() => {
+      setCustomer(savedCustomer);
+      setEmail(savedCustomer.email);
+      setPhone(savedCustomer.phone || "");
+    });
+  }, []);
+
+  const categories = useMemo(() => ["Todos", ...Array.from(new Set(storeProducts.map((p) => p.category)))], [storeProducts]);
 
   const filtered = useMemo(() => {
-    return products.filter((p) => {
+    return storeProducts.filter((p) => {
       const text = `${p.name} ${p.category} ${p.specs} ${p.tag}`.toLowerCase();
       return text.includes(search.toLowerCase()) && (category === "Todos" || p.category === category) && p.price <= maxPrice;
     });
-  }, [search, category, maxPrice]);
+  }, [storeProducts, search, category, maxPrice]);
 
-  const bestSellers = useMemo(() => [...products].sort((a, b) => b.sold - a.sold).slice(0, 4), []);
+  const bestSellers = useMemo(() => [...storeProducts].sort((a, b) => b.sold - a.sold).slice(0, 4), [storeProducts]);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const discount = appliedCoupon ? subtotal * 0.1 : 0;
-  const shipping = subtotal >= 500 || subtotal === 0 ? 0 : 39.9;
+  const couponResult = appliedCoupon ? calculateCoupon(appliedCoupon, subtotal) : null;
+  const discount = couponResult?.valid ? couponResult.discount : 0;
+  const currentCep = cep.replace(/\D/g, "");
+  const currentShippingQuote =
+    currentCep.length === 8 && shippingQuote.cep === currentCep
+      ? shippingQuote
+      : estimateShipping(currentCep, subtotal);
+  const shipping = subtotal === 0 ? 0 : currentShippingQuote.price;
   const total = subtotal - discount + shipping;
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -120,16 +201,121 @@ export default function Home() {
   }
 
   function applyCoupon() {
-    if (coupon.trim().toUpperCase() === "TECNO10") {
-      setAppliedCoupon(true);
-      alert("Cupom TECNO10 aplicado: 10% de desconto!");
+    const result = calculateCoupon(coupon, subtotal);
+
+    if (result.valid) {
+      setAppliedCoupon(result.code);
+      alert(result.message);
       return;
     }
-    alert("Cupom inválido. Use TECNO10.");
+
+    setAppliedCoupon("");
+    alert(result.message);
+  }
+
+  function getSavedAccounts() {
+    try {
+      return JSON.parse(localStorage.getItem(customerAccountsKey) || "[]") as CustomerAccount[];
+    } catch {
+      return [];
+    }
+  }
+
+  function saveCustomerSession(account: CustomerAccount) {
+    setCustomer(account);
+    setEmail(account.email);
+    setPhone(account.phone || "");
+    setAuthOpen(false);
+    setAuthPassword("");
+    localStorage.setItem(customerSessionKey, JSON.stringify(account));
+  }
+
+  function registerCustomer() {
+    const cleanEmail = authEmail.trim().toLowerCase();
+    const cleanPhone = authPhone.replace(/\D/g, "");
+
+    if (!authName.trim()) return alert("Informe seu nome.");
+    if (!cleanEmail) return alert("Informe seu email.");
+    if (cleanPhone.length < 10) return alert("Informe seu WhatsApp com DDD.");
+    if (authPassword.length < 6) return alert("Crie uma senha com pelo menos 6 caracteres.");
+
+    const accounts = getSavedAccounts();
+
+    if (accounts.some((account) => account.email === cleanEmail)) {
+      alert("Este email ja tem cadastro. Faca login para continuar.");
+      setAuthMode("login");
+      return;
+    }
+
+    const account = {
+      name: authName.trim(),
+      email: cleanEmail,
+      phone: cleanPhone,
+      password: authPassword,
+    };
+
+    localStorage.setItem(customerAccountsKey, JSON.stringify([...accounts, account]));
+    saveCustomerSession(account);
+  }
+
+  function loginCustomer() {
+    const cleanEmail = authEmail.trim().toLowerCase();
+    const account = getSavedAccounts().find((item) => item.email === cleanEmail && item.password === authPassword);
+
+    if (!account) {
+      alert("Email ou senha incorretos. Se ainda nao tiver conta, cadastre-se.");
+      return;
+    }
+
+    saveCustomerSession(account);
+  }
+
+  function logoutCustomer() {
+    setCustomer(null);
+    setEmail("");
+    setPhone("");
+    localStorage.removeItem(customerSessionKey);
+  }
+
+  async function calculateShipping() {
+    if (cart.length === 0) return alert("Adicione um produto ao carrinho.");
+    if (cep.replace(/\D/g, "").length !== 8) return alert("Digite um CEP valido com 8 numeros.");
+
+    setCalculatingShipping(true);
+
+    try {
+      const response = await fetch("/api/shipping", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cep, subtotal }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.error || "Erro ao calcular frete.");
+        return;
+      }
+
+      setShippingQuote(data);
+    } catch {
+      alert("Erro ao consultar frete.");
+    } finally {
+      setCalculatingShipping(false);
+    }
   }
 
   async function checkout() {
   if (cart.length === 0) return alert("Adicione um produto ao carrinho.");
+  if (!customer) {
+    setAuthOpen(true);
+    setAuthMode("register");
+    setAuthEmail(email);
+    setAuthPhone(phone);
+    return alert("Cadastre-se ou faca login para finalizar a compra.");
+  }
+  if (!email.trim()) return alert("Informe seu email.");
+  if (cep.replace(/\D/g, "").length !== 8) return alert("Informe seu CEP para calcular o frete.");
 
   try {
     const response = await fetch("/api/create-preference", {
@@ -141,7 +327,10 @@ export default function Home() {
         cart,
         payment,
         customerEmail: email,
-        coupon: appliedCoupon ? "TECNO10" : "",
+        customerPhone: phone,
+        cep,
+        shippingQuote: currentShippingQuote,
+        coupon: appliedCoupon,
         total,
       }),
     });
@@ -180,6 +369,9 @@ export default function Home() {
         <aside className="hidden bg-[#2b2d31] p-4 md:block">
           <h1 className="text-2xl font-black text-white">Tecno Peças</h1>
           <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
+          <Link href="/cliente" className="mb-3 block rounded-lg bg-[#23a559] px-3 py-2 text-center font-bold">
+            Minha conta
+          </Link>
 
           <button onClick={() => setCategory("Todos")} className="mb-2 w-full rounded-lg bg-[#404249] px-3 py-2 text-left font-bold hover:bg-[#5865f2]"># todos-produtos</button>
           {categories.filter((c) => c !== "Todos").map((cat) => (
@@ -189,14 +381,25 @@ export default function Home() {
           ))}
 
           <div className="mt-6 rounded-xl bg-[#232428] p-3">
-            <p className="text-sm font-bold">Login rápido</p>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email@email.com" className="mt-2 w-full rounded-md bg-[#1e1f22] px-3 py-2 text-sm outline-none" />
+            <p className="text-sm font-bold">Cliente</p>
+            {customer ? (
+              <>
+                <p className="mt-2 text-sm text-white">{customer.name}</p>
+                <p className="text-xs text-[#b5bac1]">{customer.email}</p>
+                <button onClick={logoutCustomer} className="mt-3 w-full rounded-md bg-[#404249] px-3 py-2 text-sm font-bold hover:bg-[#5865f2]">
+                  Sair
+                </button>
+              </>
+            ) : (
+              <>
+                <p className="mt-2 text-xs text-[#b5bac1]">Entre ou cadastre-se para finalizar compras.</p>
+                <button onClick={() => setAuthOpen(true)} className="mt-3 w-full rounded-md bg-[#23a559] px-3 py-2 text-sm font-bold hover:bg-[#1f8f4d]">
+                  Entrar ou cadastrar
+                </button>
+              </>
+            )}
           </div>
 
-          <div className="mt-4 rounded-xl bg-[#232428] p-3">
-            <p className="text-sm font-bold">Cupom</p>
-            <p className="text-xs text-[#b5bac1]">Use TECNO10 para 10% OFF.</p>
-          </div>
         </aside>
 
         <section className="bg-[#313338]">
@@ -223,7 +426,7 @@ export default function Home() {
                   <p className="text-sm text-[#b5bac1]">Produtos com maior saída na loja.</p>
                 </div>
                 <div>
-                  <label className="text-sm text-[#b5bac1]">Preço máximo: {formatPrice(maxPrice)}</label>
+                  <label className="text-sm text-[#b5bac1]">Preço máximo: {formatCurrency(maxPrice)}</label>
                   <input type="range" min="100" max="10000" step="100" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="block w-72" />
                 </div>
               </div>
@@ -232,7 +435,7 @@ export default function Home() {
                 {bestSellers.map((product) => (
                   <button key={product.id} onClick={() => addToCart(product)} className="rounded-xl bg-[#1e1f22] p-3 text-left hover:bg-[#404249]">
                     <p className="font-bold">{product.name}</p>
-                    <p className="text-sm text-[#23a559]">{formatPrice(product.price)}</p>
+                    <p className="text-sm text-[#23a559]">{formatCurrency(product.price)}</p>
                     <p className="text-xs text-[#b5bac1]">{product.sold} vendidos</p>
                   </button>
                 ))}
@@ -249,7 +452,13 @@ export default function Home() {
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {items.map((product) => (
                       <div key={product.id} className="overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg">
-                        <img src={product.image} alt={product.name} className="h-40 w-full object-cover" />
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          width={480}
+                          height={240}
+                          className="h-40 w-full object-cover"
+                        />
                         <div className="p-4">
                           <div className="mb-2 flex items-center justify-between gap-2">
                             <span className="rounded-full bg-[#5865f2] px-2 py-1 text-xs font-bold">{product.tag}</span>
@@ -259,13 +468,21 @@ export default function Home() {
                           <h4 className="min-h-14 text-lg font-black text-white">{product.name}</h4>
                           <p className="min-h-10 text-sm text-[#b5bac1]">{product.specs}</p>
 
-                          <p className="mt-3 text-sm text-[#8e9297] line-through">{formatPrice(product.oldPrice)}</p>
-                          <p className="text-2xl font-black text-[#23a559]">{formatPrice(product.price)}</p>
+                          <p className="mt-3 text-sm text-[#8e9297] line-through">{formatCurrency(product.oldPrice)}</p>
+                          <p className="text-2xl font-black text-[#23a559]">{formatCurrency(product.price)}</p>
                           <p className="text-xs text-[#b5bac1]">Estoque: {product.stock} • {product.sold} vendidos</p>
 
-                          <button onClick={() => addToCart(product)} className="mt-4 w-full rounded-lg bg-[#5865f2] py-3 font-black hover:bg-[#4752c4]">
-                            Adicionar ao carrinho
-                          </button>
+                          <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                            <Link
+                              href={`/produto/${product.slug || slugify(product.name)}`}
+                              className="rounded-lg bg-[#404249] py-3 text-center font-black hover:bg-[#5865f2]"
+                            >
+                              Ver produto
+                            </Link>
+                            <button onClick={() => addToCart(product)} className="rounded-lg bg-[#5865f2] py-3 font-black hover:bg-[#4752c4]">
+                              Comprar
+                            </button>
+                          </div>
                         </div>
                       </div>
                     ))}
@@ -289,7 +506,7 @@ export default function Home() {
                   <div>
                     <p className="font-bold">{item.name}</p>
                     <p className="text-sm text-[#b5bac1]">Qtd: {item.quantity}</p>
-                    <p className="font-bold text-[#23a559]">{formatPrice(item.price * item.quantity)}</p>
+                    <p className="font-bold text-[#23a559]">{formatCurrency(item.price * item.quantity)}</p>
                   </div>
                   <button onClick={() => removeFromCart(item.id)} className="font-black text-red-400">X</button>
                 </div>
@@ -298,11 +515,77 @@ export default function Home() {
           </div>
 
           <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
+            <div className="mb-5 rounded-xl bg-[#232428] p-4">
+              <div className="flex items-center justify-between gap-3">
+                <div>
+                  <p className="font-bold">Conta do cliente</p>
+                  <p className="text-xs text-[#b5bac1]">
+                    {customer ? `${customer.name} - ${customer.email}` : "Necessaria para finalizar a compra."}
+                  </p>
+                </div>
+                {customer ? (
+                  <button onClick={logoutCustomer} className="rounded-lg bg-[#404249] px-3 py-2 text-sm font-bold hover:bg-[#5865f2]">
+                    Sair
+                  </button>
+                ) : (
+                  <button onClick={() => setAuthOpen(!authOpen)} className="rounded-lg bg-[#23a559] px-3 py-2 text-sm font-bold hover:bg-[#1f8f4d]">
+                    Entrar
+                  </button>
+                )}
+              </div>
+
+              {!customer && authOpen && (
+                <div className="mt-4">
+                  <div className="grid grid-cols-2 gap-2">
+                    <button
+                      onClick={() => setAuthMode("login")}
+                      className={`rounded-lg py-2 text-sm font-bold ${authMode === "login" ? "bg-[#5865f2]" : "bg-[#313338]"}`}
+                    >
+                      Login
+                    </button>
+                    <button
+                      onClick={() => setAuthMode("register")}
+                      className={`rounded-lg py-2 text-sm font-bold ${authMode === "register" ? "bg-[#5865f2]" : "bg-[#313338]"}`}
+                    >
+                      Cadastro
+                    </button>
+                  </div>
+
+                  <div className="mt-3 grid gap-2">
+                    {authMode === "register" && (
+                      <>
+                        <input value={authName} onChange={(e) => setAuthName(e.target.value)} placeholder="Nome completo" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+                        <input value={authPhone} onChange={(e) => setAuthPhone(e.target.value)} placeholder="WhatsApp com DDD" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+                      </>
+                    )}
+                    <input value={authEmail} onChange={(e) => setAuthEmail(e.target.value)} placeholder="email@email.com" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+                    <input value={authPassword} onChange={(e) => setAuthPassword(e.target.value)} type="password" placeholder="Senha" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+                    <button onClick={authMode === "login" ? loginCustomer : registerCustomer} className="rounded-lg bg-[#23a559] py-3 font-black hover:bg-[#1f8f4d]">
+                      {authMode === "login" ? "Entrar" : "Cadastrar e entrar"}
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <p className="mb-2 font-bold">Cupom de desconto</p>
             <div className="flex gap-2">
-              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="TECNO10" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="MEGA35" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
               <button onClick={applyCoupon} className="rounded-lg bg-[#5865f2] px-3 font-bold">OK</button>
             </div>
+
+            <p className="mb-2 mt-4 font-bold">Frete automatico</p>
+            <div className="flex gap-2">
+              <input value={cep} onChange={(e) => setCep(e.target.value)} placeholder="CEP" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+              <button onClick={calculateShipping} className="rounded-lg bg-[#5865f2] px-3 font-bold">
+                {calculatingShipping ? "..." : "Calcular"}
+              </button>
+            </div>
+            {currentCep.length === 8 && (
+              <p className="mt-2 text-xs text-[#b5bac1]">
+                {currentShippingQuote.carrier} - {currentShippingQuote.service} • {currentShippingQuote.deliveryDays}
+              </p>
+            )}
 
             <p className="mb-2 mt-4 font-bold">Forma de pagamento</p>
             <select value={payment} onChange={(e) => setPayment(e.target.value)} className="w-full rounded-lg bg-[#313338] px-3 py-3 outline-none">
@@ -313,14 +596,14 @@ export default function Home() {
             </select>
 
             <div className="mt-5 space-y-1 text-sm">
-              <div className="flex justify-between"><span>Subtotal</span><span>{formatPrice(subtotal)}</span></div>
-              <div className="flex justify-between"><span>Desconto</span><span>- {formatPrice(discount)}</span></div>
-              <div className="flex justify-between"><span>Frete</span><span>{shipping === 0 ? "Grátis" : formatPrice(shipping)}</span></div>
+              <div className="flex justify-between"><span>Subtotal</span><span>{formatCurrency(subtotal)}</span></div>
+              <div className="flex justify-between"><span>Desconto</span><span>- {formatCurrency(discount)}</span></div>
+              <div className="flex justify-between"><span>Frete</span><span>{shipping === 0 ? "Grátis" : formatCurrency(shipping)}</span></div>
             </div>
 
             <div className="mt-4 flex justify-between text-xl font-black">
               <span>Total</span>
-              <span>{formatPrice(total)}</span>
+              <span>{formatCurrency(total)}</span>
             </div>
 
             <button onClick={checkout} className="mt-4 w-full rounded-lg bg-[#23a559] py-3 font-black hover:bg-[#1f8f4d]">

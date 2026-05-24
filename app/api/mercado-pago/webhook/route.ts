@@ -54,13 +54,28 @@ export async function POST(request: Request) {
 
     const newStatus = statusMap[payment.status] || payment.status;
 
+    const { data: existingOrder } = await supabase
+      .from("orders")
+      .select("mercado_pago_response")
+      .eq("id", orderId)
+      .single();
+
+    const previousResponse =
+      existingOrder?.mercado_pago_response &&
+      typeof existingOrder.mercado_pago_response === "object"
+        ? existingOrder.mercado_pago_response
+        : {};
+
     const { error } = await supabase
       .from("orders")
       .update({
         status: newStatus,
         mercado_pago_payment_id: String(payment.id),
         mercado_pago_status: payment.status,
-        mercado_pago_response: payment,
+        mercado_pago_response: {
+          ...previousResponse,
+          payment,
+        },
         paid_at: payment.status === "approved" ? new Date().toISOString() : null,
       })
       .eq("id", orderId);

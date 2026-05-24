@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function SucessoPage() {
   return (
     <main className="min-h-screen bg-[#313338] p-8 text-white">
@@ -10,12 +12,19 @@ export default function SucessoPage() {
           Seu pedido foi enviado para processamento.
         </p>
 
-        <a
+        <Link
           href="/"
           className="mt-6 inline-block rounded-lg bg-[#5865f2] px-5 py-3 font-bold"
         >
           Voltar para a Tecno Peças
-        </a>
+        </Link>
+
+        <Link
+          href="/rastreamento"
+          className="ml-3 mt-6 inline-block rounded-lg bg-[#23a559] px-5 py-3 font-bold"
+        >
+          Rastrear pedido
+        </Link>
       </div>
     </main>
   );

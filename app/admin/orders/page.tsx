@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 type OrderItem = {
   name: string;
@@ -20,7 +21,33 @@ type Order = {
   items: OrderItem[];
   mercado_pago_status?: string;
   mercado_pago_payment_id?: string;
+  mercado_pago_response?: {
+    checkout?: {
+      customer_phone?: string;
+      tracking_code?: string;
+      cep?: string;
+      shipping_quote?: {
+        carrier?: string;
+        service?: string;
+        deliveryDays?: string;
+      };
+    };
+  };
   created_at: string;
+};
+
+type Dashboard = {
+  month: string;
+  orders: number;
+  paidOrders: number;
+  pendingOrders: number;
+  todayRevenue: number;
+  monthRevenue: number;
+  totalRevenue: number;
+  revenue: number;
+  averageTicket: number;
+  estimatedProfit: number;
+  marginPercent: number;
 };
 
 function formatPrice(value: number) {
@@ -37,6 +64,8 @@ function formatDate(value: string) {
 export default function AdminOrdersPage() {
   const [password, setPassword] = useState("");
   const [orders, setOrders] = useState<Order[]>([]);
+  const [dashboard, setDashboard] = useState<Dashboard | null>(null);
+  const [trackingCodes, setTrackingCodes] = useState<Record<number, string>>({});
   const [isLogged, setIsLogged] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -59,6 +88,29 @@ export default function AdminOrdersPage() {
 
     const data = await response.json();
     setOrders(Array.isArray(data) ? data : []);
+    setTrackingCodes(
+      Array.isArray(data)
+        ? Object.fromEntries(
+            data.map((order: Order) => [
+              order.id,
+              order.mercado_pago_response?.checkout?.tracking_code || "",
+            ])
+          )
+        : {}
+    );
+    await loadDashboard(currentPassword);
+  }
+
+  async function loadDashboard(currentPassword = password) {
+    const response = await fetch("/api/admin/dashboard", {
+      headers: {
+        "x-admin-password": currentPassword,
+      },
+    });
+
+    if (response.ok) {
+      setDashboard(await response.json());
+    }
   }
 
   async function login() {
@@ -71,14 +123,14 @@ export default function AdminOrdersPage() {
     await loadOrders(password);
   }
 
-  async function updateStatus(orderId: number, status: string) {
+  async function updateStatus(orderId: number, status: string, trackingCode = trackingCodes[orderId] || "") {
     const response = await fetch(`/api/admin/orders/${orderId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         "x-admin-password": password,
       },
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status, trackingCode }),
     });
 
     if (!response.ok) {
@@ -87,6 +139,21 @@ export default function AdminOrdersPage() {
     }
 
     await loadOrders();
+  }
+
+  function getCheckout(order: Order) {
+    return order.mercado_pago_response?.checkout || {};
+  }
+
+  function whatsappHref(order: Order) {
+    const checkout = getCheckout(order);
+    const phone = String(checkout.customer_phone || "").replace(/\D/g, "");
+    const to = phone.startsWith("55") ? phone : `55${phone}`;
+    const message = encodeURIComponent(
+      `Ola! Aqui e a Tecno Pecas. Seu pedido #${order.id} esta com status: ${order.status}. Codigo de rastreio: ${trackingCodes[order.id] || "em breve"}.`
+    );
+
+    return phone.length >= 10 ? `https://wa.me/${to}?text=${message}` : "";
   }
 
   if (!isLogged) {
@@ -109,9 +176,9 @@ export default function AdminOrdersPage() {
             Entrar
           </button>
 
-          <a href="/admin" className="mt-4 block text-center text-sm text-[#b5bac1]">
+          <Link href="/admin" className="mt-4 block text-center text-sm text-[#b5bac1]">
             Voltar ao admin de produtos
-          </a>
+          </Link>
         </div>
       </main>
     );
@@ -123,16 +190,16 @@ export default function AdminOrdersPage() {
         <div className="mb-6 rounded-2xl bg-[#2b2d31] p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
-              <h1 className="text-4xl font-black text-[#5865f2]">Painel de Pedidos</h1>
+              <h1 className="text-4xl font-black text-[#5865f2]">Painel Financeiro</h1>
               <p className="mt-2 text-[#b5bac1]">
-                Veja pedidos criados pelo checkout da Tecno Peças.
+                Vendas do dia, mes, total vendido e status dos pedidos.
               </p>
             </div>
 
             <div className="flex gap-2">
-              <a href="/admin" className="rounded-lg bg-[#5865f2] px-4 py-2 font-bold">
+              <Link href="/admin" className="rounded-lg bg-[#5865f2] px-4 py-2 font-bold">
                 Produtos
-              </a>
+              </Link>
               <button onClick={() => loadOrders()} className="rounded-lg bg-[#23a559] px-4 py-2 font-bold">
                 Atualizar
               </button>
@@ -144,6 +211,41 @@ export default function AdminOrdersPage() {
           <p className="mb-4 rounded-xl bg-[#2b2d31] p-4 text-yellow-400">
             Carregando pedidos...
           </p>
+        )}
+
+        {dashboard && (
+          <section className="mb-6 grid gap-4 md:grid-cols-6">
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Vendas hoje</p>
+              <p className="mt-2 text-2xl font-black text-[#23a559]">{formatPrice(dashboard.todayRevenue)}</p>
+              <p className="text-xs text-[#b5bac1]">Pedidos pagos do dia</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Vendas do mes</p>
+              <p className="mt-2 text-2xl font-black text-[#23a559]">{formatPrice(dashboard.monthRevenue)}</p>
+              <p className="text-xs text-[#b5bac1]">{dashboard.month}</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Total vendido</p>
+              <p className="mt-2 text-2xl font-black text-[#23a559]">{formatPrice(dashboard.totalRevenue)}</p>
+              <p className="text-xs text-[#b5bac1]">Historico pago</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Lucro estimado</p>
+              <p className="mt-2 text-2xl font-black text-[#23a559]">{formatPrice(dashboard.estimatedProfit)}</p>
+              <p className="text-xs text-[#b5bac1]">Margem {dashboard.marginPercent}%</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Pedidos pagos</p>
+              <p className="mt-2 text-2xl font-black">{dashboard.paidOrders}</p>
+              <p className="text-xs text-[#b5bac1]">{dashboard.orders} pedidos no total</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Pendentes</p>
+              <p className="mt-2 text-2xl font-black text-yellow-400">{dashboard.pendingOrders}</p>
+              <p className="text-xs text-[#b5bac1]">Aguardando pagamento</p>
+            </div>
+          </section>
         )}
 
         <div className="grid gap-4">
@@ -163,7 +265,7 @@ export default function AdminOrdersPage() {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-4 md:grid-cols-[1fr_220px]">
+              <div className="mt-4 grid gap-4 md:grid-cols-[1fr_280px]">
                 <div>
                   <h3 className="mb-2 font-black">Produtos</h3>
 
@@ -176,6 +278,15 @@ export default function AdminOrdersPage() {
                         </p>
                       </div>
                     ))}
+                  </div>
+
+                  <div className="mt-4 rounded-xl bg-[#1e1f22] p-3 text-sm text-[#b5bac1]">
+                    <p className="font-bold text-white">Entrega</p>
+                    <p>CEP: {getCheckout(order).cep || "Nao informado"}</p>
+                    <p>
+                      {getCheckout(order).shipping_quote?.carrier || "Transportadora"} - {getCheckout(order).shipping_quote?.service || "servico a definir"}
+                    </p>
+                    <p>Prazo: {getCheckout(order).shipping_quote?.deliveryDays || "em calculo"}</p>
                   </div>
                 </div>
 
@@ -195,6 +306,34 @@ export default function AdminOrdersPage() {
                     <option value="cancelled">Cancelado</option>
                     <option value="rejected">Rejeitado</option>
                   </select>
+
+                  <p className="mb-2 mt-4 font-black">Rastreamento</p>
+                  <input
+                    value={trackingCodes[order.id] || ""}
+                    onChange={(event) =>
+                      setTrackingCodes({ ...trackingCodes, [order.id]: event.target.value })
+                    }
+                    placeholder="Codigo dos Correios"
+                    className="w-full rounded-lg bg-[#313338] p-3 outline-none"
+                  />
+
+                  <button
+                    onClick={() => updateStatus(order.id, order.status || "pending")}
+                    className="mt-3 w-full rounded-lg bg-[#5865f2] py-2 font-bold"
+                  >
+                    Salvar rastreio
+                  </button>
+
+                  {whatsappHref(order) && (
+                    <a
+                      href={whatsappHref(order)}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-3 block rounded-lg bg-[#23a559] py-2 text-center font-bold"
+                    >
+                      WhatsApp cliente
+                    </a>
+                  )}
 
                   <div className="mt-4 space-y-1 text-sm text-[#b5bac1]">
                     <div className="flex justify-between">

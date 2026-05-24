@@ -21,10 +21,33 @@ export async function PATCH(
   const { id } = await context.params;
   const body = await request.json();
 
+  const { data: currentOrder } = await supabase
+    .from("orders")
+    .select("mercado_pago_response")
+    .eq("id", id)
+    .single();
+
+  const previousResponse =
+    currentOrder?.mercado_pago_response &&
+    typeof currentOrder.mercado_pago_response === "object"
+      ? currentOrder.mercado_pago_response
+      : {};
+  const previousCheckout =
+    "checkout" in previousResponse && typeof previousResponse.checkout === "object"
+      ? previousResponse.checkout
+      : {};
+
   const { data, error } = await supabase
     .from("orders")
     .update({
       status: body.status,
+      mercado_pago_response: {
+        ...previousResponse,
+        checkout: {
+          ...previousCheckout,
+          tracking_code: body.trackingCode ?? previousCheckout.tracking_code ?? "",
+        },
+      },
     })
     .eq("id", id)
     .select()

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PendentePage() {
   return (
     <main className="min-h-screen bg-[#313338] p-8 text-white">
@@ -10,12 +12,12 @@ export default function PendentePage() {
           Seu pagamento ainda está em análise ou aguardando confirmação.
         </p>
 
-        <a
+        <Link
           href="/"
           className="mt-6 inline-block rounded-lg bg-[#5865f2] px-5 py-3 font-bold"
         >
           Voltar para a Tecno Peças
-        </a>
+        </Link>
       </div>
     </main>
   );

@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 type Product = {
   id?: number;
@@ -83,7 +85,7 @@ export default function AdminPage() {
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("/api/admin/upload-image", {
+    const response = await fetch("/api/admin/upload-images", {
       method: "POST",
       headers: { "x-admin-password": password },
       body: formData,
@@ -168,9 +170,9 @@ export default function AdminPage() {
             Entrar
           </button>
 
-          <a href="/" className="mt-4 block text-center text-sm text-[#b5bac1]">
+          <Link href="/" className="mt-4 block text-center text-sm text-[#b5bac1]">
             Voltar para loja
-          </a>
+          </Link>
         </div>
       </main>
     );
@@ -187,7 +189,8 @@ export default function AdminPage() {
             </div>
 
             <div className="flex gap-2">
-              <a href="/" className="rounded-lg bg-[#5865f2] px-4 py-2 font-bold">Loja</a>
+              <Link href="/" className="rounded-lg bg-[#5865f2] px-4 py-2 font-bold">Loja</Link>
+              <Link href="/admin/orders" className="rounded-lg bg-[#23a559] px-4 py-2 font-bold">Pedidos</Link>
               <button onClick={logout} className="rounded-lg bg-[#da373c] px-4 py-2 font-bold">Sair</button>
             </div>
           </div>
@@ -240,7 +243,13 @@ export default function AdminPage() {
               {uploading && <p className="mt-2 text-yellow-400">Enviando imagem...</p>}
 
               {form.image && (
-                <img src={form.image} alt="Prévia" className="mt-4 h-40 w-40 rounded-xl object-cover" />
+                <Image
+                  src={form.image}
+                  alt="Prévia"
+                  width={160}
+                  height={160}
+                  className="mt-4 h-40 w-40 rounded-xl object-cover"
+                />
               )}
             </div>
 
@@ -266,7 +275,13 @@ export default function AdminPage() {
           <div className="grid gap-4">
             {products.map((product) => (
               <div key={product.id} className="grid gap-4 rounded-xl bg-[#1e1f22] p-4 md:grid-cols-[80px_1fr_auto] md:items-center">
-                <img src={product.image || "https://via.placeholder.com/200"} alt={product.name} className="h-20 w-20 rounded-lg object-cover" />
+                <Image
+                  src={product.image || "https://via.placeholder.com/200"}
+                  alt={product.name}
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 rounded-lg object-cover"
+                />
 
                 <div>
                   <h3 className="text-xl font-black">{product.name}</h3>
