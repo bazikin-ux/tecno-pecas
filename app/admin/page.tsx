@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { firstProductImage, parseImageList } from "@/app/lib/commerce";
 
 type Product = {
   id?: number;
@@ -79,9 +80,7 @@ export default function AdminPage() {
     setForm({ ...form, [field]: value });
   }
 
-  async function uploadImage(file: File) {
-    setUploading(true);
-
+  async function uploadImageFile(file: File) {
     const formData = new FormData();
     formData.append("file", file);
 
@@ -91,17 +90,38 @@ export default function AdminPage() {
       body: formData,
     });
 
-    setUploading(false);
-
     const data = await response.json();
 
     if (!response.ok) {
       alert(data.error || "Erro ao enviar imagem.");
-      return;
+      return "";
     }
 
-    setForm({ ...form, image: data.url });
-    alert("Imagem enviada com sucesso!");
+    return data.url || "";
+  }
+
+  async function uploadImages(files: FileList) {
+    const uploadedUrls: string[] = [];
+
+    setUploading(true);
+
+    for (const file of Array.from(files)) {
+      const url = await uploadImageFile(file);
+      if (url) uploadedUrls.push(url);
+    }
+
+    setUploading(false);
+
+    if (!uploadedUrls.length) return;
+
+    const images = parseImageList(form.image);
+    setForm({ ...form, image: [...images, ...uploadedUrls].join("\n") });
+    alert("Imagem(ns) enviada(s) com sucesso!");
+  }
+
+  function removeImage(url: string) {
+    const images = parseImageList(form.image).filter((image) => image !== url);
+    setForm({ ...form, image: images.join("\n") });
   }
 
   async function saveProduct() {
@@ -222,35 +242,49 @@ export default function AdminPage() {
             <input className="rounded-lg bg-[#1e1f22] p-3 outline-none" placeholder="Etiqueta" value={form.tag} onChange={(e) => updateField("tag", e.target.value)} />
 
             <div className="rounded-lg bg-[#1e1f22] p-3 md:col-span-2">
-              <label className="mb-2 block text-sm font-bold text-[#b5bac1]">Imagem do produto</label>
+              <label className="mb-2 block text-sm font-bold text-[#b5bac1]">Imagens do produto</label>
 
               <input
                 type="file"
+                multiple
                 accept="image/png,image/jpeg,image/jpg,image/webp"
                 onChange={(event) => {
-                  const file = event.target.files?.[0];
-                  if (file) uploadImage(file);
+                  const files = event.target.files;
+                  if (files?.length) uploadImages(files);
                 }}
                 className="w-full rounded-lg bg-[#313338] p-3"
               />
 
-              <input
+              <textarea
                 className="mt-3 w-full rounded-lg bg-[#313338] p-3 outline-none"
-                placeholder="Ou cole uma URL da imagem"
+                placeholder="Ou cole URLs das imagens, uma por linha"
                 value={form.image}
                 onChange={(e) => updateField("image", e.target.value)}
               />
 
-              {uploading && <p className="mt-2 text-yellow-400">Enviando imagem...</p>}
+              {uploading && <p className="mt-2 text-yellow-400">Enviando imagem(ns)...</p>}
 
-              {form.image && (
-                <Image
-                  src={form.image}
+              {parseImageList(form.image).length > 0 && (
+                <div className="mt-4 grid gap-3 sm:grid-cols-3 md:grid-cols-5">
+                  {parseImageList(form.image).map((url) => (
+                    <div key={url} className="rounded-xl bg-[#313338] p-2">
+                      <Image
+                  src={url}
                   alt="Prévia"
                   width={160}
                   height={160}
-                  className="mt-4 h-40 w-40 rounded-xl object-cover"
+                  className="h-32 w-full rounded-lg object-cover"
                 />
+                      <button
+                        type="button"
+                        onClick={() => removeImage(url)}
+                        className="mt-2 w-full rounded-lg bg-[#da373c] py-2 text-sm font-bold hover:bg-[#b92d32]"
+                      >
+                        Remover
+                      </button>
+                    </div>
+                  ))}
+                </div>
               )}
             </div>
 
@@ -277,7 +311,7 @@ export default function AdminPage() {
             {products.map((product) => (
               <div key={product.id} className="grid gap-4 rounded-xl bg-[#1e1f22] p-4 md:grid-cols-[80px_1fr_auto] md:items-center">
                 <Image
-                  src={product.image || "https://via.placeholder.com/200"}
+                  src={firstProductImage(product.image, "https://via.placeholder.com/200")}
                   alt={product.name}
                   width={80}
                   height={80}

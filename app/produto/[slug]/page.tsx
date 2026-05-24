@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
-import { formatCurrency, slugify } from "@/app/lib/commerce";
+import { estimateShipping, firstProductImage, formatCurrency, parseImageList, slugify } from "@/app/lib/commerce";
 
 type Product = {
   id: number;
@@ -15,6 +15,7 @@ type Product = {
   specs: string;
   tag: string;
   image: string;
+  images: string[];
 };
 
 async function getProduct(slug: string): Promise<Product | null> {
@@ -44,7 +45,8 @@ async function getProduct(slug: string): Promise<Product | null> {
     stock: Number(product.stock || 0),
     specs: product.specs || "",
     tag: product.tag || "Produto",
-    image: product.image || "https://via.placeholder.com/900",
+    image: firstProductImage(product.image),
+    images: parseImageList(product.image),
   };
 }
 
@@ -55,6 +57,7 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
   const product = await getProduct(slug);
+  const shippingQuote = estimateShipping("01001000", product?.price || 0);
 
   if (!product) {
     notFound();
@@ -82,6 +85,20 @@ export default async function ProductPage({
               priority
               className="h-[360px] w-full object-cover md:h-[560px]"
             />
+            {product.images.length > 1 && (
+              <div className="grid gap-2 p-3 sm:grid-cols-4">
+                {product.images.slice(0, 4).map((image) => (
+                  <Image
+                    key={image}
+                    src={image}
+                    alt={product.name}
+                    width={180}
+                    height={120}
+                    className="h-24 w-full rounded-lg object-cover"
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col justify-center">
@@ -103,6 +120,15 @@ export default async function ProductPage({
               <p className="mt-2 text-[#b5bac1]">{product.specs || "Produto original com garantia e envio rapido pela Tecno Pecas."}</p>
             </div>
 
+            <div className="mt-4 rounded-xl bg-[#1e1f22] p-4">
+              <p className="font-black">Detalhes de compra</p>
+              <div className="mt-3 grid gap-2 text-sm text-[#b5bac1]">
+                <p>Garantia de 12 meses com suporte da loja.</p>
+                <p>Pagamento por Pix, cartao, boleto ou Mercado Pago.</p>
+                <p>Envio com rastreamento e atualizacao pelo painel do cliente.</p>
+              </div>
+            </div>
+
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <div className="rounded-xl bg-[#1e1f22] p-4">
                 <p className="text-sm text-[#b5bac1]">Estoque</p>
@@ -110,7 +136,8 @@ export default async function ProductPage({
               </div>
               <div className="rounded-xl bg-[#1e1f22] p-4">
                 <p className="text-sm text-[#b5bac1]">Frete</p>
-                <p className="text-2xl font-black">Melhor Envio</p>
+                <p className="text-2xl font-black">{shippingQuote.price === 0 ? "Gratis" : formatCurrency(shippingQuote.price)}</p>
+                <p className="text-xs text-[#b5bac1]">{shippingQuote.deliveryDays}</p>
               </div>
             </div>
 
@@ -121,6 +148,20 @@ export default async function ProductPage({
               Comprar agora
             </Link>
           </div>
+        </section>
+
+        <section className="mt-6 grid gap-4 md:grid-cols-3">
+          {[
+            { name: "Compra verificada", text: "Produto chegou muito bem embalado e dentro do prazo." },
+            { name: "Setup gamer", text: "Atendimento ajudou a escolher pecas compativeis." },
+            { name: "Entrega rastreada", text: "Recebi o codigo de rastreio e acompanhei pelo site." },
+          ].map((review) => (
+            <div key={review.name} className="rounded-xl bg-[#2b2d31] p-4">
+              <p className="font-black">★★★★★</p>
+              <p className="mt-2 font-bold">{review.name}</p>
+              <p className="mt-1 text-sm text-[#b5bac1]">{review.text}</p>
+            </div>
+          ))}
         </section>
       </div>
     </main>

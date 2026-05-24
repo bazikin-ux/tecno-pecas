@@ -22,7 +22,7 @@ export async function GET(request: Request) {
 
   const { data, error } = await supabase
     .from("orders")
-    .select("id, status, total, subtotal, discount, shipping, created_at")
+    .select("id, status, total, subtotal, discount, shipping, items, created_at")
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -45,6 +45,18 @@ export async function GET(request: Request) {
   const revenue = paidOrders.reduce((sum, order) => sum + Number(order.total || 0), 0);
   const shippingCollected = paidOrders.reduce((sum, order) => sum + Number(order.shipping || 0), 0);
   const estimatedProfit = Number(((revenue - shippingCollected) * (marginPercent / 100)).toFixed(2));
+  const productSales = new Map<string, number>();
+
+  paidOrders.forEach((order) => {
+    (order.items || []).forEach((item: { name?: string; quantity?: number }) => {
+      if (!item.name) return;
+      productSales.set(item.name, (productSales.get(item.name) || 0) + Number(item.quantity || 1));
+    });
+  });
+
+  const topProduct = [...productSales.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, quantity]) => ({ name, quantity }))[0] || null;
 
   return NextResponse.json({
     month: now.toLocaleDateString("pt-BR", { month: "long", year: "numeric" }),
@@ -58,5 +70,6 @@ export async function GET(request: Request) {
     averageTicket: paidOrders.length ? revenue / paidOrders.length : 0,
     estimatedProfit,
     marginPercent,
+    topProduct,
   });
 }
