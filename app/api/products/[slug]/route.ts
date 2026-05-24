@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { slugify } from "@/app/lib/commerce";
+import { firstProductImage, parseImageList, slugify } from "@/app/lib/commerce";
 
 const supabaseUrl = process.env.SUPABASE_URL || "";
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
@@ -50,6 +50,7 @@ export async function GET(
     tag: product.tag || "Produto",
     rating: 4.8,
     sold: 0,
-    image: product.image || "https://via.placeholder.com/900",
+    image: firstProductImage(product.image),
+    images: parseImageList(product.image),
   });
 }

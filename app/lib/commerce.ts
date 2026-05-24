@@ -20,8 +20,8 @@ export type ShippingQuote = {
 
 const coupons = [
   { code: "TECNO10", percent: 10, minSubtotal: 0, label: "10% OFF" },
-  { code: "GAMER20", percent: 20, minSubtotal: 1200, label: "20% OFF acima de R$ 1.200" },
-  { code: "MEGA35", percent: 35, minSubtotal: 3500, label: "35% OFF acima de R$ 3.500" },
+  { code: "PIX5", percent: 5, minSubtotal: 0, label: "5% OFF no Pix" },
+  { code: "PRIMEIRACOMPRA", percent: 12, minSubtotal: 300, label: "12% OFF na primeira compra" },
 ];
 
 export function onlyNumbers(value: string) {
@@ -35,6 +35,17 @@ export function slugify(value: string) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+export function parseImageList(value: string) {
+  return value
+    .split(/\r?\n|,/)
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+export function firstProductImage(value: string, fallback = "https://via.placeholder.com/900") {
+  return parseImageList(value)[0] || fallback;
 }
 
 export function calculateCoupon(rawCode: string, subtotal: number): CouponResult {

@@ -37,6 +37,14 @@ type CustomerAccount = {
 
 const customerSessionKey = "tecno-pecas-customer-session";
 const customerAccountsKey = "tecno-pecas-customer-accounts";
+const favoritesKey = "tecno-pecas-favorites";
+const whatsappNumber = "5511999999999";
+
+const customerReviews = [
+  { name: "Marcos A.", rating: 5, text: "Pedido chegou rapido, bem embalado e com nota fiscal." },
+  { name: "Julia R.", rating: 5, text: "Comprei placa de video e o suporte ajudou a escolher a fonte certa." },
+  { name: "Rafael P.", rating: 4, text: "Precos bons e rastreamento facil depois da compra." },
+];
 
 function loadSavedCustomer() {
   if (typeof window === "undefined") return null;
@@ -66,6 +74,15 @@ const img = {
   monitor: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=900&q=80",
   pc: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=900&q=80",
 };
+
+const categoryHighlights = [
+  { label: "PCs Gamer", category: "PCs Montados", image: img.pc },
+  { label: "Placas de Video", category: "Placas de VÃ­deo", image: img.gpu },
+  { label: "Processadores", category: "Processadores", image: img.cpu },
+  { label: "SSD / Memoria", category: "Armazenamento", image: img.ssd },
+  { label: "Monitores", category: "Monitores", image: img.monitor },
+  { label: "Perifericos", category: "PerifÃ©ricos", image: img.peripherals },
+];
 
 const products: Product[] = [
   { id: 1, name: "Ryzen 5 5600", category: "Processadores", price: 699.9, oldPrice: 949.9, stock: 35, specs: "6 núcleos, 12 threads, AM4, até 4.4GHz", tag: "Custo-benefício", rating: 4.8, sold: 821, image: img.cpu },
@@ -134,6 +151,7 @@ export default function Home() {
   const [authEmail, setAuthEmail] = useState("");
   const [authPhone, setAuthPhone] = useState("");
   const [authPassword, setAuthPassword] = useState("");
+  const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
 
   useEffect(() => {
     async function loadProducts() {
@@ -164,6 +182,15 @@ export default function Home() {
     });
   }, []);
 
+  useEffect(() => {
+    try {
+      const savedFavorites = JSON.parse(localStorage.getItem(favoritesKey) || "[]") as number[];
+      queueMicrotask(() => setFavoriteIds(Array.isArray(savedFavorites) ? savedFavorites : []));
+    } catch {
+      localStorage.removeItem(favoritesKey);
+    }
+  }, []);
+
   const categories = useMemo(() => ["Todos", ...Array.from(new Set(storeProducts.map((p) => p.category)))], [storeProducts]);
 
   const filtered = useMemo(() => {
@@ -174,6 +201,10 @@ export default function Home() {
   }, [storeProducts, search, category, maxPrice]);
 
   const bestSellers = useMemo(() => [...storeProducts].sort((a, b) => b.sold - a.sold).slice(0, 4), [storeProducts]);
+  const favoriteProducts = useMemo(
+    () => storeProducts.filter((product) => favoriteIds.includes(product.id)),
+    [storeProducts, favoriteIds]
+  );
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const couponResult = appliedCoupon ? calculateCoupon(appliedCoupon, subtotal) : null;
@@ -198,6 +229,15 @@ export default function Home() {
 
   function removeFromCart(id: number) {
     setCart(cart.filter((item) => item.id !== id));
+  }
+
+  function toggleFavorite(productId: number) {
+    const nextFavorites = favoriteIds.includes(productId)
+      ? favoriteIds.filter((id) => id !== productId)
+      : [...favoriteIds, productId];
+
+    setFavoriteIds(nextFavorites);
+    localStorage.setItem(favoritesKey, JSON.stringify(nextFavorites));
   }
 
   function applyCoupon() {
@@ -372,6 +412,9 @@ export default function Home() {
           <Link href="/cliente" className="mb-3 block rounded-lg bg-[#23a559] px-3 py-2 text-center font-bold">
             Minha conta
           </Link>
+          <Link href="/monte-seu-pc" className="mb-3 block rounded-lg bg-[#5865f2] px-3 py-2 text-center font-bold">
+            Monte seu PC
+          </Link>
 
           <button onClick={() => setCategory("Todos")} className="mb-2 w-full rounded-lg bg-[#404249] px-3 py-2 text-left font-bold hover:bg-[#5865f2]"># todos-produtos</button>
           {categories.filter((c) => c !== "Todos").map((cat) => (
@@ -414,9 +457,43 @@ export default function Home() {
           </header>
 
           <section className="p-5">
-            <div className="mb-6 rounded-2xl bg-gradient-to-r from-[#5865f2] to-[#4752c4] p-6">
-              <h3 className="text-4xl font-black">Ofertas gamer da Tecno Peças</h3>
-              <p className="mt-2 text-[#eef0ff]">Pix, cartão, boleto e Mercado Pago. Frete grátis acima de R$500.</p>
+            <div className="relative mb-6 min-h-64 overflow-hidden rounded-2xl bg-[#1e1f22] p-6">
+              <Image
+                src={img.pc}
+                alt="Setup gamer com hardware em destaque"
+                fill
+                priority
+                className="object-cover opacity-35"
+              />
+              <div className="relative max-w-2xl">
+                <h3 className="text-4xl font-black">Ofertas gamer da Tecno Pecas</h3>
+                <p className="mt-3 text-[#eef0ff]">Hardware para montar, atualizar e turbinar seu setup com Pix, cartao, boleto e Mercado Pago.</p>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <button onClick={() => setCategory("PCs Montados")} className="rounded-lg bg-[#23a559] px-4 py-3 font-black hover:bg-[#1f8f4d]">
+                    Ver PCs Gamer
+                  </button>
+                  <Link href="/monte-seu-pc" className="rounded-lg bg-[#5865f2] px-4 py-3 font-black hover:bg-[#4752c4]">
+                    Montar meu PC
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-6">
+              <h3 className="mb-3 text-xl font-black">Categorias em destaque</h3>
+              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                {categoryHighlights.map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => setCategory(item.category)}
+                    className="group relative min-h-28 overflow-hidden rounded-xl bg-[#1e1f22] p-4 text-left"
+                  >
+                    <Image src={item.image} alt={item.label} fill className="object-cover opacity-30 transition group-hover:scale-105" />
+                    <span className="relative text-lg font-black">{item.label}</span>
+                    <span className="relative mt-2 block text-sm text-[#b5bac1]">Ver produtos</span>
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="mb-6 rounded-2xl bg-[#2b2d31] p-4">
@@ -442,6 +519,28 @@ export default function Home() {
               </div>
             </div>
 
+            {favoriteProducts.length > 0 && (
+              <div className="mb-6 rounded-2xl bg-[#2b2d31] p-4">
+                <h3 className="text-xl font-black">Favoritos</h3>
+                <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+                  {favoriteProducts.map((product) => (
+                    <div key={product.id} className="rounded-xl bg-[#1e1f22] p-3">
+                      <p className="font-bold">{product.name}</p>
+                      <p className="text-sm text-[#23a559]">{formatCurrency(product.price)}</p>
+                      <div className="mt-3 grid grid-cols-2 gap-2">
+                        <Link href={`/produto/${product.slug || slugify(product.name)}`} className="rounded-lg bg-[#404249] py-2 text-center text-sm font-bold hover:bg-[#5865f2]">
+                          Ver
+                        </Link>
+                        <button onClick={() => addToCart(product)} className="rounded-lg bg-[#23a559] py-2 text-sm font-bold hover:bg-[#1f8f4d]">
+                          Comprar
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {categories.filter((cat) => cat !== "Todos").map((cat) => {
               const items = filtered.filter((p) => p.category === cat);
               if (!items.length) return null;
@@ -451,7 +550,14 @@ export default function Home() {
                   <h3 className="mb-4 text-xl font-black text-white"># {cat}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     {items.map((product) => (
-                      <div key={product.id} className="overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg">
+                      <div key={product.id} className="relative overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg">
+                        <button
+                          onClick={() => toggleFavorite(product.id)}
+                          className="absolute right-3 top-3 z-10 rounded-full bg-[#1e1f22]/90 px-3 py-2 text-sm font-black hover:bg-[#5865f2]"
+                          aria-label={favoriteIds.includes(product.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                        >
+                          {favoriteIds.includes(product.id) ? "Favorito" : "Salvar"}
+                        </button>
                         <Image
                           src={product.image}
                           alt={product.name}
@@ -490,6 +596,19 @@ export default function Home() {
                 </div>
               );
             })}
+
+            <div className="mb-6">
+              <h3 className="mb-3 text-xl font-black">Avaliacoes de clientes</h3>
+              <div className="grid gap-3 md:grid-cols-3">
+                {customerReviews.map((review) => (
+                  <div key={review.name} className="rounded-xl bg-[#2b2d31] p-4">
+                    <p className="font-black text-[#23a559]">{"★".repeat(review.rating)}</p>
+                    <p className="mt-2 font-bold">{review.name}</p>
+                    <p className="mt-1 text-sm text-[#b5bac1]">{review.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </section>
         </section>
 
@@ -570,7 +689,7 @@ export default function Home() {
 
             <p className="mb-2 font-bold">Cupom de desconto</p>
             <div className="flex gap-2">
-              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="MEGA35" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
+              <input value={coupon} onChange={(e) => setCoupon(e.target.value)} placeholder="Cupom" className="w-full rounded-lg bg-[#313338] px-3 py-2 outline-none" />
               <button onClick={applyCoupon} className="rounded-lg bg-[#5865f2] px-3 font-bold">OK</button>
             </div>
 
@@ -618,6 +737,14 @@ export default function Home() {
           </div>
         </aside>
       </div>
+      <a
+        href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Ola, preciso de ajuda na Tecno Pecas.")}`}
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-5 right-5 z-50 rounded-full bg-[#23a559] px-5 py-4 font-black text-white shadow-xl hover:bg-[#1f8f4d]"
+      >
+        WhatsApp
+      </a>
     </main>
   );
 }

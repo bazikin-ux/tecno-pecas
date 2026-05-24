@@ -48,6 +48,10 @@ type Dashboard = {
   averageTicket: number;
   estimatedProfit: number;
   marginPercent: number;
+  topProduct?: {
+    name: string;
+    quantity: number;
+  } | null;
 };
 
 function formatPrice(value: number) {
@@ -214,7 +218,7 @@ export default function AdminOrdersPage() {
         )}
 
         {dashboard && (
-          <section className="mb-6 grid gap-4 md:grid-cols-6">
+          <section className="mb-6 grid gap-4 md:grid-cols-7">
             <div className="rounded-2xl bg-[#2b2d31] p-5">
               <p className="text-sm text-[#b5bac1]">Vendas hoje</p>
               <p className="mt-2 text-2xl font-black text-[#23a559]">{formatPrice(dashboard.todayRevenue)}</p>
@@ -244,6 +248,11 @@ export default function AdminOrdersPage() {
               <p className="text-sm text-[#b5bac1]">Pendentes</p>
               <p className="mt-2 text-2xl font-black text-yellow-400">{dashboard.pendingOrders}</p>
               <p className="text-xs text-[#b5bac1]">Aguardando pagamento</p>
+            </div>
+            <div className="rounded-2xl bg-[#2b2d31] p-5">
+              <p className="text-sm text-[#b5bac1]">Mais vendido</p>
+              <p className="mt-2 text-lg font-black">{dashboard.topProduct?.name || "Sem vendas"}</p>
+              <p className="text-xs text-[#b5bac1]">{dashboard.topProduct ? `${dashboard.topProduct.quantity} unidade(s)` : "Aguardando pedidos pagos"}</p>
             </div>
           </section>
         )}
