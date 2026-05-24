@@ -207,6 +207,7 @@ export default function AdminPage() {
               <option>Placas de Vídeo</option>
               <option>Memórias RAM</option>
               <option>Armazenamento</option>
+              <option>Cooler</option>
               <option>Placas-mãe</option>
               <option>Fontes</option>
               <option>Gabinetes</option>
