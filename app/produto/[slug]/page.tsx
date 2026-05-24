@@ -58,6 +58,7 @@ export default async function ProductPage({
   const { slug } = await params;
   const product = await getProduct(slug);
   const shippingQuote = estimateShipping("01001000", product?.price || 0);
+  const pixPrice = Number(((product?.price || 0) * 0.85).toFixed(2));
 
   if (!product) {
     notFound();
@@ -114,6 +115,13 @@ export default async function ProductPage({
             <p className="text-4xl font-black text-[#23a559]">
               {formatCurrency(product.price)}
             </p>
+            <div className="mt-3 rounded-xl bg-[#1e1f22] p-4">
+              <p className="text-sm font-bold text-[#23a559]">Pix com 15% OFF</p>
+              <p className="text-3xl font-black text-[#23a559]">{formatCurrency(pixPrice)}</p>
+              <p className="mt-1 text-sm text-[#b5bac1]">
+                Cartao, boleto ou Mercado Pago mantem o preco original de {formatCurrency(product.price)}.
+              </p>
+            </div>
 
             <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
               <p className="font-black">Descricao</p>
