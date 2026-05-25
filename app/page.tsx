@@ -746,6 +746,34 @@ export default function Home() {
                 ))}
               </div>
             </div>
+
+            <section className="rounded-2xl bg-[#2b2d31] p-5">
+              <div className="grid gap-5 lg:grid-cols-[1.4fr_1fr] lg:items-center">
+                <div>
+                  <p className="text-sm font-black uppercase text-[#23a559]">Sobre nos</p>
+                  <h3 className="mt-2 text-2xl font-black text-white">Hardware escolhido com cuidado para o seu setup</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#dbdee1]">
+                    A Tecno Pecas nasceu para facilitar a compra de componentes, PCs gamer e perifericos com atendimento
+                    direto, produtos bem selecionados e suporte antes e depois da venda.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+                  <div className="rounded-xl bg-[#1e1f22] p-4">
+                    <p className="font-black text-white">Atendimento rapido</p>
+                    <p className="mt-1 text-sm text-[#b5bac1]">Ajuda pelo WhatsApp para escolher pecas compativeis.</p>
+                  </div>
+                  <div className="rounded-xl bg-[#1e1f22] p-4">
+                    <p className="font-black text-white">Compra segura</p>
+                    <p className="mt-1 text-sm text-[#b5bac1]">Pagamento por Pix, cartao, boleto e Mercado Pago.</p>
+                  </div>
+                  <div className="rounded-xl bg-[#1e1f22] p-4">
+                    <p className="font-black text-white">Envio com rastreio</p>
+                    <p className="mt-1 text-sm text-[#b5bac1]">Acompanhe seu pedido depois da confirmacao.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
           </section>
         </section>
 
