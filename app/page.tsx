@@ -39,6 +39,8 @@ const customerSessionKey = "tecno-pecas-customer-session";
 const customerAccountsKey = "tecno-pecas-customer-accounts";
 const favoritesKey = "tecno-pecas-favorites";
 const whatsappNumber = "5511946365931";
+const storeContactEmail = "tecnopecaspc@gmail.com";
+const storeProfileImage = "/tecno-pecas-profile.png";
 
 const customerReviews = [
   { name: "Marcos A.", rating: 5, text: "Pedido chegou rapido, bem embalado e com nota fiscal." },
@@ -450,7 +452,10 @@ export default function Home() {
         >
           ☰ Menu
         </button>
-        <span className="font-black text-white">Tecno Pecas</span>
+        <span className="flex items-center gap-2 font-black text-white">
+          <Image src={storeProfileImage} alt="Tecno Pecas" width={32} height={32} className="h-8 w-8 rounded-full object-cover" />
+          Tecno Pecas
+        </span>
         <span className="rounded-lg bg-[#1e1f22] px-3 py-2 text-sm font-bold">{totalItems}</span>
       </div>
 
@@ -464,6 +469,7 @@ export default function Home() {
           <aside className="relative h-full w-80 max-w-[86vw] overflow-y-auto bg-[#2b2d31] p-5 shadow-2xl">
             <div className="mb-5 flex items-center justify-between">
               <div>
+                <Image src={storeProfileImage} alt="Tecno Pecas" width={64} height={64} className="mb-3 h-16 w-16 rounded-full object-cover" />
                 <p className="text-sm text-[#b5bac1]">Tecno Pecas</p>
                 <h2 className="text-2xl font-black">Menu</h2>
               </div>
@@ -513,13 +519,20 @@ export default function Home() {
                 </Link>
               </div>
             </section>
+
+            <section className="mt-6 rounded-xl bg-[#1e1f22] p-4">
+              <p className="text-sm font-black text-[#b5bac1]">Contato</p>
+              <a href={`mailto:${storeContactEmail}`} className="mt-2 block font-bold text-[#23a559]">
+                {storeContactEmail}
+              </a>
+            </section>
           </aside>
         </div>
       )}
 
       <div className="grid min-h-screen md:grid-cols-[78px_250px_1fr_370px]">
         <aside className="hidden bg-[#1e1f22] p-3 md:block">
-          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5865f2] text-xl font-black">TP</div>
+          <Image src={storeProfileImage} alt="Tecno Pecas" width={48} height={48} className="mb-4 h-12 w-12 rounded-2xl object-cover" />
           {categories.filter((c) => c !== "Todos").map((cat) => (
             <button key={cat} onClick={() => setCategory(cat)} className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#2b2d31] text-xs font-bold hover:bg-[#5865f2]">
               {cat.slice(0, 2)}
@@ -530,6 +543,9 @@ export default function Home() {
         <aside className="hidden bg-[#2b2d31] p-4 md:block">
           <h1 className="text-2xl font-black text-white">Tecno Peças</h1>
           <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
+          <a href={`mailto:${storeContactEmail}`} className="mb-3 block rounded-lg bg-[#1e1f22] px-3 py-2 text-center text-sm font-bold text-[#23a559]">
+            {storeContactEmail}
+          </a>
           <Link href="/cliente" className="mb-3 block rounded-lg bg-[#23a559] px-3 py-2 text-center font-bold">
             Minha conta
           </Link>

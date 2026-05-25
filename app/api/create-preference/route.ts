@@ -17,6 +17,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 const whatsappToken = process.env.WHATSAPP_ACCESS_TOKEN || "";
 const whatsappPhoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID || "";
 const whatsappGraphVersion = process.env.WHATSAPP_GRAPH_VERSION || "v24.0";
+const storeContactEmail = process.env.STORE_CONTACT_EMAIL || "tecnopecaspc@gmail.com";
+const orderNotificationEmail = process.env.ORDER_NOTIFICATION_EMAIL || storeContactEmail;
+const resendApiKey = process.env.RESEND_API_KEY || "";
+const resendFromEmail = process.env.RESEND_FROM_EMAIL || "Tecno Pecas <onboarding@resend.dev>";
 
 const supabase =
   supabaseUrl && supabaseServiceKey
@@ -52,6 +56,76 @@ async function sendWhatsAppMessage(phone: string, message: string) {
 
   const data = await response.json();
   return { ok: response.ok, data };
+}
+
+async function sendStoreOrderEmail({
+  orderId,
+  cart,
+  customerEmail,
+  customerPhone,
+  payment,
+  cep,
+  total,
+}: {
+  orderId: number;
+  cart: CartItem[];
+  customerEmail: string;
+  customerPhone: string;
+  payment: string;
+  cep: string;
+  total: number;
+}) {
+  if (!resendApiKey || !orderNotificationEmail) {
+    return { skipped: true };
+  }
+
+  const formattedTotal = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+  const itemsText = cart
+    .map((item) => `${item.quantity || 1}x ${item.name} - ${Number(item.price || 0).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })}`)
+    .join("\n");
+
+  try {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: resendFromEmail,
+        to: [orderNotificationEmail],
+        subject: `Nova compra Tecno Pecas #${orderId}`,
+        text: [
+          `Nova compra criada na Tecno Pecas.`,
+          `Pedido: #${orderId}`,
+          `Cliente: ${customerEmail}`,
+          `WhatsApp: ${customerPhone || "Nao informado"}`,
+          `Pagamento: ${payment}`,
+          `CEP: ${cep || "Nao informado"}`,
+          `Total: ${formattedTotal}`,
+          "",
+          "Produtos:",
+          itemsText,
+          "",
+          `Painel: ${siteUrl}/admin/orders`,
+        ].join("\n"),
+      }),
+    });
+
+    const data = await response.json();
+    return { ok: response.ok, data };
+  } catch (error) {
+    return {
+      ok: false,
+      error: error instanceof Error ? error.message : "Erro desconhecido",
+    };
+  }
 }
 
 export async function POST(request: Request) {
@@ -185,6 +259,16 @@ export async function POST(request: Request) {
         currency: "BRL",
       })}. Acompanhe em ${siteUrl}/rastreamento?pedido=${order.id}`
     );
+
+    await sendStoreOrderEmail({
+      orderId: order.id,
+      cart,
+      customerEmail: body.customerEmail || "cliente@teste.com",
+      customerPhone: body.customerPhone || "",
+      payment: body.payment || "Mercado Pago",
+      cep: body.cep || "",
+      total,
+    });
 
     return NextResponse.json({
       order_id: order.id,
