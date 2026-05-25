@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { firstProductImage, parseImageList } from "@/app/lib/commerce";
 
+const storeProfileImage = "/tecno-pecas-profile.png";
+const storeContactEmail = "tecnopecaspc@gmail.com";
+
 type Product = {
   id?: number;
   name: string;
@@ -174,8 +177,12 @@ export default function AdminPage() {
     return (
       <main className="flex min-h-screen items-center justify-center bg-[#313338] p-6 text-white">
         <div className="w-full max-w-md rounded-2xl bg-[#2b2d31] p-8">
+          <Image src={storeProfileImage} alt="Tecno Pecas" width={88} height={88} className="mb-4 h-[88px] w-[88px] rounded-2xl object-cover" />
           <h1 className="text-4xl font-black text-[#5865f2]">Tecno Peças</h1>
           <p className="mt-2 text-[#b5bac1]">Painel Admin protegido</p>
+          <a href={`mailto:${storeContactEmail}`} className="mt-2 block text-sm font-bold text-[#23a559]">
+            {storeContactEmail}
+          </a>
 
           <input
             type="password"
@@ -204,8 +211,12 @@ export default function AdminPage() {
         <div className="mb-6 rounded-2xl bg-[#2b2d31] p-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
+              <Image src={storeProfileImage} alt="Tecno Pecas" width={72} height={72} className="mb-3 h-[72px] w-[72px] rounded-2xl object-cover" />
               <h1 className="text-4xl font-black text-[#5865f2]">Painel Admin — Tecno Peças</h1>
               <p className="mt-2 text-[#b5bac1]">Cadastre produtos, edite preços, estoque e imagens.</p>
+              <a href={`mailto:${storeContactEmail}`} className="mt-2 block text-sm font-bold text-[#23a559]">
+                {storeContactEmail}
+              </a>
             </div>
 
             <div className="flex gap-2">
