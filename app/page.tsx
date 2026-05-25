@@ -38,7 +38,7 @@ type CustomerAccount = {
 const customerSessionKey = "tecno-pecas-customer-session";
 const customerAccountsKey = "tecno-pecas-customer-accounts";
 const favoritesKey = "tecno-pecas-favorites";
-const whatsappNumber = "5511999999999";
+const whatsappNumber = "5511946365931";
 
 const customerReviews = [
   { name: "Marcos A.", rating: 5, text: "Pedido chegou rapido, bem embalado e com nota fiscal." },
@@ -67,6 +67,7 @@ const img = {
   gpu: "https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=80",
   ram: "https://images.unsplash.com/photo-1562976540-1502c2145186?auto=format&fit=crop&w=900&q=80",
   ssd: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=900&q=80",
+  memoryStorage: "https://images.unsplash.com/photo-1600348712270-5af9e3590f66?auto=format&fit=crop&w=900&q=80",
   motherboard: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80",
   psu: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?auto=format&fit=crop&w=900&q=80",
   case: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=900&q=80",
@@ -76,12 +77,23 @@ const img = {
 };
 
 const categoryHighlights = [
-  { label: "PCs Gamer", category: "PCs Montados", image: img.pc },
+  { label: "PCs Gamer", categories: ["PCs Montados"], image: img.pc },
   { label: "Placas de Video", category: "Placas de VÃ­deo", image: img.gpu },
-  { label: "Processadores", category: "Processadores", image: img.cpu },
-  { label: "SSD / Memoria", category: "Armazenamento", image: img.ssd },
-  { label: "Monitores", category: "Monitores", image: img.monitor },
+  { label: "Processadores", categories: ["Processadores"], image: img.cpu },
+  { label: "SSD / Memoria", categories: ["Armazenamento", "Memórias RAM", "MemÃ³rias RAM"], image: img.memoryStorage },
+  { label: "Monitores", categories: ["Monitores"], image: img.monitor },
   { label: "Perifericos", category: "PerifÃ©ricos", image: img.peripherals },
+];
+
+const mobileMenuCategories = [
+  { label: "Processadores", categories: ["Processadores"] },
+  { label: "Placas de video", categories: ["Placas de Video", "Placas de Vídeo", "Placas de VÃ­deo", "Placas de VÃƒÂ­deo"] },
+  { label: "Memoria RAM", categories: ["Memorias RAM", "Memórias RAM", "MemÃ³rias RAM", "MemÃƒÂ³rias RAM"] },
+  { label: "SSD / HD", categories: ["Armazenamento"] },
+  { label: "Fontes", categories: ["Fontes"] },
+  { label: "Gabinetes", categories: ["Gabinetes"] },
+  { label: "Monitores", categories: ["Monitores"] },
+  { label: "PCs completos", categories: ["PCs Montados"] },
 ];
 
 const products: Product[] = [
@@ -152,6 +164,7 @@ export default function Home() {
   const [authPhone, setAuthPhone] = useState("");
   const [authPassword, setAuthPassword] = useState("");
   const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     async function loadProducts() {
@@ -192,6 +205,39 @@ export default function Home() {
   }, []);
 
   const categories = useMemo(() => ["Todos", ...Array.from(new Set(storeProducts.map((p) => p.category)))], [storeProducts]);
+
+  function selectHighlightedCategory(item: { label: string; category?: string; categories?: string[] }) {
+    const candidates = item.categories || (item.category ? [item.category] : []);
+    const productCategory =
+      item.label === "Placas de Video"
+        ? storeProducts.find((product) => /rtx|rx/i.test(product.name))?.category
+        : "";
+    const categoryMatch =
+      productCategory ||
+      categories.find((cat) => candidates.some((candidate) => cat === candidate || slugify(cat) === slugify(candidate)));
+
+    setCategory(categoryMatch || candidates[0] || "Todos");
+  }
+
+  function selectMobileCategory(item: { categories: string[] }) {
+    const categoryMatch = categories.find((cat) =>
+      item.categories.some((candidate) => cat === candidate || slugify(cat) === slugify(candidate))
+    );
+
+    setCategory(categoryMatch || item.categories[0]);
+    setMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function openCustomerAuth(mode: "login" | "register") {
+    setAuthMode(mode);
+    setAuthOpen(true);
+    setMobileMenuOpen(false);
+
+    setTimeout(() => {
+      document.getElementById("conta-cliente")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+  }
 
   const filtered = useMemo(() => {
     return storeProducts.filter((p) => {
@@ -396,6 +442,81 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#313338] text-[#f2f3f5]">
+      <div className="sticky top-0 z-50 flex items-center justify-between border-b border-[#1e1f22] bg-[#2b2d31] px-4 py-3 md:hidden">
+        <button
+          onClick={() => setMobileMenuOpen(true)}
+          className="rounded-lg bg-[#1e1f22] px-4 py-2 font-black hover:bg-[#404249]"
+          aria-label="Abrir menu"
+        >
+          ☰ Menu
+        </button>
+        <span className="font-black text-white">Tecno Pecas</span>
+        <span className="rounded-lg bg-[#1e1f22] px-3 py-2 text-sm font-bold">{totalItems}</span>
+      </div>
+
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-[60] md:hidden">
+          <button
+            className="absolute inset-0 bg-black/60"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Fechar menu"
+          />
+          <aside className="relative h-full w-80 max-w-[86vw] overflow-y-auto bg-[#2b2d31] p-5 shadow-2xl">
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <p className="text-sm text-[#b5bac1]">Tecno Pecas</p>
+                <h2 className="text-2xl font-black">Menu</h2>
+              </div>
+              <button onClick={() => setMobileMenuOpen(false)} className="rounded-lg bg-[#1e1f22] px-3 py-2 font-black">
+                X
+              </button>
+            </div>
+
+            <section>
+              <h3 className="mb-2 text-sm font-black text-[#b5bac1]">Categorias</h3>
+              <div className="grid gap-2">
+                {mobileMenuCategories.map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => selectMobileCategory(item)}
+                    className="rounded-lg bg-[#1e1f22] px-4 py-3 text-left font-bold hover:bg-[#5865f2]"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section className="mt-6">
+              <h3 className="mb-2 text-sm font-black text-[#b5bac1]">Minha conta</h3>
+              <div className="grid gap-2">
+                {customer ? (
+                  <div className="rounded-lg bg-[#1e1f22] px-4 py-3">
+                    <p className="font-bold">{customer.name}</p>
+                    <p className="text-sm text-[#b5bac1]">{customer.email}</p>
+                  </div>
+                ) : (
+                  <>
+                    <button onClick={() => openCustomerAuth("login")} className="rounded-lg bg-[#23a559] px-4 py-3 text-left font-bold hover:bg-[#1f8f4d]">
+                      Entrar
+                    </button>
+                    <button onClick={() => openCustomerAuth("register")} className="rounded-lg bg-[#5865f2] px-4 py-3 text-left font-bold hover:bg-[#4752c4]">
+                      Criar cadastro
+                    </button>
+                  </>
+                )}
+                <Link onClick={() => setMobileMenuOpen(false)} href="/cliente" className="rounded-lg bg-[#1e1f22] px-4 py-3 font-bold hover:bg-[#404249]">
+                  Meus pedidos
+                </Link>
+                <Link onClick={() => setMobileMenuOpen(false)} href="/rastreamento" className="rounded-lg bg-[#1e1f22] px-4 py-3 font-bold hover:bg-[#404249]">
+                  Rastreamento
+                </Link>
+              </div>
+            </section>
+          </aside>
+        </div>
+      )}
+
       <div className="grid min-h-screen md:grid-cols-[78px_250px_1fr_370px]">
         <aside className="hidden bg-[#1e1f22] p-3 md:block">
           <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#5865f2] text-xl font-black">TP</div>
@@ -485,7 +606,7 @@ export default function Home() {
                 {categoryHighlights.map((item) => (
                   <button
                     key={item.label}
-                    onClick={() => setCategory(item.category)}
+                    onClick={() => selectHighlightedCategory(item)}
                     className="group relative min-h-28 overflow-hidden rounded-xl bg-[#1e1f22] p-4 text-left"
                   >
                     <Image src={item.image} alt={item.label} fill className="object-cover opacity-30 transition group-hover:scale-105" />
@@ -634,7 +755,7 @@ export default function Home() {
           </div>
 
           <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
-            <div className="mb-5 rounded-xl bg-[#232428] p-4">
+            <div id="conta-cliente" className="mb-5 scroll-mt-20 rounded-xl bg-[#232428] p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
                   <p className="font-bold">Conta do cliente</p>
@@ -743,7 +864,7 @@ export default function Home() {
         rel="noreferrer"
         className="fixed bottom-5 right-5 z-50 rounded-full bg-[#23a559] px-5 py-4 font-black text-white shadow-xl hover:bg-[#1f8f4d]"
       >
-        WhatsApp
+        WhatsApp 11 94636-5931
       </a>
     </main>
   );
