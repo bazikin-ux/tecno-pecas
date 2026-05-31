@@ -30,6 +30,39 @@ const slots = [
   { id: "case", label: "Gabinete", categories: ["Gabinetes"] },
 ];
 
+function normalizeCategory(cat: string): string {
+  if (!cat) return "";
+  let val = cat.toLowerCase();
+  val = val.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  val = val.replace(/mãe|ma[e\u00e3]/gi, "mae");
+  val = val.replace(/memoria/gi, "memoria");
+  val = val.replace(/video/gi, "video");
+  val = val.replace(/[^a-z0-9\s]/g, "");
+  val = val.trim();
+  
+  if (val === "processadores" || val === "processador") return "processador";
+  if (val === "placas mae" || val === "placa mae" || val === "placamae" || val === "placasmae") return "placa mae";
+  if (val === "memorias ram" || val === "memoria ram" || val === "ram") return "memoria ram";
+  if (val === "armazenamentos" || val === "armazenamento") return "armazenamento";
+  if (val === "placas de video" || val === "placa de video" || val === "placas de video" || val === "placa de video") return "placa de video";
+  if (val === "coolers" || val === "cooler" || val === "fans rgb" || val === "fan rgb" || val === "fans" || val === "fan") return "cooler";
+  if (val === "fontes" || val === "fonte") return "fonte";
+  if (val === "gabinetes" || val === "gabinete") return "gabinete";
+  
+  return val;
+}
+
+const slotMap: Record<string, string> = {
+  cpu: "processador",
+  motherboard: "placa mae",
+  ram: "memoria ram",
+  storage: "armazenamento",
+  gpu: "placa de video",
+  cooler: "cooler",
+  psu: "fonte",
+  case: "gabinete",
+};
+
 function normalizeProduct(product: Product): Product {
   return {
     ...product,
@@ -72,10 +105,13 @@ export default function PcBuilderPage() {
 
   const productsBySlot = useMemo(() => {
     return Object.fromEntries(
-      slots.map((slot) => [
-        slot.id,
-        products.filter((product) => slot.categories.includes(product.category)),
-      ])
+      slots.map((slot) => {
+        const targetNormalized = slotMap[slot.id];
+        const filtered = products.filter(
+          (product) => normalizeCategory(product.category) === targetNormalized
+        );
+        return [slot.id, filtered];
+      })
     ) as Record<string, Product[]>;
   }, [products]);
 
@@ -129,7 +165,7 @@ export default function PcBuilderPage() {
               </div>
 
               <div className="grid gap-3">
-                {(productsBySlot[slot.id] || []).slice(0, 4).map((product) => (
+                {(productsBySlot[slot.id] || []).map((product) => (
                   <button
                     key={product.id}
                     onClick={() => setSelected({ ...selected, [slot.id]: product })}
