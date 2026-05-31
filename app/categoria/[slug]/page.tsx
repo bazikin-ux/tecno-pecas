@@ -82,7 +82,7 @@ async function getCategoryProducts(dbCategories: string[]): Promise<Product[]> {
   const supabase = createClient(supabaseUrl, supabaseServiceKey);
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, sold, rating, created_at")
+    .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, created_at")
     .eq("active", true)
     .in("category", dbCategories);
 
