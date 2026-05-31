@@ -148,7 +148,9 @@ const defaultShippingQuote = estimateShipping("01001000", 0);
 
 export default function Home() {
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [isCartLoaded, setIsCartLoaded] = useState(false);
   const [search, setSearch] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("Todas");
   const [category, setCategory] = useState("Todos");
   const [payment, setPayment] = useState("Pix");
   const [customer, setCustomer] = useState<CustomerAccount | null>(null);
@@ -208,7 +210,32 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    try {
+      const savedCart = localStorage.getItem("tecnopecas_cart");
+      if (savedCart) {
+        setCart(JSON.parse(savedCart));
+      }
+    } catch (e) {
+      console.error("Erro ao carregar o carrinho:", e);
+    }
+    setIsCartLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isCartLoaded) return;
+    try {
+      localStorage.setItem("tecnopecas_cart", JSON.stringify(cart));
+    } catch (e) {
+      console.error("Erro ao salvar o carrinho:", e);
+    }
+  }, [cart, isCartLoaded]);
+
   const categories = useMemo(() => ["Todos", ...Array.from(new Set(storeProducts.map((p) => p.category)))], [storeProducts]);
+  const brands = useMemo(() => {
+    const list = storeProducts.map((p) => p.brand).filter(Boolean) as string[];
+    return ["Todas", ...Array.from(new Set(list))];
+  }, [storeProducts]);
 
   function selectHighlightedCategory(item: { label: string; category?: string; categories?: string[] }) {
     const candidates = item.categories || (item.category ? [item.category] : []);
@@ -246,9 +273,13 @@ export default function Home() {
   const filtered = useMemo(() => {
     return storeProducts.filter((p) => {
       const text = `${p.name} ${p.category} ${p.specs} ${p.tag}`.toLowerCase();
-      return text.includes(search.toLowerCase()) && (category === "Todos" || p.category === category) && p.price <= maxPrice;
+      const matchesSearch = text.includes(search.toLowerCase());
+      const matchesCategory = category === "Todos" || p.category === category;
+      const matchesPrice = p.price <= maxPrice;
+      const matchesBrand = selectedBrand === "Todas" || p.brand === selectedBrand;
+      return matchesSearch && matchesCategory && matchesPrice && matchesBrand;
     });
-  }, [storeProducts, search, category, maxPrice]);
+  }, [storeProducts, search, category, maxPrice, selectedBrand]);
 
   const bestSellers = useMemo(() => [...storeProducts].sort((a, b) => b.sold - a.sold).slice(0, 4), [storeProducts]);
   const favoriteProducts = useMemo(
@@ -458,7 +489,9 @@ export default function Home() {
           <Image src={storeProfileImage} alt="Tecno Pecas" width={32} height={32} className="h-8 w-8 rounded-full object-cover" />
           Tecno Pecas
         </span>
-        <span className="rounded-lg bg-[#1e1f22] px-3 py-2 text-sm font-bold">{totalItems}</span>
+        <Link href="/carrinho" className="rounded-lg bg-[#1e1f22] px-3 py-2 text-sm font-bold text-white hover:bg-[#404249] transition">
+          🛒 {totalItems}
+        </Link>
       </div>
 
       {mobileMenuOpen && (
@@ -519,6 +552,9 @@ export default function Home() {
                 <Link onClick={() => setMobileMenuOpen(false)} href="/rastreamento" className="rounded-lg bg-[#1e1f22] px-4 py-3 font-bold hover:bg-[#404249]">
                   Rastreamento
                 </Link>
+                <Link onClick={() => setMobileMenuOpen(false)} href="/carrinho" className="rounded-lg bg-[#e18728] px-4 py-3 font-bold hover:bg-[#c7731d] text-white transition">
+                  Meu Carrinho 🛒
+                </Link>
               </div>
             </section>
 
@@ -560,6 +596,9 @@ export default function Home() {
           <Link href="/monte-seu-pc" className="mb-3 block rounded-lg bg-[#5865f2] px-3 py-2 text-center font-bold">
             Monte seu PC
           </Link>
+          <Link href="/carrinho" className="mb-3 block rounded-lg bg-[#e18728] px-3 py-2 text-center font-bold hover:bg-[#c7731d] text-white transition">
+            Meu Carrinho
+          </Link>
 
           <button onClick={() => setCategory("Todos")} className="mb-2 w-full rounded-lg bg-[#404249] px-3 py-2 text-left font-bold hover:bg-[#5865f2]"># todos-produtos</button>
           {categories.filter((c) => c !== "Todos").map((cat) => (
@@ -597,7 +636,24 @@ export default function Home() {
                 <h2 className="text-2xl font-black"># {category === "Todos" ? "promoções" : category.toLowerCase()}</h2>
                 <p className="text-sm text-[#b5bac1]">Peças, categorias, promoções, pagamento e carrinho estilo Discord.</p>
               </div>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Buscar produto..." className="rounded-lg bg-[#1e1f22] px-4 py-3 outline-none lg:w-80" />
+              <div className="flex flex-wrap items-center gap-2">
+                <select
+                  value={selectedBrand}
+                  onChange={(e) => setSelectedBrand(e.target.value)}
+                  className="rounded-lg bg-[#1e1f22] px-3 py-3 outline-none text-white text-sm"
+                >
+                  <option value="Todas">Todas as marcas</option>
+                  {brands.filter((b) => b !== "Todas").map((b) => (
+                    <option key={b} value={b}>{b}</option>
+                  ))}
+                </select>
+                <input
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Buscar produto..."
+                  className="rounded-lg bg-[#1e1f22] px-4 py-3 outline-none lg:w-80 text-sm"
+                />
+              </div>
             </div>
           </header>
 

@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
-import { estimateShipping, firstProductImage, formatCurrency, parseImageList, slugify } from "@/app/lib/commerce";
+import { firstProductImage, formatCurrency, parseImageList, slugify } from "@/app/lib/commerce";
 import ProductImageGallery from "./ProductImageGallery";
+import BuyButton from "./BuyButton";
+import ProductShippingSimulator from "./ProductShippingSimulator";
 
 type Product = {
   id: number;
@@ -63,7 +65,6 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
   const product = await getProduct(slug);
-  const shippingQuote = estimateShipping("01001000", product?.price || 0);
   const pixPrice = Number(((product?.price || 0) * 0.85).toFixed(2));
 
   if (!product) {
@@ -132,19 +133,10 @@ export default async function ProductPage({
                 <p className="text-sm text-[#b5bac1]">Estoque</p>
                 <p className="text-2xl font-black">{product.stock}</p>
               </div>
-              <div className="rounded-xl bg-[#1e1f22] p-4">
-                <p className="text-sm text-[#b5bac1]">Frete</p>
-                <p className="text-2xl font-black">{shippingQuote.price === 0 ? "Gratis" : formatCurrency(shippingQuote.price)}</p>
-                <p className="text-xs text-[#b5bac1]">{shippingQuote.deliveryDays}</p>
-              </div>
+              <ProductShippingSimulator productPrice={product.price} />
             </div>
 
-            <Link
-              href={`/?produto=${product.slug}`}
-              className="mt-6 rounded-lg bg-[#23a559] py-4 text-center text-lg font-black hover:bg-[#1f8f4d]"
-            >
-              Comprar agora
-            </Link>
+            <BuyButton product={product} />
           </div>
         </section>
 
