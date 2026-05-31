@@ -603,6 +603,27 @@ export default function CartPage() {
                 </div>
 
                 {/* Values Breakdown */}
+                {subtotal > 0 && (
+                  <div className="rounded-xl bg-[#1e1f22] p-3 border border-[#1e1f22] mb-2">
+                    <div className="flex justify-between items-center text-xs mb-1.5 font-bold">
+                      {499 - subtotal > 0 ? (
+                        <span>
+                          Faltam <span className="text-[#23a559]">{formatCurrency(499 - subtotal)}</span> para <span className="text-[#5865f2]">Frete Grátis</span>
+                        </span>
+                      ) : (
+                        <span className="text-[#23a559]">🎉 Parabéns! Você ganhou Frete Grátis!</span>
+                      )}
+                      <span className="text-[#b5bac1]">{Math.round(Math.min((subtotal / 499) * 100, 100))}%</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-[#313338] overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${499 - subtotal > 0 ? 'bg-[#5865f2]' : 'bg-[#23a559]'}`}
+                        style={{ width: `${Math.min((subtotal / 499) * 100, 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+
                 <div className="space-y-2 border-t border-[#1e1f22] pt-4 text-sm">
                   <div className="flex justify-between text-[#b5bac1]">
                     <span>Subtotal</span>

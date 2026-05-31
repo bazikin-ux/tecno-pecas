@@ -171,6 +171,29 @@ export default function Home() {
   const [authPassword, setAuthPassword] = useState("");
   const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [toast, setToast] = useState<{ visible: boolean; message: string }>({ visible: false, message: "" });
+  const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+
+  function showToast(message: string) {
+    setToast({ visible: true, message });
+    setTimeout(() => {
+      setToast((prev) => ({ ...prev, visible: false }));
+    }, 3000);
+  }
+
+  function updateQuantity(id: number, delta: number) {
+    setCart((prev) =>
+      prev
+        .map((item) => {
+          if (item.id === id) {
+            const nextQty = item.quantity + delta;
+            return { ...item, quantity: nextQty };
+          }
+          return item;
+        })
+        .filter((item) => item.quantity > 0)
+    );
+  }
 
   useEffect(() => {
     async function loadProducts() {
@@ -303,9 +326,11 @@ export default function Home() {
     const found = cart.find((item) => item.id === product.id);
     if (found) {
       setCart(cart.map((item) => item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item));
-      return;
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
     }
-    setCart([...cart, { ...product, quantity: 1 }]);
+    showToast("✅ Produto adicionado ao carrinho");
+    setIsMiniCartOpen(true);
   }
 
   function removeFromCart(id: number) {
@@ -900,7 +925,7 @@ export default function Home() {
           </section>
         </section>
 
-        <aside className="bg-[#2b2d31] p-4">
+        <aside className="hidden bg-[#2b2d31] p-4 md:block">
           <h2 className="text-2xl font-black">Carrinho</h2>
           <p className="text-sm text-[#b5bac1]">{totalItems} item(ns)</p>
 
@@ -922,6 +947,26 @@ export default function Home() {
           </div>
 
           <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
+            {subtotal > 0 && (
+              <div className="mb-4 rounded-xl bg-[#232428] p-3 border border-[#2b2d31]">
+                <div className="flex justify-between items-center text-xs mb-1.5 font-bold">
+                  {499 - subtotal > 0 ? (
+                    <span>
+                      Faltam <span className="text-[#23a559]">{formatCurrency(499 - subtotal)}</span> para <span className="text-[#5865f2]">Frete Grátis</span>
+                    </span>
+                  ) : (
+                    <span className="text-[#23a559]">🎉 Parabéns! Você ganhou Frete Grátis!</span>
+                  )}
+                  <span className="text-[#b5bac1]">{Math.round(Math.min((subtotal / 499) * 100, 100))}%</span>
+                </div>
+                <div className="h-2 w-full rounded-full bg-[#313338] overflow-hidden">
+                  <div 
+                    className={`h-full rounded-full transition-all duration-500 ${499 - subtotal > 0 ? 'bg-[#5865f2]' : 'bg-[#23a559]'}`}
+                    style={{ width: `${Math.min((subtotal / 499) * 100, 100)}%` }}
+                  />
+                </div>
+              </div>
+            )}
             <div id="conta-cliente" className="mb-5 scroll-mt-20 rounded-xl bg-[#232428] p-4">
               <div className="flex items-center justify-between gap-3">
                 <div>
@@ -1025,6 +1070,131 @@ export default function Home() {
           </div>
         </aside>
       </div>
+      {toast.visible && (
+        <div className="fixed bottom-5 left-5 z-[100] flex items-center gap-2 rounded-xl border border-[#23a559] bg-[#2b2d31] px-5 py-4 text-white shadow-2xl transition-all duration-300">
+          <span className="text-xl">✅</span>
+          <span className="font-bold text-sm text-white">{toast.message}</span>
+        </div>
+      )}
+
+      {isMiniCartOpen && (
+        <div className="fixed inset-0 z-[80] flex justify-end">
+          <div 
+            className="absolute inset-0 bg-black/60 transition-opacity"
+            onClick={() => setIsMiniCartOpen(false)}
+          />
+          <aside className="relative flex h-full w-80 max-w-[85vw] flex-col bg-[#2b2d31] p-5 shadow-2xl z-10 text-[#f2f3f5]">
+            <div className="flex items-center justify-between border-b border-[#1e1f22] pb-4 mb-4">
+              <div>
+                <h2 className="text-xl font-black text-white">Meu Carrinho 🛒</h2>
+                <p className="text-xs text-[#b5bac1]">{totalItems} item(ns)</p>
+              </div>
+              <button 
+                onClick={() => setIsMiniCartOpen(false)}
+                className="rounded-lg bg-[#1e1f22] p-2 font-black text-white hover:bg-[#404249]"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto space-y-3 pr-1">
+              {cart.length === 0 ? (
+                <p className="text-center py-10 text-[#b5bac1]">Seu carrinho está vazio.</p>
+              ) : (
+                cart.map((item) => (
+                  <div key={item.id} className="rounded-xl bg-[#1e1f22] p-3 border border-[#1e1f22] hover:border-[#404249] transition">
+                    <div className="flex justify-between gap-2">
+                      <div className="flex-1">
+                        <p className="font-bold text-sm text-white line-clamp-2">{item.name}</p>
+                        <div className="flex items-center gap-2 mt-1">
+                          <button 
+                            onClick={() => updateQuantity(item.id, -1)} 
+                            className="h-6 w-6 rounded bg-[#2b2d31] font-bold text-sm hover:bg-[#404249] text-white flex items-center justify-center"
+                          >
+                            -
+                          </button>
+                          <span className="text-sm font-bold px-1 text-white">{item.quantity}</span>
+                          <button 
+                            onClick={() => updateQuantity(item.id, 1)} 
+                            className="h-6 w-6 rounded bg-[#2b2d31] font-bold text-sm hover:bg-[#404249] text-white flex items-center justify-center"
+                          >
+                            +
+                          </button>
+                        </div>
+                        <p className="font-bold text-[#23a559] mt-2 text-sm">
+                          {formatCurrency(item.price * item.quantity)}
+                        </p>
+                      </div>
+                      <button 
+                        onClick={() => removeFromCart(item.id)} 
+                        className="text-red-400 font-bold hover:text-red-500 self-start text-xs p-1"
+                      >
+                        Remover
+                      </button>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            {cart.length > 0 && (
+              <div className="border-t border-[#1e1f22] pt-4 mt-4 space-y-4">
+                {subtotal > 0 && (
+                  <div className="rounded-xl bg-[#1e1f22] p-3 border border-[#1e1f22]">
+                    <div className="flex justify-between items-center text-xs mb-1.5 font-bold">
+                      {499 - subtotal > 0 ? (
+                        <span>
+                          Faltam <span className="text-[#23a559]">{formatCurrency(499 - subtotal)}</span> para <span className="text-[#5865f2]">Frete Grátis</span>
+                        </span>
+                      ) : (
+                        <span className="text-[#23a559]">🎉 Parabéns! Você ganhou Frete Grátis!</span>
+                      )}
+                      <span className="text-[#b5bac1]">{Math.round(Math.min((subtotal / 499) * 100, 100))}%</span>
+                    </div>
+                    <div className="h-2 w-full rounded-full bg-[#313338] overflow-hidden">
+                      <div 
+                        className={`h-full rounded-full transition-all duration-500 ${499 - subtotal > 0 ? 'bg-[#5865f2]' : 'bg-[#23a559]'}`}
+                        style={{ width: `${Math.min((subtotal / 499) * 100, 100)}%` }}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div className="space-y-1 text-sm text-white">
+                  <div className="flex justify-between">
+                    <span className="text-[#b5bac1]">Subtotal</span>
+                    <span className="font-bold">{formatCurrency(subtotal)}</span>
+                  </div>
+                  <div className="flex justify-between text-xs text-[#23a559]">
+                    <span>Frete</span>
+                    <span>{subtotal >= 499 ? "Grátis" : "Calculado no checkout"}</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between text-lg font-black text-white">
+                  <span>Total</span>
+                  <span>{formatCurrency(subtotal)}</span>
+                </div>
+
+                <Link 
+                  href="/carrinho" 
+                  onClick={() => setIsMiniCartOpen(false)}
+                  className="block w-full rounded-lg bg-[#23a559] py-3 text-center font-black text-white hover:bg-[#1f8f4d] transition"
+                >
+                  Finalizar Compra 🚀
+                </Link>
+                <button 
+                  onClick={() => setCart([])} 
+                  className="w-full text-center text-xs text-[#b5bac1] hover:text-red-400 transition"
+                >
+                  Limpar Carrinho
+                </button>
+              </div>
+            )}
+          </aside>
+        </div>
+      )}
+
       <a
         href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Ola, preciso de ajuda na Tecno Pecas.")}`}
         target="_blank"
