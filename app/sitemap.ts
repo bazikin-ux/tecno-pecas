@@ -25,6 +25,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route === "" ? 1.0 : 0.8,
   }));
 
+  const categorySlugs = [
+    "placas-de-video",
+    "processadores",
+    "memorias-ram",
+    "armazenamento",
+    "placas-mae",
+    "fontes",
+    "gabinetes",
+    "coolers",
+    "monitores",
+    "perifericos",
+    "pcs-completos",
+    "kits-upgrade",
+  ];
+
+  const categoryRoutes = categorySlugs.map((slug) => ({
+    url: `${siteUrl}/categoria/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.7,
+  }));
+
   const supabaseUrl = process.env.SUPABASE_URL || "";
   const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
   let productRoutes: MetadataRoute.Sitemap = [];
@@ -50,5 +72,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  return [...routes, ...productRoutes];
+  return [...routes, ...categoryRoutes, ...productRoutes];
 }
+
