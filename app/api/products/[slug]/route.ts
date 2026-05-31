@@ -22,7 +22,7 @@ export async function GET(
 
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, category, price, old_price, stock, specs, tag, image, active")
+    .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, image2, image3")
     .eq("active", true);
 
   if (error) {
@@ -51,6 +51,11 @@ export async function GET(
     rating: 4.8,
     sold: 0,
     image: firstProductImage(product.image),
-    images: parseImageList(product.image),
+    images: [
+      ...parseImageList(product.image),
+      product.image2,
+      product.image3
+    ].filter(Boolean),
+    brand: product.brand || "",
   });
 }

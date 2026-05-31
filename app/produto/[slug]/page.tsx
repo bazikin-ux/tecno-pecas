@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
 import { estimateShipping, firstProductImage, formatCurrency, parseImageList, slugify } from "@/app/lib/commerce";
+import ProductImageGallery from "./ProductImageGallery";
 
 type Product = {
   id: number;
@@ -16,6 +16,7 @@ type Product = {
   tag: string;
   image: string;
   images: string[];
+  brand: string;
 };
 
 async function getProduct(slug: string): Promise<Product | null> {
@@ -27,7 +28,7 @@ async function getProduct(slug: string): Promise<Product | null> {
   const supabase = createClient(supabaseUrl, supabaseServiceKey);
   const { data, error } = await supabase
     .from("products")
-    .select("id, name, category, price, old_price, stock, specs, tag, image, active")
+    .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, image2, image3")
     .eq("active", true);
 
   if (error) return null;
@@ -46,7 +47,12 @@ async function getProduct(slug: string): Promise<Product | null> {
     specs: product.specs || "",
     tag: product.tag || "Produto",
     image: firstProductImage(product.image),
-    images: parseImageList(product.image),
+    images: [
+      ...parseImageList(product.image),
+      product.image2,
+      product.image3
+    ].filter(Boolean),
+    brand: product.brand || "",
   };
 }
 
@@ -77,30 +83,11 @@ export default async function ProductPage({
         </div>
 
         <section className="grid gap-6 rounded-2xl bg-[#2b2d31] p-5 md:grid-cols-[1.1fr_0.9fr]">
-          <div className="overflow-hidden rounded-xl bg-[#1e1f22]">
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={900}
-              height={620}
-              priority
-              className="h-[360px] w-full object-cover md:h-[560px]"
-            />
-            {product.images.length > 1 && (
-              <div className="grid gap-2 p-3 sm:grid-cols-4">
-                {product.images.slice(0, 4).map((image) => (
-                  <Image
-                    key={image}
-                    src={image}
-                    alt={product.name}
-                    width={180}
-                    height={120}
-                    className="h-24 w-full rounded-lg object-cover"
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+          <ProductImageGallery
+            name={product.name}
+            images={product.images}
+            fallbackImage={product.image}
+          />
 
           <div className="flex flex-col justify-center">
             <p className="text-sm font-bold text-[#b5bac1]">{product.category}</p>
@@ -124,8 +111,11 @@ export default async function ProductPage({
             </div>
 
             <div className="mt-5 rounded-xl bg-[#1e1f22] p-4">
-              <p className="font-black">Descricao</p>
-              <p className="mt-2 text-[#b5bac1]">{product.specs || "Produto original com garantia e envio rapido pela Tecno Pecas."}</p>
+              <p className="font-black">Ficha Técnica</p>
+              <div className="mt-2 space-y-1 text-[#b5bac1]">
+                <p><span className="font-bold text-white">Marca:</span> {product.brand || "Não informada"}</p>
+                <p><span className="font-bold text-white">Modelo:</span> {product.specs || "Não informado"}</p>
+              </div>
             </div>
 
             <div className="mt-4 rounded-xl bg-[#1e1f22] p-4">

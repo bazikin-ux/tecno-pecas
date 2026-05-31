@@ -24,6 +24,7 @@ type Product = {
   sold: number;
   image: string;
   slug?: string;
+  brand?: string;
 };
 
 type CartItem = Product & { quantity: number };
@@ -40,6 +41,7 @@ const customerAccountsKey = "tecno-pecas-customer-accounts";
 const favoritesKey = "tecno-pecas-favorites";
 const whatsappNumber = "5511946365931";
 const storeContactEmail = "tecnopecaspc@gmail.com";
+const storeInstagramUrl = "https://www.instagram.com/tecnopecas.oficial?igsh=MW5mdnZpeWVkdWIzcw%3D%3D&utm_source=qr";
 const storeProfileImage = "/tecno-pecas-profile.png";
 
 const customerReviews = [
@@ -525,6 +527,9 @@ export default function Home() {
               <a href={`mailto:${storeContactEmail}`} className="mt-2 block font-bold text-[#23a559]">
                 {storeContactEmail}
               </a>
+              <a href={storeInstagramUrl} target="_blank" rel="noreferrer" className="mt-3 block font-bold text-[#5865f2]">
+                Instagram @tecnopecas.oficial
+              </a>
             </section>
           </aside>
         </div>
@@ -545,6 +550,9 @@ export default function Home() {
           <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
           <a href={`mailto:${storeContactEmail}`} className="mb-3 block rounded-lg bg-[#1e1f22] px-3 py-2 text-center text-sm font-bold text-[#23a559]">
             {storeContactEmail}
+          </a>
+          <a href={storeInstagramUrl} target="_blank" rel="noreferrer" className="mb-3 block rounded-lg bg-[#1e1f22] px-3 py-2 text-center text-sm font-bold text-[#e879f9]">
+            Instagram
           </a>
           <Link href="/cliente" className="mb-3 block rounded-lg bg-[#23a559] px-3 py-2 text-center font-bold">
             Minha conta
@@ -700,7 +708,7 @@ export default function Home() {
                           alt={product.name}
                           width={480}
                           height={240}
-                          className="h-40 w-full object-cover"
+                          className="h-40 w-full bg-white object-contain p-3"
                         />
                         <div className="p-4">
                           <div className="mb-2 flex items-center justify-between gap-2">
@@ -756,6 +764,9 @@ export default function Home() {
                     A Tecno Pecas nasceu para facilitar a compra de componentes, PCs gamer e perifericos com atendimento
                     direto, produtos bem selecionados e suporte antes e depois da venda.
                   </p>
+                  <a href={storeInstagramUrl} target="_blank" rel="noreferrer" className="mt-5 inline-flex rounded-lg bg-[#5865f2] px-4 py-3 font-black text-white hover:bg-[#4752c4]">
+                    Ver novidades no Instagram
+                  </a>
                 </div>
 
                 <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">

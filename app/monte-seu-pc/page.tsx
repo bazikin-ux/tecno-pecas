@@ -16,6 +16,7 @@ type Product = {
   specs: string;
   tag: string;
   image: string;
+  brand?: string;
 };
 
 const slots = [
@@ -141,7 +142,7 @@ export default function PcBuilderPage() {
                       alt={product.name}
                       width={72}
                       height={72}
-                      className="h-18 w-18 rounded-lg object-cover"
+                      className="h-[72px] w-[72px] rounded-lg bg-white object-contain p-1"
                     />
                     <span>
                       <span className="block font-bold">{product.name}</span>
