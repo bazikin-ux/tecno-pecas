@@ -1,0 +1,56 @@
+[
+  {
+    "id": 2,
+    "name": "GeForce RTX 4060 8GB",
+    "brand": "Galax",
+    "field": "image3",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/placa-de-video-pny-nvidia-geforce-rtx-4060-verto-dual-fan-8gb-gddr6-dlss-ray-tracing-vcg40608dfxpb1_173616.jpg",
+    "newUrl": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/479024/Placa-De-V-deo-Galax-RTX-4060-1-click-Oc-2x-8GB-GDDR6-128bits-46nsl8md8loc_1694459896_gg.jpg",
+    "status": "Substituída com sucesso"
+  },
+  {
+    "id": 19,
+    "name": "Radeon RX 7700 XT 12GB",
+    "brand": "Gigabyte",
+    "field": "image2",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/placa-de-video-sapphire-pulse-amd-radeon-rx-7700-xt-12gb-gddr6-fsr-ray-tracing-11335-04-20g_176995.png",
+    "newUrl": "https://images9.kabum.com.br/produtos/fotos/525889/placa-de-video-rx-7700-xt-gaming-oc-12g-amd-radeon-gigabyte-12gb-gddr6-192bits-rgb-gv-r77xtgaming-oc-12gd_1734614450_gg.jpg",
+    "status": "Substituída com sucesso"
+  },
+  {
+    "id": 19,
+    "name": "Radeon RX 7700 XT 12GB",
+    "brand": "Gigabyte",
+    "field": "image3",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/placa-de-video-sapphire-pure-amd-radeon-rx-7700-xt-12gb-gddr6-fsr-ray-tracing-11335-03-20g_189375.jpg",
+    "newUrl": "https://images.kabum.com.br/produtos/fotos/495213/placa-de-video-rx-7700-xt-gaming-oc-gigabyte-amd-12gb-gddr6-rgb-192-bits-gv-r77xtgaming-oc-12gd_1699377762_g.jpg",
+    "status": "Substituída com sucesso"
+  },
+  {
+    "id": 21,
+    "name": "GeForce RTX 4070 Super 12GB",
+    "brand": "Gigabyte",
+    "field": "image3",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/placa-de-video-pny-nvidia-geforce-rtx-4070-verto-dual-fan-12gb-gddr6x-dlss-ray-tracing-vcg407012dfxpb1_208128.jpg",
+    "newUrl": "https://images.kabum.com.br/produtos/fotos/517751/placa-de-video-rtx-4070-super-gigabyte-windforce-nvidia-geforce-12gb-gddr6-dlss-ray-tracing-gv-n407swf3-12gd_1707245338_original.jpg",
+    "status": "Substituída com sucesso"
+  },
+  {
+    "id": 90,
+    "name": "Mouse Gamer Wireless 26000 DPI",
+    "brand": "Logitech",
+    "field": "image2",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/mouse-gamer-redragon-woki-wirelessbluetooth-26000-dpi-6-botoes-sensor-paw3395-preto-m994_244354.jpg",
+    "newUrl": "https://images.kabum.com.br/produtos/fotos/149990/mouse-sem-fio-gamer-logitech-g-pro-x-superlight-lightspeed-5-botoes-25000-dpi-branco-910-005941_1614261697_original.jpg",
+    "status": "Substituída com sucesso"
+  },
+  {
+    "id": 90,
+    "name": "Mouse Gamer Wireless 26000 DPI",
+    "brand": "Logitech",
+    "field": "image3",
+    "oldUrl": "https://img.terabyteshop.com.br/produto/g/mouse-gamer-keychron-m7-wireless-26000-dpi-6-botoes-programaveis-pixart-3395-preto-m7-a23_253588.jpg",
+    "newUrl": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/417236/Mouse-Gamer-Sem-Fio-Logitech-G-Pro-X-Superlight-USB-Vermelho-910-006783_1673379522_gg.jpg",
+    "status": "Substituída com sucesso"
+  }
+]

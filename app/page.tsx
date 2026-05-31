@@ -477,6 +477,25 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#313338] text-[#f2f3f5]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Tecno Peças",
+            "url": "https://www.tecnopecas.com.br",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.tecnopecas.com.br/?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
       <div className="sticky top-0 z-50 flex items-center justify-between border-b border-[#1e1f22] bg-[#2b2d31] px-4 py-3 md:hidden">
         <button
           onClick={() => setMobileMenuOpen(true)}
@@ -552,8 +571,14 @@ export default function Home() {
                 <Link onClick={() => setMobileMenuOpen(false)} href="/rastreamento" className="rounded-lg bg-[#1e1f22] px-4 py-3 font-bold hover:bg-[#404249]">
                   Rastreamento
                 </Link>
-                <Link onClick={() => setMobileMenuOpen(false)} href="/carrinho" className="rounded-lg bg-[#e18728] px-4 py-3 font-bold hover:bg-[#c7731d] text-white transition">
+                 <Link onClick={() => setMobileMenuOpen(false)} href="/carrinho" className="rounded-lg bg-[#e18728] px-4 py-3 font-bold hover:bg-[#c7731d] text-white transition">
                   Meu Carrinho 🛒
+                </Link>
+                <Link onClick={() => setMobileMenuOpen(false)} href="/promocoes" className="rounded-lg bg-[#da373c] px-4 py-3 font-bold hover:bg-[#b92d32] text-white transition">
+                  🔥 Promoções
+                </Link>
+                <Link onClick={() => setMobileMenuOpen(false)} href="/mais-vendidos" className="rounded-lg bg-[#23a559] px-4 py-3 font-bold hover:bg-[#1f8f4d] text-white transition">
+                  ⭐ Mais Vendidos
                 </Link>
               </div>
             </section>
@@ -598,6 +623,12 @@ export default function Home() {
           </Link>
           <Link href="/carrinho" className="mb-3 block rounded-lg bg-[#e18728] px-3 py-2 text-center font-bold hover:bg-[#c7731d] text-white transition">
             Meu Carrinho
+          </Link>
+          <Link href="/promocoes" className="mb-3 block rounded-lg bg-[#da373c] px-3 py-2 text-center font-bold text-white hover:bg-[#b92d32] transition">
+            🔥 Promoções
+          </Link>
+          <Link href="/mais-vendidos" className="mb-3 block rounded-lg bg-[#23a559] px-3 py-2 text-center font-bold text-white hover:bg-[#1f8f4d] transition">
+            ⭐ Mais Vendidos
           </Link>
 
           <button onClick={() => setCategory("Todos")} className="mb-2 w-full rounded-lg bg-[#404249] px-3 py-2 text-left font-bold hover:bg-[#5865f2]"># todos-produtos</button>
@@ -676,6 +707,31 @@ export default function Home() {
                   <Link href="/monte-seu-pc" className="rounded-lg bg-[#5865f2] px-4 py-3 font-black hover:bg-[#4752c4]">
                     Montar meu PC
                   </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* Selos de Confiança */}
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-3 w-full mb-6">
+              <div className="flex items-center gap-3 rounded-xl bg-[#2b2d31] border border-[#1e1f22] p-4 hover:border-[#5865f2] transition duration-300">
+                <span className="text-3xl">🚚</span>
+                <div>
+                  <p className="font-bold text-sm text-white">Frete Grátis</p>
+                  <p className="text-xs text-[#b5bac1]">Acima de R$ 499,00</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-[#2b2d31] border border-[#1e1f22] p-4 hover:border-[#5865f2] transition duration-300">
+                <span className="text-3xl">💳</span>
+                <div>
+                  <p className="font-bold text-sm text-white">Até 12x sem juros</p>
+                  <p className="text-xs text-[#b5bac1]">No cartão de crédito</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 rounded-xl bg-[#2b2d31] border border-[#1e1f22] p-4 hover:border-[#5865f2] transition duration-300">
+                <span className="text-3xl">🔒</span>
+                <div>
+                  <p className="font-bold text-sm text-white">Compra Segura</p>
+                  <p className="text-xs text-[#b5bac1]">Ambiente 100% seguro</p>
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
@@ -5,6 +6,7 @@ import { firstProductImage, formatCurrency, parseImageList, slugify } from "@/ap
 import ProductImageGallery from "./ProductImageGallery";
 import BuyButton from "./BuyButton";
 import ProductShippingSimulator from "./ProductShippingSimulator";
+import type { Metadata } from "next";
 
 type Product = {
   id: number;
@@ -58,6 +60,94 @@ async function getProduct(slug: string): Promise<Product | null> {
   };
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = await getProduct(slug);
+
+  if (!product) {
+    return {
+      title: "Produto não encontrado | Tecno Peças",
+    };
+  }
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecas.com.br";
+  const productUrl = `${siteUrl}/produto/${product.slug}`;
+
+  return {
+    title: `${product.name} | Tecno Peças`,
+    description: `${product.name} da marca ${product.brand || "Tecno Peças"}. Ficha técnica: ${product.specs || "Especificações disponíveis no site"}. Compre com segurança e envio para todo o Brasil.`,
+    openGraph: {
+      title: `${product.name} | Tecno Peças`,
+      description: `Compre ${product.name} com o melhor preço na Tecno Peças. Envio rápido e parcelamento em até 12x.`,
+      url: productUrl,
+      type: "website",
+      images: [
+        {
+          url: product.image,
+          alt: product.name,
+        },
+      ],
+    },
+  };
+}
+
+async function getRelatedProducts(category: string, currentProductId: number): Promise<Product[]> {
+  const supabaseUrl = process.env.SUPABASE_URL || "";
+  const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+
+  if (!supabaseUrl || !supabaseServiceKey) return [];
+
+  const supabase = createClient(supabaseUrl, supabaseServiceKey);
+  
+  // 1. Same category
+  const { data: catData } = await supabase
+    .from("products")
+    .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, image2, image3")
+    .eq("active", true)
+    .eq("category", category)
+    .neq("id", currentProductId)
+    .limit(4);
+
+  let list = catData || [];
+
+  // 2. Fallback in other categories
+  if (list.length < 4) {
+    const { data: otherData } = await supabase
+      .from("products")
+      .select("id, name, category, price, old_price, stock, specs, tag, image, active, brand, image2, image3")
+      .eq("active", true)
+      .neq("category", category)
+      .neq("id", currentProductId)
+      .limit(4 - list.length);
+    if (otherData) {
+      list = [...list, ...otherData];
+    }
+  }
+
+  return list.map((product) => ({
+    id: product.id,
+    name: product.name,
+    slug: slugify(product.name),
+    category: product.category,
+    price: Number(product.price || 0),
+    oldPrice: Number(product.old_price || product.price || 0),
+    stock: Number(product.stock || 0),
+    specs: product.specs || "",
+    tag: product.tag || "Produto",
+    image: firstProductImage(product.image),
+    images: [
+      ...parseImageList(product.image),
+      product.image2,
+      product.image3
+    ].filter(Boolean),
+    brand: product.brand || "",
+  }));
+}
+
 export default async function ProductPage({
   params,
 }: {
@@ -71,8 +161,41 @@ export default async function ProductPage({
     notFound();
   }
 
+  const relatedProducts = await getRelatedProducts(product.category, product.id);
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecas.com.br";
+  const productUrl = `${siteUrl}/produto/${product.slug}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": product.image,
+    "description": `${product.name} - ${product.specs}`,
+    "brand": {
+      "@type": "Brand",
+      "name": product.brand || "Tecno Peças"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": productUrl,
+      "priceCurrency": "BRL",
+      "price": product.price,
+      "priceValidUntil": "2027-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": product.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "Tecno Peças"
+      }
+    }
+  };
+
   return (
     <main className="min-h-screen bg-[#313338] p-6 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="mx-auto max-w-6xl">
         <div className="mb-5 flex items-center justify-between">
           <Link href="/" className="text-sm font-bold text-[#b5bac1]">
@@ -137,6 +260,24 @@ export default async function ProductPage({
             </div>
 
             <BuyButton product={product} />
+
+            {/* Selos de Confiança */}
+            <div className="mt-6 border-t border-[#1e1f22] pt-4">
+              <div className="grid gap-2 text-sm">
+                <div className="flex items-center gap-2 text-[#b5bac1]">
+                  <span>🚚</span>
+                  <span><strong>Frete Grátis</strong> para compras acima de R$ 499</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#b5bac1]">
+                  <span>💳</span>
+                  <span><strong>Até 12x sem juros</strong> no cartão</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#b5bac1]">
+                  <span>🔒</span>
+                  <span>Compra <strong>100% segura</strong> e garantida</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -153,6 +294,37 @@ export default async function ProductPage({
             </div>
           ))}
         </section>
+
+        {relatedProducts.length > 0 && (
+          <section className="mt-12 border-t border-[#2b2d31] pt-10">
+            <h3 className="text-2xl font-black text-white mb-6">Produtos Relacionados</h3>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {relatedProducts.map((p) => (
+                <div key={p.id} className="rounded-2xl bg-[#2b2d31] p-4 flex flex-col justify-between shadow-lg">
+                  <div>
+                    <div className="relative h-40 w-full overflow-hidden rounded-xl bg-white p-2 mb-3">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="rounded-full bg-[#5865f2] px-2 py-0.5 text-xs font-bold">{p.tag}</span>
+                    <h4 className="mt-2 text-md font-bold text-white min-h-[48px] line-clamp-2">{p.name}</h4>
+                    <p className="mt-2 text-lg font-black text-[#23a559]">{formatCurrency(p.price)}</p>
+                  </div>
+                  <Link
+                    href={`/produto/${p.slug}`}
+                    className="mt-4 block w-full rounded-lg bg-[#404249] py-2 text-center text-sm font-bold text-white hover:bg-[#5865f2] transition"
+                  >
+                    Ver produto
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </main>
   );

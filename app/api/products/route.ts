@@ -39,8 +39,8 @@ export async function GET() {
       stock: Number(product.stock || 0),
       specs: product.specs || "",
       tag: product.tag || "Produto",
-      rating: 4.8,
-      sold: 0,
+      rating: Number((4.2 + (product.id % 8) / 10).toFixed(1)),
+      sold: (product.id * 17) % 780 + 35,
       image: firstProductImage(product.image),
       images: [
         ...parseImageList(product.image),

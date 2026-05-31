@@ -1,0 +1,3167 @@
+{
+  "totalProcessed": 100,
+  "categorizedResults": {
+    "Outros": [
+      {
+        "id": 2,
+        "name": "GeForce RTX 4060 8GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 1950,
+        "maxPrice": 2400,
+        "marginApplied": "14.87%",
+        "suggestedPrice": 2239.9,
+        "profit": 289.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 13,
+        "name": "GeForce RTX 3050 6GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 1150,
+        "maxPrice": 1300,
+        "marginApplied": "10.43%",
+        "suggestedPrice": 1269.9,
+        "profit": 119.90000000000009,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 14,
+        "name": "GeForce RTX 4060 Ti 8GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 2650,
+        "maxPrice": 3000,
+        "marginApplied": "10.18%",
+        "suggestedPrice": 2919.9,
+        "profit": 269.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 15,
+        "name": "GeForce RTX 4060 Ti 16GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 3450,
+        "maxPrice": 3800,
+        "marginApplied": "10.14%",
+        "suggestedPrice": 3799.9,
+        "profit": 349.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 16,
+        "name": "GeForce RTX 4070 Ti Super 16GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 6100,
+        "maxPrice": 6699,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 6709.9,
+        "profit": 609.8999999999996,
+        "competitorStatus": "Acima do Máximo Concorrência",
+        "confidence": "Alta"
+      },
+      {
+        "id": 17,
+        "name": "Radeon RX 6600 8GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 1450,
+        "maxPrice": 1650,
+        "marginApplied": "10.34%",
+        "suggestedPrice": 1599.9,
+        "profit": 149.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 18,
+        "name": "Radeon RX 7600 XT 16GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 2300,
+        "maxPrice": 2500,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 2529.9,
+        "profit": 229.9000000000001,
+        "competitorStatus": "Acima do Máximo Concorrência",
+        "confidence": "Alta"
+      },
+      {
+        "id": 19,
+        "name": "Radeon RX 7700 XT 12GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 3150,
+        "maxPrice": 3499,
+        "marginApplied": "10.16%",
+        "suggestedPrice": 3469.9,
+        "profit": 319.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 20,
+        "name": "Radeon RX 7800 XT 16GB",
+        "category": "Placas de Vídeo",
+        "basePrice": 3850,
+        "maxPrice": 4399,
+        "marginApplied": "10.13%",
+        "suggestedPrice": 4239.9,
+        "profit": 389.89999999999964,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 21,
+        "name": "GeForce RTX 4070 Super 12GB",
+        "category": "Placas de vídeo",
+        "basePrice": 4250,
+        "maxPrice": 4700,
+        "marginApplied": "10.12%",
+        "suggestedPrice": 4679.9,
+        "profit": 429.89999999999964,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 36,
+        "name": "Placa-mãe A520M AM4",
+        "category": "Placas-mãe",
+        "basePrice": 399.9,
+        "maxPrice": 499.875,
+        "marginApplied": "15.00%",
+        "suggestedPrice": 459.9,
+        "profit": 60,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 37,
+        "name": "Placa-mãe B550M AM4",
+        "category": "Placas-mãe",
+        "basePrice": 649.9,
+        "maxPrice": 812.375,
+        "marginApplied": "15.39%",
+        "suggestedPrice": 749.9,
+        "profit": 100,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 38,
+        "name": "Placa-mãe B550 Gaming Wi-Fi",
+        "category": "Placas-mãe",
+        "basePrice": 899.9,
+        "maxPrice": 1124.875,
+        "marginApplied": "14.45%",
+        "suggestedPrice": 1029.9,
+        "profit": 130.0000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 39,
+        "name": "Placa-mãe B650M AM5 DDR5",
+        "category": "Placas-mãe",
+        "basePrice": 1099.9,
+        "maxPrice": 1374.875,
+        "marginApplied": "14.55%",
+        "suggestedPrice": 1259.9,
+        "profit": 160,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 40,
+        "name": "Placa-mãe X670E AM5",
+        "category": "Placas-mãe",
+        "basePrice": 1999.9,
+        "maxPrice": 2499.875,
+        "marginApplied": "15.00%",
+        "suggestedPrice": 2299.9,
+        "profit": 300,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 41,
+        "name": "Placa-mãe H610M LGA1700",
+        "category": "Placas-mãe",
+        "basePrice": 499.9,
+        "maxPrice": 624.875,
+        "marginApplied": "14.00%",
+        "suggestedPrice": 569.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 42,
+        "name": "Placa-mãe B760M DDR4",
+        "category": "Placas-mãe",
+        "basePrice": 799.9,
+        "maxPrice": 999.875,
+        "marginApplied": "15.00%",
+        "suggestedPrice": 919.9,
+        "profit": 120,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 43,
+        "name": "Placa-mãe Z790 DDR5",
+        "category": "Placas-mãe",
+        "basePrice": 1899.9,
+        "maxPrice": 2374.875,
+        "marginApplied": "14.74%",
+        "suggestedPrice": 2179.9,
+        "profit": 280,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      }
+    ],
+    "CPUs": [
+      {
+        "id": 5,
+        "name": "Ryzen 5 5600",
+        "category": "Processadores",
+        "basePrice": 850,
+        "maxPrice": 980,
+        "marginApplied": "10.58%",
+        "suggestedPrice": 939.9,
+        "profit": 89.89999999999998,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 6,
+        "name": "Ryzen 5 7600",
+        "category": "Processadores",
+        "basePrice": 1350,
+        "maxPrice": 1490,
+        "marginApplied": "10.36%",
+        "suggestedPrice": 1489.9,
+        "profit": 139.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 7,
+        "name": "Ryzen 7 5700X",
+        "category": "Processadores",
+        "basePrice": 1150,
+        "maxPrice": 1300,
+        "marginApplied": "10.43%",
+        "suggestedPrice": 1269.9,
+        "profit": 119.90000000000009,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 8,
+        "name": "Ryzen 7 7800X3D",
+        "category": "Processadores",
+        "basePrice": 2800,
+        "maxPrice": 3200,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 3079.9,
+        "profit": 279.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 9,
+        "name": "Intel Core i3-14100F",
+        "category": "Processadores",
+        "basePrice": 720,
+        "maxPrice": 799,
+        "marginApplied": "9.71%",
+        "suggestedPrice": 789.9,
+        "profit": 69.89999999999998,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 10,
+        "name": "Intel Core i5-12400F",
+        "category": "Processadores",
+        "basePrice": 710,
+        "maxPrice": 850,
+        "marginApplied": "9.85%",
+        "suggestedPrice": 779.9,
+        "profit": 69.89999999999998,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 11,
+        "name": "Intel Core i5-14400F",
+        "category": "Processadores",
+        "basePrice": 1350,
+        "maxPrice": 1550,
+        "marginApplied": "10.36%",
+        "suggestedPrice": 1489.9,
+        "profit": 139.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 12,
+        "name": "Intel Core i7-14700K",
+        "category": "Processadores",
+        "basePrice": 2650,
+        "maxPrice": 2990,
+        "marginApplied": "10.18%",
+        "suggestedPrice": 2919.9,
+        "profit": 269.9000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      }
+    ],
+    "Memórias RAM": [
+      {
+        "id": 22,
+        "name": "Memória 8GB DDR4 3200MHz",
+        "category": "Memória RAM",
+        "basePrice": 135,
+        "maxPrice": 170,
+        "marginApplied": "18.44%",
+        "suggestedPrice": 159.9,
+        "profit": 24.900000000000006,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 23,
+        "name": "Memória 16GB DDR4 3200MHz",
+        "category": "Memória RAM",
+        "basePrice": 240,
+        "maxPrice": 320,
+        "marginApplied": "20.79%",
+        "suggestedPrice": 289.9,
+        "profit": 49.89999999999998,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 24,
+        "name": "Kit 16GB DDR4 RGB 3200MHz",
+        "category": "Memória RAM",
+        "basePrice": 249.9,
+        "maxPrice": 312.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 299.9,
+        "profit": 49.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 25,
+        "name": "Kit 32GB DDR4 3600MHz",
+        "category": "Memória RAM",
+        "basePrice": 499.9,
+        "maxPrice": 624.875,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 599.9,
+        "profit": 100,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 26,
+        "name": "Memória 16GB DDR5 5600MHz",
+        "category": "Memória RAM",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 419.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 27,
+        "name": "Kit 32GB DDR5 RGB 6000MHz",
+        "category": "Memória RAM",
+        "basePrice": 799.9,
+        "maxPrice": 999.875,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 959.9,
+        "profit": 160,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      }
+    ],
+    "SSDs/HDs": [
+      {
+        "id": 28,
+        "name": "SSD SATA 480GB",
+        "category": "Armazenamento",
+        "basePrice": 179.9,
+        "maxPrice": 224.875,
+        "marginApplied": "22.23%",
+        "suggestedPrice": 219.9,
+        "profit": 40,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 29,
+        "name": "SSD SATA 1TB",
+        "category": "Armazenamento",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 419.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 30,
+        "name": "SSD NVMe 500GB",
+        "category": "Armazenamento",
+        "basePrice": 229.9,
+        "maxPrice": 287.375,
+        "marginApplied": "21.75%",
+        "suggestedPrice": 279.9,
+        "profit": 49.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 31,
+        "name": "SSD NVMe 1TB PCIe 3.0",
+        "category": "Armazenamento",
+        "basePrice": 399.9,
+        "maxPrice": 499.875,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 479.9,
+        "profit": 80,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 32,
+        "name": "SSD NVMe 1TB PCIe 4.0",
+        "category": "Armazenamento",
+        "basePrice": 499.9,
+        "maxPrice": 624.875,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 599.9,
+        "profit": 100,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 33,
+        "name": "SSD NVMe 2TB PCIe 4.0",
+        "category": "Armazenamento",
+        "basePrice": 899.9,
+        "maxPrice": 1124.875,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 1079.9,
+        "profit": 180.0000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 34,
+        "name": "HD Seagate Barracuda 1TB",
+        "category": "Armazenamento",
+        "basePrice": 279.9,
+        "maxPrice": 349.875,
+        "marginApplied": "21.44%",
+        "suggestedPrice": 339.9,
+        "profit": 60,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 35,
+        "name": "HD Seagate Barracuda 2TB",
+        "category": "Armazenamento",
+        "basePrice": 379.9,
+        "maxPrice": 474.875,
+        "marginApplied": "21.06%",
+        "suggestedPrice": 459.9,
+        "profit": 80,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      }
+    ],
+    "Fontes": [
+      {
+        "id": 44,
+        "name": "Fonte 500W 80 Plus White",
+        "category": "Fontes",
+        "basePrice": 219.9,
+        "maxPrice": 274.875,
+        "marginApplied": "13.64%",
+        "suggestedPrice": 249.9,
+        "profit": 30,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 45,
+        "name": "Fonte 550W 80 Plus Bronze",
+        "category": "Fontes",
+        "basePrice": 289.9,
+        "maxPrice": 362.375,
+        "marginApplied": "13.80%",
+        "suggestedPrice": 329.9,
+        "profit": 40,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 46,
+        "name": "Fonte 650W 80 Plus Bronze",
+        "category": "Fontes",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "14.29%",
+        "suggestedPrice": 399.9,
+        "profit": 50,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 47,
+        "name": "Fonte 650W 80 Plus Gold Modular",
+        "category": "Fontes",
+        "basePrice": 499.9,
+        "maxPrice": 624.875,
+        "marginApplied": "14.00%",
+        "suggestedPrice": 569.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 48,
+        "name": "Fonte 750W 80 Plus Gold",
+        "category": "Fontes",
+        "basePrice": 599.9,
+        "maxPrice": 749.875,
+        "marginApplied": "15.00%",
+        "suggestedPrice": 689.9,
+        "profit": 90,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      },
+      {
+        "id": 49,
+        "name": "Fonte 850W 80 Plus Gold Modular",
+        "category": "Fontes",
+        "basePrice": 749.9,
+        "maxPrice": 937.375,
+        "marginApplied": "14.67%",
+        "suggestedPrice": 859.9,
+        "profit": 110,
+        "competitorStatus": "Competitivo",
+        "confidence": "Média"
+      }
+    ],
+    "Gabinetes": [
+      {
+        "id": 50,
+        "name": "Gabinete Gamer Mid Tower RGB",
+        "category": "Gabinetes",
+        "basePrice": 299.9,
+        "maxPrice": 374.875,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 359.9,
+        "profit": 60,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 51,
+        "name": "Gabinete Airflow Mesh Preto",
+        "category": "Gabinetes",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 419.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 52,
+        "name": "Gabinete Aquário RGB",
+        "category": "Gabinetes",
+        "basePrice": 449.9,
+        "maxPrice": 562.375,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 539.9,
+        "profit": 90,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 53,
+        "name": "Gabinete Compacto mATX",
+        "category": "Gabinetes",
+        "basePrice": 229.9,
+        "maxPrice": 287.375,
+        "marginApplied": "21.75%",
+        "suggestedPrice": 279.9,
+        "profit": 49.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 54,
+        "name": "Gabinete Full Tower Premium",
+        "category": "Gabinetes",
+        "basePrice": 899.9,
+        "maxPrice": 1124.875,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 1079.9,
+        "profit": 180.0000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      }
+    ],
+    "Periféricos/Acessórios": [
+      {
+        "id": 55,
+        "name": "Air Cooler 120mm Torre",
+        "category": "Coolers",
+        "basePrice": 119.9,
+        "maxPrice": 149.875,
+        "marginApplied": "16.68%",
+        "suggestedPrice": 139.9,
+        "profit": 20,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 56,
+        "name": "Air Cooler Dual Tower RGB",
+        "category": "Coolers",
+        "basePrice": 249.9,
+        "maxPrice": 312.375,
+        "marginApplied": "24.01%",
+        "suggestedPrice": 309.9,
+        "profit": 59.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 57,
+        "name": "Water Cooler 120mm",
+        "category": "Coolers",
+        "basePrice": 249.9,
+        "maxPrice": 312.375,
+        "marginApplied": "24.01%",
+        "suggestedPrice": 309.9,
+        "profit": 59.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 58,
+        "name": "Water Cooler 240mm ARGB",
+        "category": "Coolers",
+        "basePrice": 449.9,
+        "maxPrice": 562.375,
+        "marginApplied": "24.45%",
+        "suggestedPrice": 559.9,
+        "profit": 110,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 59,
+        "name": "Water Cooler 360mm ARGB",
+        "category": "Coolers",
+        "basePrice": 699.9,
+        "maxPrice": 874.875,
+        "marginApplied": "24.29%",
+        "suggestedPrice": 869.9,
+        "profit": 170,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 60,
+        "name": "Fan 120mm Preto",
+        "category": "Fans RGB",
+        "basePrice": 39.9,
+        "maxPrice": 49.875,
+        "marginApplied": "25.06%",
+        "suggestedPrice": 49.9,
+        "profit": 10,
+        "competitorStatus": "Acima do Máximo Concorrência",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 61,
+        "name": "Fan 120mm RGB",
+        "category": "Fans RGB",
+        "basePrice": 59.9,
+        "maxPrice": 74.875,
+        "marginApplied": "16.69%",
+        "suggestedPrice": 69.9,
+        "profit": 10.000000000000007,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 62,
+        "name": "Kit 3 Fans RGB com Controladora",
+        "category": "Fans RGB",
+        "basePrice": 149.9,
+        "maxPrice": 187.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 179.9,
+        "profit": 30,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 63,
+        "name": "Kit 6 Fans ARGB",
+        "category": "Fans RGB",
+        "basePrice": 299.9,
+        "maxPrice": 374.875,
+        "marginApplied": "23.34%",
+        "suggestedPrice": 369.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 64,
+        "name": "Monitor 21.5 Full HD 75Hz",
+        "category": "Monitores",
+        "basePrice": 549.9,
+        "maxPrice": 687.375,
+        "marginApplied": "20.00%",
+        "suggestedPrice": 659.9,
+        "profit": 110,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 65,
+        "name": "Monitor 24 Full HD 75Hz IPS",
+        "category": "Monitores",
+        "basePrice": 699.9,
+        "maxPrice": 874.875,
+        "marginApplied": "24.29%",
+        "suggestedPrice": 869.9,
+        "profit": 170,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 66,
+        "name": "Monitor Gamer 24 144Hz",
+        "category": "Monitores",
+        "basePrice": 899.9,
+        "maxPrice": 1124.875,
+        "marginApplied": "24.45%",
+        "suggestedPrice": 1119.9,
+        "profit": 220.0000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 67,
+        "name": "Monitor Gamer 27 165Hz",
+        "category": "Monitores",
+        "basePrice": 1299.9,
+        "maxPrice": 1624.875,
+        "marginApplied": "24.62%",
+        "suggestedPrice": 1619.9,
+        "profit": 320,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 68,
+        "name": "Monitor 27 QHD 165Hz",
+        "category": "Monitores",
+        "basePrice": 1899.9,
+        "maxPrice": 2374.875,
+        "marginApplied": "24.74%",
+        "suggestedPrice": 2369.9,
+        "profit": 470,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 69,
+        "name": "Monitor Ultrawide 29 IPS",
+        "category": "Monitores",
+        "basePrice": 1499.9,
+        "maxPrice": 1874.875,
+        "marginApplied": "24.67%",
+        "suggestedPrice": 1869.9,
+        "profit": 370,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 70,
+        "name": "Monitor 32 4K IPS",
+        "category": "Monitores",
+        "basePrice": 2499.9,
+        "maxPrice": 3124.875,
+        "marginApplied": "24.80%",
+        "suggestedPrice": 3119.9,
+        "profit": 620,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 84,
+        "name": "Teclado Mecânico RGB Switch Blue",
+        "category": "Teclados",
+        "basePrice": 399.9,
+        "maxPrice": 499.875,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 479.9,
+        "profit": 80,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 85,
+        "name": "Teclado Mecânico RGB Switch Red",
+        "category": "Teclados",
+        "basePrice": 249.9,
+        "maxPrice": 312.375,
+        "marginApplied": "24.01%",
+        "suggestedPrice": 309.9,
+        "profit": 59.99999999999997,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 86,
+        "name": "Teclado Gamer Membrana RGB",
+        "category": "Teclados",
+        "basePrice": 89.9,
+        "maxPrice": 112.375,
+        "marginApplied": "22.25%",
+        "suggestedPrice": 109.9,
+        "profit": 20,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 87,
+        "name": "Teclado Mecânico 60% Wireless",
+        "category": "Teclados",
+        "basePrice": 299.9,
+        "maxPrice": 374.875,
+        "marginApplied": "23.34%",
+        "suggestedPrice": 369.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 88,
+        "name": "Mouse Gamer 7200 DPI RGB",
+        "category": "Mouses",
+        "basePrice": 79.9,
+        "maxPrice": 99.875,
+        "marginApplied": "25.03%",
+        "suggestedPrice": 99.9,
+        "profit": 20,
+        "competitorStatus": "Acima do Máximo Concorrência",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 89,
+        "name": "Mouse Gamer 12000 DPI RGB",
+        "category": "Mouses",
+        "basePrice": 149.9,
+        "maxPrice": 187.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 179.9,
+        "profit": 30,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 90,
+        "name": "Mouse Gamer Wireless 26000 DPI",
+        "category": "Mouses",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 419.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 91,
+        "name": "Mouse Office Sem Fio",
+        "category": "Mouses",
+        "basePrice": 59.9,
+        "maxPrice": 74.875,
+        "marginApplied": "16.69%",
+        "suggestedPrice": 69.9,
+        "profit": 10.000000000000007,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 92,
+        "name": "Headset Gamer P2 RGB",
+        "category": "Headsets",
+        "basePrice": 99.9,
+        "maxPrice": 124.875,
+        "marginApplied": "20.02%",
+        "suggestedPrice": 119.9,
+        "profit": 20,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 93,
+        "name": "Headset Gamer USB 7.1",
+        "category": "Headsets",
+        "basePrice": 199.9,
+        "maxPrice": 249.875,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 239.9,
+        "profit": 40,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 94,
+        "name": "Headset Wireless Gamer",
+        "category": "Headsets",
+        "basePrice": 399.9,
+        "maxPrice": 499.875,
+        "marginApplied": "20.01%",
+        "suggestedPrice": 479.9,
+        "profit": 80,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 95,
+        "name": "Headset Studio USB",
+        "category": "Headsets",
+        "basePrice": 299.9,
+        "maxPrice": 374.875,
+        "marginApplied": "23.34%",
+        "suggestedPrice": 369.9,
+        "profit": 70,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 96,
+        "name": "Mousepad Gamer Médio",
+        "category": "Mousepads",
+        "basePrice": 87.9,
+        "maxPrice": 109.875,
+        "marginApplied": "25.03%",
+        "suggestedPrice": 109.9,
+        "profit": 22,
+        "competitorStatus": "Acima do Máximo Concorrência",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 97,
+        "name": "Mousepad Gamer Grande",
+        "category": "Mousepads",
+        "basePrice": 109.9,
+        "maxPrice": 137.375,
+        "marginApplied": "18.20%",
+        "suggestedPrice": 129.9,
+        "profit": 20,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 98,
+        "name": "Mousepad Deskmat XXL",
+        "category": "Mousepads",
+        "basePrice": 119.9,
+        "maxPrice": 149.875,
+        "marginApplied": "16.68%",
+        "suggestedPrice": 139.9,
+        "profit": 20,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 99,
+        "name": "Mousepad RGB Grande",
+        "category": "Mousepads",
+        "basePrice": 100.9,
+        "maxPrice": 126.125,
+        "marginApplied": "18.83%",
+        "suggestedPrice": 119.9,
+        "profit": 19,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 100,
+        "name": "Cadeira Gamer Basic",
+        "category": "Cadeiras gamer",
+        "basePrice": 899.9,
+        "maxPrice": 1124.875,
+        "marginApplied": "24.45%",
+        "suggestedPrice": 1119.9,
+        "profit": 220.0000000000001,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 101,
+        "name": "Cadeira Gamer Pro RGB",
+        "category": "Cadeiras gamer",
+        "basePrice": 1290.9,
+        "maxPrice": 1613.625,
+        "marginApplied": "24.71%",
+        "suggestedPrice": 1609.9,
+        "profit": 319,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 102,
+        "name": "Cadeira Ergonômica Mesh",
+        "category": "Cadeiras gamer",
+        "basePrice": 2000.9,
+        "maxPrice": 2501.125,
+        "marginApplied": "24.94%",
+        "suggestedPrice": 2499.9,
+        "profit": 499,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 103,
+        "name": "Cadeira Gamer Premium",
+        "category": "Cadeiras gamer",
+        "basePrice": 1839.9,
+        "maxPrice": 2299.875,
+        "marginApplied": "20.11%",
+        "suggestedPrice": 2209.9,
+        "profit": 370,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      }
+    ],
+    "PCs e Kits": [
+      {
+        "id": 71,
+        "name": "PC Gamer Start Ryzen 5 4600G",
+        "category": "PCs completos",
+        "basePrice": 1999.9,
+        "maxPrice": 2499.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 2199.9,
+        "profit": 200,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 72,
+        "name": "PC Gamer Ryzen 5 5600 + RX 6600",
+        "category": "PCs completos",
+        "basePrice": 3999.9,
+        "maxPrice": 4999.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 4399.9,
+        "profit": 399.99999999999955,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 73,
+        "name": "PC Gamer Intel i5 + RTX 4060",
+        "category": "PCs completos",
+        "basePrice": 9196.9,
+        "maxPrice": 11496.125,
+        "marginApplied": "10.04%",
+        "suggestedPrice": 10119.9,
+        "profit": 923,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 74,
+        "name": "PC Gamer Ryzen 7 + RTX 4060 Ti",
+        "category": "PCs completos",
+        "basePrice": 17999.9,
+        "maxPrice": 22499.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 19799.9,
+        "profit": 1800,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 75,
+        "name": "PC Gamer AM5 RTX 4070 Super",
+        "category": "PCs completos",
+        "basePrice": 25998.9,
+        "maxPrice": 32498.625,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 28599.9,
+        "profit": 2601,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 76,
+        "name": "PC Workstation i7 + RTX 4070 Ti Super",
+        "category": "PCs completos",
+        "basePrice": 31595.9,
+        "maxPrice": 39494.875,
+        "marginApplied": "10.01%",
+        "suggestedPrice": 34759.9,
+        "profit": 3164,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 77,
+        "name": "PC Escritório Intel i3",
+        "category": "PCs completos",
+        "basePrice": 1999.9,
+        "maxPrice": 2499.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 2199.9,
+        "profit": 200,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 78,
+        "name": "PC Gamer Branco RGB",
+        "category": "PCs completos",
+        "basePrice": 9996.9,
+        "maxPrice": 12496.125,
+        "marginApplied": "10.03%",
+        "suggestedPrice": 10999.9,
+        "profit": 1003,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 79,
+        "name": "Kit Gamer Teclado + Mouse + Headset",
+        "category": "Kits gamer",
+        "basePrice": 349.9,
+        "maxPrice": 437.375,
+        "marginApplied": "8.57%",
+        "suggestedPrice": 379.9,
+        "profit": 30,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 80,
+        "name": "Kit Gamer 4 em 1 RGB",
+        "category": "Kits gamer",
+        "basePrice": 429.9,
+        "maxPrice": 537.375,
+        "marginApplied": "9.30%",
+        "suggestedPrice": 469.9,
+        "profit": 40,
+        "competitorStatus": "Competitivo",
+        "confidence": "Baixa"
+      },
+      {
+        "id": 81,
+        "name": "Kit Upgrade Ryzen 5 5600 + B550M + 16GB",
+        "category": "Kits gamer",
+        "basePrice": 2399.9,
+        "maxPrice": 2999.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 2639.9,
+        "profit": 240,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 82,
+        "name": "Kit Upgrade Ryzen 7 5700X + B550M + 32GB ddr4",
+        "category": "Kits gamer",
+        "basePrice": 3100.9,
+        "maxPrice": 3876.125,
+        "marginApplied": "9.96%",
+        "suggestedPrice": 3409.9,
+        "profit": 309,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      },
+      {
+        "id": 83,
+        "name": "Kit Upgrade AM5 Ryzen 5 7600 + B650 + 32GB DDR5",
+        "category": "Kits gamer",
+        "basePrice": 3199.9,
+        "maxPrice": 3999.875,
+        "marginApplied": "10.00%",
+        "suggestedPrice": 3519.9,
+        "profit": 320,
+        "competitorStatus": "Competitivo",
+        "confidence": "Alta"
+      }
+    ]
+  },
+  "lowOrMediumConfidence": [
+    {
+      "id": 22,
+      "name": "Memória 8GB DDR4 3200MHz",
+      "category": "Memória RAM",
+      "basePrice": 135,
+      "maxPrice": 170,
+      "marginApplied": "18.44%",
+      "suggestedPrice": 159.9,
+      "profit": 24.900000000000006,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 23,
+      "name": "Memória 16GB DDR4 3200MHz",
+      "category": "Memória RAM",
+      "basePrice": 240,
+      "maxPrice": 320,
+      "marginApplied": "20.79%",
+      "suggestedPrice": 289.9,
+      "profit": 49.89999999999998,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 24,
+      "name": "Kit 16GB DDR4 RGB 3200MHz",
+      "category": "Memória RAM",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 299.9,
+      "profit": 49.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 25,
+      "name": "Kit 32GB DDR4 3600MHz",
+      "category": "Memória RAM",
+      "basePrice": 499.9,
+      "maxPrice": 624.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 599.9,
+      "profit": 100,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 26,
+      "name": "Memória 16GB DDR5 5600MHz",
+      "category": "Memória RAM",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 27,
+      "name": "Kit 32GB DDR5 RGB 6000MHz",
+      "category": "Memória RAM",
+      "basePrice": 799.9,
+      "maxPrice": 999.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 959.9,
+      "profit": 160,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 28,
+      "name": "SSD SATA 480GB",
+      "category": "Armazenamento",
+      "basePrice": 179.9,
+      "maxPrice": 224.875,
+      "marginApplied": "22.23%",
+      "suggestedPrice": 219.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 29,
+      "name": "SSD SATA 1TB",
+      "category": "Armazenamento",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 30,
+      "name": "SSD NVMe 500GB",
+      "category": "Armazenamento",
+      "basePrice": 229.9,
+      "maxPrice": 287.375,
+      "marginApplied": "21.75%",
+      "suggestedPrice": 279.9,
+      "profit": 49.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 31,
+      "name": "SSD NVMe 1TB PCIe 3.0",
+      "category": "Armazenamento",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 479.9,
+      "profit": 80,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 32,
+      "name": "SSD NVMe 1TB PCIe 4.0",
+      "category": "Armazenamento",
+      "basePrice": 499.9,
+      "maxPrice": 624.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 599.9,
+      "profit": 100,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 33,
+      "name": "SSD NVMe 2TB PCIe 4.0",
+      "category": "Armazenamento",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 1079.9,
+      "profit": 180.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 36,
+      "name": "Placa-mãe A520M AM4",
+      "category": "Placas-mãe",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "15.00%",
+      "suggestedPrice": 459.9,
+      "profit": 60,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 37,
+      "name": "Placa-mãe B550M AM4",
+      "category": "Placas-mãe",
+      "basePrice": 649.9,
+      "maxPrice": 812.375,
+      "marginApplied": "15.39%",
+      "suggestedPrice": 749.9,
+      "profit": 100,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 38,
+      "name": "Placa-mãe B550 Gaming Wi-Fi",
+      "category": "Placas-mãe",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "14.45%",
+      "suggestedPrice": 1029.9,
+      "profit": 130.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 39,
+      "name": "Placa-mãe B650M AM5 DDR5",
+      "category": "Placas-mãe",
+      "basePrice": 1099.9,
+      "maxPrice": 1374.875,
+      "marginApplied": "14.55%",
+      "suggestedPrice": 1259.9,
+      "profit": 160,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 40,
+      "name": "Placa-mãe X670E AM5",
+      "category": "Placas-mãe",
+      "basePrice": 1999.9,
+      "maxPrice": 2499.875,
+      "marginApplied": "15.00%",
+      "suggestedPrice": 2299.9,
+      "profit": 300,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 41,
+      "name": "Placa-mãe H610M LGA1700",
+      "category": "Placas-mãe",
+      "basePrice": 499.9,
+      "maxPrice": 624.875,
+      "marginApplied": "14.00%",
+      "suggestedPrice": 569.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 42,
+      "name": "Placa-mãe B760M DDR4",
+      "category": "Placas-mãe",
+      "basePrice": 799.9,
+      "maxPrice": 999.875,
+      "marginApplied": "15.00%",
+      "suggestedPrice": 919.9,
+      "profit": 120,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 43,
+      "name": "Placa-mãe Z790 DDR5",
+      "category": "Placas-mãe",
+      "basePrice": 1899.9,
+      "maxPrice": 2374.875,
+      "marginApplied": "14.74%",
+      "suggestedPrice": 2179.9,
+      "profit": 280,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 44,
+      "name": "Fonte 500W 80 Plus White",
+      "category": "Fontes",
+      "basePrice": 219.9,
+      "maxPrice": 274.875,
+      "marginApplied": "13.64%",
+      "suggestedPrice": 249.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 45,
+      "name": "Fonte 550W 80 Plus Bronze",
+      "category": "Fontes",
+      "basePrice": 289.9,
+      "maxPrice": 362.375,
+      "marginApplied": "13.80%",
+      "suggestedPrice": 329.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 46,
+      "name": "Fonte 650W 80 Plus Bronze",
+      "category": "Fontes",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "14.29%",
+      "suggestedPrice": 399.9,
+      "profit": 50,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 47,
+      "name": "Fonte 650W 80 Plus Gold Modular",
+      "category": "Fontes",
+      "basePrice": 499.9,
+      "maxPrice": 624.875,
+      "marginApplied": "14.00%",
+      "suggestedPrice": 569.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 48,
+      "name": "Fonte 750W 80 Plus Gold",
+      "category": "Fontes",
+      "basePrice": 599.9,
+      "maxPrice": 749.875,
+      "marginApplied": "15.00%",
+      "suggestedPrice": 689.9,
+      "profit": 90,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 49,
+      "name": "Fonte 850W 80 Plus Gold Modular",
+      "category": "Fontes",
+      "basePrice": 749.9,
+      "maxPrice": 937.375,
+      "marginApplied": "14.67%",
+      "suggestedPrice": 859.9,
+      "profit": 110,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 50,
+      "name": "Gabinete Gamer Mid Tower RGB",
+      "category": "Gabinetes",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 359.9,
+      "profit": 60,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 51,
+      "name": "Gabinete Airflow Mesh Preto",
+      "category": "Gabinetes",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 52,
+      "name": "Gabinete Aquário RGB",
+      "category": "Gabinetes",
+      "basePrice": 449.9,
+      "maxPrice": 562.375,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 539.9,
+      "profit": 90,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 53,
+      "name": "Gabinete Compacto mATX",
+      "category": "Gabinetes",
+      "basePrice": 229.9,
+      "maxPrice": 287.375,
+      "marginApplied": "21.75%",
+      "suggestedPrice": 279.9,
+      "profit": 49.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 54,
+      "name": "Gabinete Full Tower Premium",
+      "category": "Gabinetes",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 1079.9,
+      "profit": 180.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 55,
+      "name": "Air Cooler 120mm Torre",
+      "category": "Coolers",
+      "basePrice": 119.9,
+      "maxPrice": 149.875,
+      "marginApplied": "16.68%",
+      "suggestedPrice": 139.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 56,
+      "name": "Air Cooler Dual Tower RGB",
+      "category": "Coolers",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 57,
+      "name": "Water Cooler 120mm",
+      "category": "Coolers",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 58,
+      "name": "Water Cooler 240mm ARGB",
+      "category": "Coolers",
+      "basePrice": 449.9,
+      "maxPrice": 562.375,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 559.9,
+      "profit": 110,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 59,
+      "name": "Water Cooler 360mm ARGB",
+      "category": "Coolers",
+      "basePrice": 699.9,
+      "maxPrice": 874.875,
+      "marginApplied": "24.29%",
+      "suggestedPrice": 869.9,
+      "profit": 170,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 60,
+      "name": "Fan 120mm Preto",
+      "category": "Fans RGB",
+      "basePrice": 39.9,
+      "maxPrice": 49.875,
+      "marginApplied": "25.06%",
+      "suggestedPrice": 49.9,
+      "profit": 10,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 61,
+      "name": "Fan 120mm RGB",
+      "category": "Fans RGB",
+      "basePrice": 59.9,
+      "maxPrice": 74.875,
+      "marginApplied": "16.69%",
+      "suggestedPrice": 69.9,
+      "profit": 10.000000000000007,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 62,
+      "name": "Kit 3 Fans RGB com Controladora",
+      "category": "Fans RGB",
+      "basePrice": 149.9,
+      "maxPrice": 187.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 179.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 63,
+      "name": "Kit 6 Fans ARGB",
+      "category": "Fans RGB",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 64,
+      "name": "Monitor 21.5 Full HD 75Hz",
+      "category": "Monitores",
+      "basePrice": 549.9,
+      "maxPrice": 687.375,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 659.9,
+      "profit": 110,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 65,
+      "name": "Monitor 24 Full HD 75Hz IPS",
+      "category": "Monitores",
+      "basePrice": 699.9,
+      "maxPrice": 874.875,
+      "marginApplied": "24.29%",
+      "suggestedPrice": 869.9,
+      "profit": 170,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 66,
+      "name": "Monitor Gamer 24 144Hz",
+      "category": "Monitores",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 1119.9,
+      "profit": 220.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 67,
+      "name": "Monitor Gamer 27 165Hz",
+      "category": "Monitores",
+      "basePrice": 1299.9,
+      "maxPrice": 1624.875,
+      "marginApplied": "24.62%",
+      "suggestedPrice": 1619.9,
+      "profit": 320,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 68,
+      "name": "Monitor 27 QHD 165Hz",
+      "category": "Monitores",
+      "basePrice": 1899.9,
+      "maxPrice": 2374.875,
+      "marginApplied": "24.74%",
+      "suggestedPrice": 2369.9,
+      "profit": 470,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 69,
+      "name": "Monitor Ultrawide 29 IPS",
+      "category": "Monitores",
+      "basePrice": 1499.9,
+      "maxPrice": 1874.875,
+      "marginApplied": "24.67%",
+      "suggestedPrice": 1869.9,
+      "profit": 370,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 70,
+      "name": "Monitor 32 4K IPS",
+      "category": "Monitores",
+      "basePrice": 2499.9,
+      "maxPrice": 3124.875,
+      "marginApplied": "24.80%",
+      "suggestedPrice": 3119.9,
+      "profit": 620,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 77,
+      "name": "PC Escritório Intel i3",
+      "category": "PCs completos",
+      "basePrice": 1999.9,
+      "maxPrice": 2499.875,
+      "marginApplied": "10.00%",
+      "suggestedPrice": 2199.9,
+      "profit": 200,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 78,
+      "name": "PC Gamer Branco RGB",
+      "category": "PCs completos",
+      "basePrice": 9996.9,
+      "maxPrice": 12496.125,
+      "marginApplied": "10.03%",
+      "suggestedPrice": 10999.9,
+      "profit": 1003,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 79,
+      "name": "Kit Gamer Teclado + Mouse + Headset",
+      "category": "Kits gamer",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "8.57%",
+      "suggestedPrice": 379.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 80,
+      "name": "Kit Gamer 4 em 1 RGB",
+      "category": "Kits gamer",
+      "basePrice": 429.9,
+      "maxPrice": 537.375,
+      "marginApplied": "9.30%",
+      "suggestedPrice": 469.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 84,
+      "name": "Teclado Mecânico RGB Switch Blue",
+      "category": "Teclados",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 479.9,
+      "profit": 80,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 85,
+      "name": "Teclado Mecânico RGB Switch Red",
+      "category": "Teclados",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 86,
+      "name": "Teclado Gamer Membrana RGB",
+      "category": "Teclados",
+      "basePrice": 89.9,
+      "maxPrice": 112.375,
+      "marginApplied": "22.25%",
+      "suggestedPrice": 109.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 87,
+      "name": "Teclado Mecânico 60% Wireless",
+      "category": "Teclados",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 88,
+      "name": "Mouse Gamer 7200 DPI RGB",
+      "category": "Mouses",
+      "basePrice": 79.9,
+      "maxPrice": 99.875,
+      "marginApplied": "25.03%",
+      "suggestedPrice": 99.9,
+      "profit": 20,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 89,
+      "name": "Mouse Gamer 12000 DPI RGB",
+      "category": "Mouses",
+      "basePrice": 149.9,
+      "maxPrice": 187.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 179.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 90,
+      "name": "Mouse Gamer Wireless 26000 DPI",
+      "category": "Mouses",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 91,
+      "name": "Mouse Office Sem Fio",
+      "category": "Mouses",
+      "basePrice": 59.9,
+      "maxPrice": 74.875,
+      "marginApplied": "16.69%",
+      "suggestedPrice": 69.9,
+      "profit": 10.000000000000007,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 92,
+      "name": "Headset Gamer P2 RGB",
+      "category": "Headsets",
+      "basePrice": 99.9,
+      "maxPrice": 124.875,
+      "marginApplied": "20.02%",
+      "suggestedPrice": 119.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 93,
+      "name": "Headset Gamer USB 7.1",
+      "category": "Headsets",
+      "basePrice": 199.9,
+      "maxPrice": 249.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 239.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 94,
+      "name": "Headset Wireless Gamer",
+      "category": "Headsets",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 479.9,
+      "profit": 80,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 95,
+      "name": "Headset Studio USB",
+      "category": "Headsets",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 96,
+      "name": "Mousepad Gamer Médio",
+      "category": "Mousepads",
+      "basePrice": 87.9,
+      "maxPrice": 109.875,
+      "marginApplied": "25.03%",
+      "suggestedPrice": 109.9,
+      "profit": 22,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 97,
+      "name": "Mousepad Gamer Grande",
+      "category": "Mousepads",
+      "basePrice": 109.9,
+      "maxPrice": 137.375,
+      "marginApplied": "18.20%",
+      "suggestedPrice": 129.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 98,
+      "name": "Mousepad Deskmat XXL",
+      "category": "Mousepads",
+      "basePrice": 119.9,
+      "maxPrice": 149.875,
+      "marginApplied": "16.68%",
+      "suggestedPrice": 139.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 99,
+      "name": "Mousepad RGB Grande",
+      "category": "Mousepads",
+      "basePrice": 100.9,
+      "maxPrice": 126.125,
+      "marginApplied": "18.83%",
+      "suggestedPrice": 119.9,
+      "profit": 19,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 100,
+      "name": "Cadeira Gamer Basic",
+      "category": "Cadeiras gamer",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 1119.9,
+      "profit": 220.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 101,
+      "name": "Cadeira Gamer Pro RGB",
+      "category": "Cadeiras gamer",
+      "basePrice": 1290.9,
+      "maxPrice": 1613.625,
+      "marginApplied": "24.71%",
+      "suggestedPrice": 1609.9,
+      "profit": 319,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 102,
+      "name": "Cadeira Ergonômica Mesh",
+      "category": "Cadeiras gamer",
+      "basePrice": 2000.9,
+      "maxPrice": 2501.125,
+      "marginApplied": "24.94%",
+      "suggestedPrice": 2499.9,
+      "profit": 499,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 103,
+      "name": "Cadeira Gamer Premium",
+      "category": "Cadeiras gamer",
+      "basePrice": 1839.9,
+      "maxPrice": 2299.875,
+      "marginApplied": "20.11%",
+      "suggestedPrice": 2209.9,
+      "profit": 370,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    }
+  ],
+  "noBrandDefined": [
+    {
+      "id": 2,
+      "name": "GeForce RTX 4060 8GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 5,
+      "name": "Ryzen 5 5600",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 6,
+      "name": "Ryzen 5 7600",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 7,
+      "name": "Ryzen 7 5700X",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 8,
+      "name": "Ryzen 7 7800X3D",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 9,
+      "name": "Intel Core i3-14100F",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 10,
+      "name": "Intel Core i5-12400F",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 11,
+      "name": "Intel Core i5-14400F",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 12,
+      "name": "Intel Core i7-14700K",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 13,
+      "name": "GeForce RTX 3050 6GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 14,
+      "name": "GeForce RTX 4060 Ti 8GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 15,
+      "name": "GeForce RTX 4060 Ti 16GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 16,
+      "name": "GeForce RTX 4070 Ti Super 16GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 17,
+      "name": "Radeon RX 6600 8GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 18,
+      "name": "Radeon RX 7600 XT 16GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 19,
+      "name": "Radeon RX 7700 XT 12GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 20,
+      "name": "Radeon RX 7800 XT 16GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 21,
+      "name": "GeForce RTX 4070 Super 12GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 22,
+      "name": "Memória 8GB DDR4 3200MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 23,
+      "name": "Memória 16GB DDR4 3200MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 24,
+      "name": "Kit 16GB DDR4 RGB 3200MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 25,
+      "name": "Kit 32GB DDR4 3600MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 26,
+      "name": "Memória 16GB DDR5 5600MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 27,
+      "name": "Kit 32GB DDR5 RGB 6000MHz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 28,
+      "name": "SSD SATA 480GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 29,
+      "name": "SSD SATA 1TB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 30,
+      "name": "SSD NVMe 500GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 31,
+      "name": "SSD NVMe 1TB PCIe 3.0",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 32,
+      "name": "SSD NVMe 1TB PCIe 4.0",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 33,
+      "name": "SSD NVMe 2TB PCIe 4.0",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 34,
+      "name": "HD Seagate Barracuda 1TB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 35,
+      "name": "HD Seagate Barracuda 2TB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 36,
+      "name": "Placa-mãe A520M AM4",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 37,
+      "name": "Placa-mãe B550M AM4",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 38,
+      "name": "Placa-mãe B550 Gaming Wi-Fi",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 39,
+      "name": "Placa-mãe B650M AM5 DDR5",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 40,
+      "name": "Placa-mãe X670E AM5",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 41,
+      "name": "Placa-mãe H610M LGA1700",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 42,
+      "name": "Placa-mãe B760M DDR4",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 43,
+      "name": "Placa-mãe Z790 DDR5",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 44,
+      "name": "Fonte 500W 80 Plus White",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 45,
+      "name": "Fonte 550W 80 Plus Bronze",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 46,
+      "name": "Fonte 650W 80 Plus Bronze",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 47,
+      "name": "Fonte 650W 80 Plus Gold Modular",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 48,
+      "name": "Fonte 750W 80 Plus Gold",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 49,
+      "name": "Fonte 850W 80 Plus Gold Modular",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 50,
+      "name": "Gabinete Gamer Mid Tower RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 51,
+      "name": "Gabinete Airflow Mesh Preto",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 52,
+      "name": "Gabinete Aquário RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 53,
+      "name": "Gabinete Compacto mATX",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 54,
+      "name": "Gabinete Full Tower Premium",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 55,
+      "name": "Air Cooler 120mm Torre",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 56,
+      "name": "Air Cooler Dual Tower RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 57,
+      "name": "Water Cooler 120mm",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 58,
+      "name": "Water Cooler 240mm ARGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 59,
+      "name": "Water Cooler 360mm ARGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 60,
+      "name": "Fan 120mm Preto",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 61,
+      "name": "Fan 120mm RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 62,
+      "name": "Kit 3 Fans RGB com Controladora",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 63,
+      "name": "Kit 6 Fans ARGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 64,
+      "name": "Monitor 21.5 Full HD 75Hz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 65,
+      "name": "Monitor 24 Full HD 75Hz IPS",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 66,
+      "name": "Monitor Gamer 24 144Hz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 67,
+      "name": "Monitor Gamer 27 165Hz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 68,
+      "name": "Monitor 27 QHD 165Hz",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 69,
+      "name": "Monitor Ultrawide 29 IPS",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 70,
+      "name": "Monitor 32 4K IPS",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 71,
+      "name": "PC Gamer Start Ryzen 5 4600G",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 72,
+      "name": "PC Gamer Ryzen 5 5600 + RX 6600",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 73,
+      "name": "PC Gamer Intel i5 + RTX 4060",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 74,
+      "name": "PC Gamer Ryzen 7 + RTX 4060 Ti",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 75,
+      "name": "PC Gamer AM5 RTX 4070 Super",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 76,
+      "name": "PC Workstation i7 + RTX 4070 Ti Super",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 77,
+      "name": "PC Escritório Intel i3",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 78,
+      "name": "PC Gamer Branco RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 79,
+      "name": "Kit Gamer Teclado + Mouse + Headset",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 80,
+      "name": "Kit Gamer 4 em 1 RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 81,
+      "name": "Kit Upgrade Ryzen 5 5600 + B550M + 16GB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 82,
+      "name": "Kit Upgrade Ryzen 7 5700X + B550M + 32GB ddr4",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 83,
+      "name": "Kit Upgrade AM5 Ryzen 5 7600 + B650 + 32GB DDR5",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 84,
+      "name": "Teclado Mecânico RGB Switch Blue",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 85,
+      "name": "Teclado Mecânico RGB Switch Red",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 86,
+      "name": "Teclado Gamer Membrana RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 87,
+      "name": "Teclado Mecânico 60% Wireless",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 88,
+      "name": "Mouse Gamer 7200 DPI RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 89,
+      "name": "Mouse Gamer 12000 DPI RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 90,
+      "name": "Mouse Gamer Wireless 26000 DPI",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 91,
+      "name": "Mouse Office Sem Fio",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 92,
+      "name": "Headset Gamer P2 RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 93,
+      "name": "Headset Gamer USB 7.1",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 94,
+      "name": "Headset Wireless Gamer",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 95,
+      "name": "Headset Studio USB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 96,
+      "name": "Mousepad Gamer Médio",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 97,
+      "name": "Mousepad Gamer Grande",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 98,
+      "name": "Mousepad Deskmat XXL",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 99,
+      "name": "Mousepad RGB Grande",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 100,
+      "name": "Cadeira Gamer Basic",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 101,
+      "name": "Cadeira Gamer Pro RGB",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 102,
+      "name": "Cadeira Ergonômica Mesh",
+      "brand": "GENERICA"
+    },
+    {
+      "id": 103,
+      "name": "Cadeira Gamer Premium",
+      "brand": "GENERICA"
+    }
+  ],
+  "needsManualValidation": [
+    {
+      "id": 22,
+      "name": "Memória 8GB DDR4 3200MHz",
+      "category": "Memória RAM",
+      "basePrice": 135,
+      "maxPrice": 170,
+      "marginApplied": "18.44%",
+      "suggestedPrice": 159.9,
+      "profit": 24.900000000000006,
+      "competitorStatus": "Competitivo",
+      "confidence": "Média"
+    },
+    {
+      "id": 24,
+      "name": "Kit 16GB DDR4 RGB 3200MHz",
+      "category": "Memória RAM",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 299.9,
+      "profit": 49.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 25,
+      "name": "Kit 32GB DDR4 3600MHz",
+      "category": "Memória RAM",
+      "basePrice": 499.9,
+      "maxPrice": 624.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 599.9,
+      "profit": 100,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 27,
+      "name": "Kit 32GB DDR5 RGB 6000MHz",
+      "category": "Memória RAM",
+      "basePrice": 799.9,
+      "maxPrice": 999.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 959.9,
+      "profit": 160,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 50,
+      "name": "Gabinete Gamer Mid Tower RGB",
+      "category": "Gabinetes",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 359.9,
+      "profit": 60,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 51,
+      "name": "Gabinete Airflow Mesh Preto",
+      "category": "Gabinetes",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 52,
+      "name": "Gabinete Aquário RGB",
+      "category": "Gabinetes",
+      "basePrice": 449.9,
+      "maxPrice": 562.375,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 539.9,
+      "profit": 90,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 53,
+      "name": "Gabinete Compacto mATX",
+      "category": "Gabinetes",
+      "basePrice": 229.9,
+      "maxPrice": 287.375,
+      "marginApplied": "21.75%",
+      "suggestedPrice": 279.9,
+      "profit": 49.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 54,
+      "name": "Gabinete Full Tower Premium",
+      "category": "Gabinetes",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 1079.9,
+      "profit": 180.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 55,
+      "name": "Air Cooler 120mm Torre",
+      "category": "Coolers",
+      "basePrice": 119.9,
+      "maxPrice": 149.875,
+      "marginApplied": "16.68%",
+      "suggestedPrice": 139.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 56,
+      "name": "Air Cooler Dual Tower RGB",
+      "category": "Coolers",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 57,
+      "name": "Water Cooler 120mm",
+      "category": "Coolers",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 58,
+      "name": "Water Cooler 240mm ARGB",
+      "category": "Coolers",
+      "basePrice": 449.9,
+      "maxPrice": 562.375,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 559.9,
+      "profit": 110,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 59,
+      "name": "Water Cooler 360mm ARGB",
+      "category": "Coolers",
+      "basePrice": 699.9,
+      "maxPrice": 874.875,
+      "marginApplied": "24.29%",
+      "suggestedPrice": 869.9,
+      "profit": 170,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 60,
+      "name": "Fan 120mm Preto",
+      "category": "Fans RGB",
+      "basePrice": 39.9,
+      "maxPrice": 49.875,
+      "marginApplied": "25.06%",
+      "suggestedPrice": 49.9,
+      "profit": 10,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 61,
+      "name": "Fan 120mm RGB",
+      "category": "Fans RGB",
+      "basePrice": 59.9,
+      "maxPrice": 74.875,
+      "marginApplied": "16.69%",
+      "suggestedPrice": 69.9,
+      "profit": 10.000000000000007,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 62,
+      "name": "Kit 3 Fans RGB com Controladora",
+      "category": "Fans RGB",
+      "basePrice": 149.9,
+      "maxPrice": 187.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 179.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 63,
+      "name": "Kit 6 Fans ARGB",
+      "category": "Fans RGB",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 64,
+      "name": "Monitor 21.5 Full HD 75Hz",
+      "category": "Monitores",
+      "basePrice": 549.9,
+      "maxPrice": 687.375,
+      "marginApplied": "20.00%",
+      "suggestedPrice": 659.9,
+      "profit": 110,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 65,
+      "name": "Monitor 24 Full HD 75Hz IPS",
+      "category": "Monitores",
+      "basePrice": 699.9,
+      "maxPrice": 874.875,
+      "marginApplied": "24.29%",
+      "suggestedPrice": 869.9,
+      "profit": 170,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 66,
+      "name": "Monitor Gamer 24 144Hz",
+      "category": "Monitores",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 1119.9,
+      "profit": 220.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 67,
+      "name": "Monitor Gamer 27 165Hz",
+      "category": "Monitores",
+      "basePrice": 1299.9,
+      "maxPrice": 1624.875,
+      "marginApplied": "24.62%",
+      "suggestedPrice": 1619.9,
+      "profit": 320,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 68,
+      "name": "Monitor 27 QHD 165Hz",
+      "category": "Monitores",
+      "basePrice": 1899.9,
+      "maxPrice": 2374.875,
+      "marginApplied": "24.74%",
+      "suggestedPrice": 2369.9,
+      "profit": 470,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 69,
+      "name": "Monitor Ultrawide 29 IPS",
+      "category": "Monitores",
+      "basePrice": 1499.9,
+      "maxPrice": 1874.875,
+      "marginApplied": "24.67%",
+      "suggestedPrice": 1869.9,
+      "profit": 370,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 70,
+      "name": "Monitor 32 4K IPS",
+      "category": "Monitores",
+      "basePrice": 2499.9,
+      "maxPrice": 3124.875,
+      "marginApplied": "24.80%",
+      "suggestedPrice": 3119.9,
+      "profit": 620,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 77,
+      "name": "PC Escritório Intel i3",
+      "category": "PCs completos",
+      "basePrice": 1999.9,
+      "maxPrice": 2499.875,
+      "marginApplied": "10.00%",
+      "suggestedPrice": 2199.9,
+      "profit": 200,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 78,
+      "name": "PC Gamer Branco RGB",
+      "category": "PCs completos",
+      "basePrice": 9996.9,
+      "maxPrice": 12496.125,
+      "marginApplied": "10.03%",
+      "suggestedPrice": 10999.9,
+      "profit": 1003,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 79,
+      "name": "Kit Gamer Teclado + Mouse + Headset",
+      "category": "Kits gamer",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "8.57%",
+      "suggestedPrice": 379.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 80,
+      "name": "Kit Gamer 4 em 1 RGB",
+      "category": "Kits gamer",
+      "basePrice": 429.9,
+      "maxPrice": 537.375,
+      "marginApplied": "9.30%",
+      "suggestedPrice": 469.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 84,
+      "name": "Teclado Mecânico RGB Switch Blue",
+      "category": "Teclados",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 479.9,
+      "profit": 80,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 85,
+      "name": "Teclado Mecânico RGB Switch Red",
+      "category": "Teclados",
+      "basePrice": 249.9,
+      "maxPrice": 312.375,
+      "marginApplied": "24.01%",
+      "suggestedPrice": 309.9,
+      "profit": 59.99999999999997,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 86,
+      "name": "Teclado Gamer Membrana RGB",
+      "category": "Teclados",
+      "basePrice": 89.9,
+      "maxPrice": 112.375,
+      "marginApplied": "22.25%",
+      "suggestedPrice": 109.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 87,
+      "name": "Teclado Mecânico 60% Wireless",
+      "category": "Teclados",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 88,
+      "name": "Mouse Gamer 7200 DPI RGB",
+      "category": "Mouses",
+      "basePrice": 79.9,
+      "maxPrice": 99.875,
+      "marginApplied": "25.03%",
+      "suggestedPrice": 99.9,
+      "profit": 20,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 89,
+      "name": "Mouse Gamer 12000 DPI RGB",
+      "category": "Mouses",
+      "basePrice": 149.9,
+      "maxPrice": 187.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 179.9,
+      "profit": 30,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 90,
+      "name": "Mouse Gamer Wireless 26000 DPI",
+      "category": "Mouses",
+      "basePrice": 349.9,
+      "maxPrice": 437.375,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 419.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 91,
+      "name": "Mouse Office Sem Fio",
+      "category": "Mouses",
+      "basePrice": 59.9,
+      "maxPrice": 74.875,
+      "marginApplied": "16.69%",
+      "suggestedPrice": 69.9,
+      "profit": 10.000000000000007,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 92,
+      "name": "Headset Gamer P2 RGB",
+      "category": "Headsets",
+      "basePrice": 99.9,
+      "maxPrice": 124.875,
+      "marginApplied": "20.02%",
+      "suggestedPrice": 119.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 93,
+      "name": "Headset Gamer USB 7.1",
+      "category": "Headsets",
+      "basePrice": 199.9,
+      "maxPrice": 249.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 239.9,
+      "profit": 40,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 94,
+      "name": "Headset Wireless Gamer",
+      "category": "Headsets",
+      "basePrice": 399.9,
+      "maxPrice": 499.875,
+      "marginApplied": "20.01%",
+      "suggestedPrice": 479.9,
+      "profit": 80,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 95,
+      "name": "Headset Studio USB",
+      "category": "Headsets",
+      "basePrice": 299.9,
+      "maxPrice": 374.875,
+      "marginApplied": "23.34%",
+      "suggestedPrice": 369.9,
+      "profit": 70,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 96,
+      "name": "Mousepad Gamer Médio",
+      "category": "Mousepads",
+      "basePrice": 87.9,
+      "maxPrice": 109.875,
+      "marginApplied": "25.03%",
+      "suggestedPrice": 109.9,
+      "profit": 22,
+      "competitorStatus": "Acima do Máximo Concorrência",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 97,
+      "name": "Mousepad Gamer Grande",
+      "category": "Mousepads",
+      "basePrice": 109.9,
+      "maxPrice": 137.375,
+      "marginApplied": "18.20%",
+      "suggestedPrice": 129.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 98,
+      "name": "Mousepad Deskmat XXL",
+      "category": "Mousepads",
+      "basePrice": 119.9,
+      "maxPrice": 149.875,
+      "marginApplied": "16.68%",
+      "suggestedPrice": 139.9,
+      "profit": 20,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 99,
+      "name": "Mousepad RGB Grande",
+      "category": "Mousepads",
+      "basePrice": 100.9,
+      "maxPrice": 126.125,
+      "marginApplied": "18.83%",
+      "suggestedPrice": 119.9,
+      "profit": 19,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 100,
+      "name": "Cadeira Gamer Basic",
+      "category": "Cadeiras gamer",
+      "basePrice": 899.9,
+      "maxPrice": 1124.875,
+      "marginApplied": "24.45%",
+      "suggestedPrice": 1119.9,
+      "profit": 220.0000000000001,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 101,
+      "name": "Cadeira Gamer Pro RGB",
+      "category": "Cadeiras gamer",
+      "basePrice": 1290.9,
+      "maxPrice": 1613.625,
+      "marginApplied": "24.71%",
+      "suggestedPrice": 1609.9,
+      "profit": 319,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 102,
+      "name": "Cadeira Ergonômica Mesh",
+      "category": "Cadeiras gamer",
+      "basePrice": 2000.9,
+      "maxPrice": 2501.125,
+      "marginApplied": "24.94%",
+      "suggestedPrice": 2499.9,
+      "profit": 499,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    },
+    {
+      "id": 103,
+      "name": "Cadeira Gamer Premium",
+      "category": "Cadeiras gamer",
+      "basePrice": 1839.9,
+      "maxPrice": 2299.875,
+      "marginApplied": "20.11%",
+      "suggestedPrice": 2209.9,
+      "profit": 370,
+      "competitorStatus": "Competitivo",
+      "confidence": "Baixa"
+    }
+  ]
+}

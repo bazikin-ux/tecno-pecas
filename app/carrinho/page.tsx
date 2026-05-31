@@ -644,6 +644,22 @@ export default function CartPage() {
                     Limpar Carrinho
                   </button>
                 </div>
+
+                {/* Selos de Confiança */}
+                <div className="mt-4 border-t border-[#1e1f22] pt-4 space-y-2 text-xs">
+                  <div className="flex items-center gap-2 text-[#b5bac1]">
+                    <span>🚚</span>
+                    <span><strong>Frete grátis</strong> em compras acima de R$ 499</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#b5bac1]">
+                    <span>💳</span>
+                    <span><strong>Até 12x sem juros</strong> no cartão</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-[#b5bac1]">
+                    <span>🔒</span>
+                    <span>Sua compra é <strong>100% segura</strong></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

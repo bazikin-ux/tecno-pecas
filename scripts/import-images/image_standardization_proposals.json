@@ -1,0 +1,821 @@
+[
+  {
+    "id": 2,
+    "name": "GeForce RTX 4060 8GB",
+    "brand": "Galax",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/GeForce%20RTX%204060%208GB.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/470127/placa-de-video-rtx-4060-1-click-oc-2x-galax-nvidia-geforce-8gb-gddr6-dlss-g-sync-46nsl8md8loc_1692901044_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 5,
+    "name": "Ryzen 5 5600",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/processador-amd-ryzen-5-5600gt-3-6-ghz-4-6ghz-max-turbo-cache-4mb-6-nucleos-12-threads-am4-100-100001488box_1708024586_gg.webp",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/320798/processador-amd-ryzen-5-5600-cache-35mb-3-7ghz-4-4ghz-max-turbo-am4-100-100000927box_1647636743_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 6,
+    "name": "Ryzen 5 7600",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Ryzen%205%207600.webp",
+    "newImage": "https://images9.kabum.com.br/produtos/fotos/405799/processador-amd-ryzen-5-7600-5-1ghz-max-turbo-cache-38mb-am5-6-nucleos-video-integrado-100-100001015box_1763580138_p.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 7,
+    "name": "Ryzen 7 5700X",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Ryzen%207%205700X.webp",
+    "newImage": "https://images7.kabum.com.br/produtos/fotos/320797/processador-amd-ryzen-7-5700x-cache-36mb-3-8ghz-4-6ghz-max-turbo-am4-100-100000926wof_1647636511_g.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 8,
+    "name": "Ryzen 7 7800X3D",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Ryzen%207%207800X3D.webp",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/426262/processador-amd-ryzen-7-7800x3d-5-0ghz-max-turbo-cache-104mb-am5-8-nucleos-video-integrado-100-100000910wof_1680784502_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 9,
+    "name": "Intel Core i3-14100F",
+    "brand": "Intel",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Intel%20Core%20i3-14100F.webp",
+    "newImage": "https://www.kabum.com.br/_next/image?url=https:%2F%2Fimages9.kabum.com.br%2Fprodutos%2Ffotos%2Fsync_mirakl%2F524589%2Fxlarge%2FProcessador-Intel-Core-I3-14100f-14-Gera-o-3-5-Ghz-4-7-Ghz-Turbo-Cache-12mb-Lga-1700-Sem-V-deo-Bx8071514100f_1757365475.png&w=1920&q=75",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 10,
+    "name": "Intel Core i5-12400F",
+    "brand": "Intel",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Intel%20Core%20i5-12400F.webp",
+    "newImage": "https://images8.kabum.com.br/produtos/fotos/283718/processador-intel-core-i5-12400f-cache-xmb-xghz-xghz-max-turbo-lga-1700-bx8071512400f_1640094446_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 11,
+    "name": "Intel Core i5-14400F",
+    "brand": "Intel",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Intel%20Core%20i5-14400F.webp",
+    "newImage": "https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages8.kabum.com.br%2Fprodutos%2Ffotos%2F904658%2Fprocessador-intel-core-i5-14400f-ate-4-70-ghz-cache-20mb-nucleos-10-threads-16-bx8071514400f_1754308003_gg.jpg&w=1920&q=75",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 12,
+    "name": "Intel Core i7-14700K",
+    "brand": "Intel",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Intel%20Core%20i7-14700K.webp",
+    "newImage": "https://images1.kabum.com.br/produtos/fotos/sync_mirakl/512601/xlarge/Processador-Intel-Core-I7-14700k-5-60ghz-Max-Turbo-20-core-28-threads-LGA-1700_1742579433.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 13,
+    "name": "GeForce RTX 3050 6GB",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/GeForce%20RTX%203050%206GB.webp\n",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/308479/placa-de-video-msi-nvidia-geforce-rtx-3050-gaming-x-8g-8gb-gddr6-rgb-dlss-ray-tracing-geforce-rtx-3050-gaming-x-8g_1644002254_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 14,
+    "name": "GeForce RTX 4060 Ti 8GB",
+    "brand": "Galax",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/GeForce%20RTX%204060%20Ti%208GB.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/462199/placa-de-video-rtx-4060-ti-click-oc-galax-nvidia-geforce-8-gb-gddr6-dlss-ray-tracing-46isl8md8coc_1684931957_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 15,
+    "name": "GeForce RTX 4060 Ti 16GB",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/GeForce%20RTX%204060%20Ti%2016GB.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/461395/placa-de-video-rtx-4060-ti-ventus-msi-nvidia-geforce-8-gb-gddr6-dlss-ray-tracing_1684770175_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 16,
+    "name": "GeForce RTX 4070 Ti Super 16GB",
+    "brand": "Gigabyte",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/GeForce%20RTX%204070%20Ti%20Super%2016GB.webp",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-de-video-gigabyte-nvidia-geforce-rtx-4070-ti-super-windforce-oc-16gb-gddr6x-dlss-ray-tracing-gv-n407tswf3oc-16gd_188420.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 17,
+    "name": "Radeon RX 6600 8GB",
+    "brand": "ASRock",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Radeon%20RX%206600%208GB.webp",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/235984/placa-de-video-asrock-amd-radeon-rx-6600-cld-8g-8gb-90-ga2rzz-00uanf_1634738812_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 18,
+    "name": "Radeon RX 7600 XT 16GB",
+    "brand": "PCYes",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Radeon%20RX%207600%20XT%2016GB.jpg",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/p/v/pvr760016gbpedf.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 19,
+    "name": "Radeon RX 7700 XT 12GB",
+    "brand": "Gigabyte",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Radeon%20RX%207700%20XT%2012GB.webp",
+    "newImage": "https://images9.kabum.com.br/produtos/fotos/525889/placa-de-video-rx-7700-xt-gaming-oc-12g-amd-radeon-gigabyte-12gb-gddr6-192bits-rgb-gv-r77xtgaming-oc-12gd_1734614450_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 20,
+    "name": "Radeon RX 7800 XT 16GB",
+    "brand": "XFX",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/upload-imagens/Radeon%20RX%207800%20XT%2016GB.webp",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/576423/placa-de-video-rx-7800xt-gaming-16g-xfx-speedster-qick319-radeon-16gb-ddr6-hdmi-3xdp-3-fan-rx-78tqickf9_1719595732_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 21,
+    "name": "GeForce RTX 4070 Super 12GB",
+    "brand": "Gigabyte",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/geforce-rtx-4070-super-12gb-13665.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-de-video-gigabyte-nvidia-geforce-rtx-4070-super-eagle-oc-12gb-gddr6x-dlss-ray-tracing-gv-n407seagle-oc-12gd_186094.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 22,
+    "name": "Memória 8GB DDR4 3200MHz",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/memoria-8gb-ddr4-3200mhz-v2-87902.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/memoria-ddr4-gmog-8gb-3200mhz-preto-gmog-8gb3200_260082.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 23,
+    "name": "Memória 16GB DDR4 3200MHz",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/memoria-16gb-ddr4-3200mhz-39245.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/memoria-ddr4-gmog-8gb-3200mhz-preto-gmog-8gb3200_260082.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 24,
+    "name": "Kit 16GB DDR4 RGB 3200MHz",
+    "brand": "Corsair",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-16gb-ddr4-rgb-3200mhz-95238.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/memoria-ddr4-superframe-rgb-16gb-2x8gb-3200mhz-gray_149578.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 25,
+    "name": "Kit 32GB DDR4 3600MHz",
+    "brand": "XPG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-32gb-ddr4-3600mhz-37466.jpg",
+    "newImage": "https://images7.kabum.com.br/produtos/fotos/108237/memoria-xpg-gammix-d30-8gb-2666mhz-ddr4-cl16-ax4u266638g16-sb30_1574194398_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 26,
+    "name": "Memória 16GB DDR5 5600MHz",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/memoria-16gb-ddr5-5600mhz-84135.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/memoria-ddr5-pcyes-16gb-5600mhz-preto-pm165600d5_257568.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 27,
+    "name": "Kit 32GB DDR5 RGB 6000MHz",
+    "brand": "Corsair",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-32gb-ddr5-rgb-6000mhz-34475.jpg",
+    "newImage": "https://www.kabum.com.br/_next/image?url=https:%2F%2Fimages1.kabum.com.br%2Fprodutos%2Ffotos%2F508091%2Fmemoria-corsair-vengeance-rgb-rs-16gb-2x8gb-3600mhz-ddr4-cl18-preto-cmg16gx4m2d3600c18_1703789421_gg.jpg&w=1920&q=75",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 28,
+    "name": "SSD SATA 480GB",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-sata-480gb-15009.jpg",
+    "newImage": "https://images8.kabum.com.br/produtos/fotos/85198/ssd-kingston-a400-480gb-sata-leitura-500mb-s-gravacao-450mb-s-sa400s37-480g_1629133546_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 29,
+    "name": "SSD SATA 1TB",
+    "brand": "Crucial",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-sata-1tb-38432.jpg",
+    "newImage": "https://images7.kabum.com.br/produtos/fotos/111637/ssd-crucial-bx500-1tb-sata-leituras-540mb-s-e-gravacoes-500mb-s-ct1000bx500ssd1_1591965584_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 30,
+    "name": "SSD NVMe 500GB",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-nvme-500gb-73831.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/400945/SSD-Kingston-Nv2-500GB-M-2-2280-NVME-PCIE-4-0-X4-Leitura-3500MB-s-E-Grava-o-2100MB-s-Preto-Snv2s-500g_1732199474_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 31,
+    "name": "SSD NVMe 1TB PCIe 3.0",
+    "brand": "WD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-nvme-1tb-pcie-3-0-28283.jpg",
+    "newImage": "https://images3.kabum.com.br/produtos/fotos/sync_mirakl/336653/Ssd-Wd-Blue-Sn570-Nvme-M-2-1tb-Pcie-Gen3-X4-Nvme-V1-4-Leitura-3500mbs-E-Grava-o-3000mbs-Wds100t3b0c_1660238339_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 32,
+    "name": "SSD NVMe 1TB PCIe 4.0",
+    "brand": "Kingston",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-nvme-1tb-pcie-4-0-53005.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/400812/SSD-1TB-Kingston-Nv2-M-2-2280-PCIe-NVMe-Leitura-3500MB-s-Grava-o-2100MB-s-Snv2s-1000g_1730146919_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 33,
+    "name": "SSD NVMe 2TB PCIe 4.0",
+    "brand": "Crucial",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/ssd-nvme-2tb-pcie-4-0-v2-70311.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/499278/ssd-1t-sandisk-plus-nvme-m-2-pcle-gen3-leitura-3-200-e-gravacao-acima-de-3-200-sdssda3n-1t00-g26_1704290603_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 34,
+    "name": "HD Seagate Barracuda 1TB",
+    "brand": "Seagate",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/hd-seagate-barracuda-1tb-21598.jpg",
+    "newImage": "https://images8.kabum.com.br/produtos/fotos/84108/84108_index_g.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 35,
+    "name": "HD Seagate Barracuda 2TB",
+    "brand": "Seagate",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/hd-seagate-barracuda-2tb-3528.jpg",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/100916/100916_1552934430_index_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 36,
+    "name": "Placa-mãe A520M AM4",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-a520m-am4-31609.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-asus-prime-a520m-e-chipset-a520-amd-am4-matx-ddr4_106349.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 37,
+    "name": "Placa-mãe B550M AM4",
+    "brand": "Gigabyte",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-b550m-am4-84301.jpg",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/b/5/b550m-aorus-elite3.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 38,
+    "name": "Placa-mãe B550 Gaming Wi-Fi",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-b550-gaming-wi-fi-3540.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-asus-tuf-gaming-b550-plus-wi-fi-ii-chipset-b550-amd-am4-atx-ddr4-90mb19u0-m0eay0_136275.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 39,
+    "name": "Placa-mãe B650M AM5 DDR5",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-b650m-am5-ddr5-47543.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-msi-mag-b650m-mortar-wifi-chipset-b650-amd-am5-matx-ddr5_152380.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 40,
+    "name": "Placa-mãe X670E AM5",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-x670e-am5-78259.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-asus-tuf-gaming-x670e-plus-wifi-chipset-x670-amd-am5-atx-ddr5_151624.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 41,
+    "name": "Placa-mãe H610M LGA1700",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-h610m-lga1700-64282.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-asus-prime-h610m-e-d4-chipset-h610-intel-lga-1700-matx-ddr4-90mb19n0-m0eay0_136252.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 42,
+    "name": "Placa-mãe B760M DDR4",
+    "brand": "Gigabyte",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-b760m-ddr4-10443.png",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/b/7/b760m-aorus-elite-d4-gen532.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 43,
+    "name": "Placa-mãe Z790 DDR5",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/placa-mae-z790-ddr5-36940.jpg",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/p/r/pro-z790-a-max-wifi3.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 44,
+    "name": "Fonte 500W 80 Plus White",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-500w-80-plus-white-76639.jpg",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/369656/fonte-msi-mag-a500dn-atx-500w-80-plus-pfc-ativo-entrada-bivolt-preto-306-7zp6a22-809_1667480760_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 45,
+    "name": "Fonte 550W 80 Plus Bronze",
+    "brand": "MSI",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-550w-80-plus-bronze-59667.jpg",
+    "newImage": "https://images7.kabum.com.br/produtos/fotos/369657/fonte-msi-mag-a550bn-atx-550w-80-plus-bronze-pfc-ativo-entrada-bivolt-preto-306-7zp2a22-ce0_1665769393_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 46,
+    "name": "Fonte 650W 80 Plus Bronze",
+    "brand": "Corsair",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-650w-80-plus-bronze-94238.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/fonte-gamemax-gp650-650w-80-plus-bronze-pfc-ativo-black_208135.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 47,
+    "name": "Fonte 650W 80 Plus Gold Modular",
+    "brand": "Corsair",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-650w-80-plus-gold-modular-6898.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/132783/fonte-corsair-cv650-650w-80-plus-bronze-cp-9020236-br_1606913488_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 48,
+    "name": "Fonte 750W 80 Plus Gold",
+    "brand": "XPG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-750w-80-plus-gold-30903.jpg",
+    "newImage": "https://images1.kabum.com.br/produtos/fotos/103281/fonte-xpg-core-reactor-750w-80-plus-gold-modular_fonte-xpg-core-reactor-750w-80-plus-gold-modular_1571153418_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 49,
+    "name": "Fonte 850W 80 Plus Gold Modular",
+    "brand": "XPG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fonte-850w-80-plus-gold-modular-37527.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/206026/Fonte-XPG-Core-Reactor-850W-80-Plus-Gold-Modular-Bivolt_1693950488_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 50,
+    "name": "Gabinete Gamer Mid Tower RGB",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/gabinete-gamer-mid-tower-rgb-37172.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/112684/gabinete-gamer-cooler-master-masterbox-td500-mesh-mid-tower-argb-com-fan-lateral-em-vidro-mcb-d500d-kgnn-s01_1590767745_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 51,
+    "name": "Gabinete Airflow Mesh Preto",
+    "brand": "Mancer",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/gabinete-airflow-mesh-preto-81673.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/gabinete-gamer-corsair-3000d-airflow-mid-tower-vidro-temperado-atx-sem-fonte-com-2-fans-preto-cc-9011251-ww_261745.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 52,
+    "name": "Gabinete Aquário RGB",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/gabinete-aquario-rgb-v2-86429.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/128550/gabinete-gamer-redragon-wideload-mid-tower-lateral-e-frontal-em-vidro-gc-802-1_1672160956_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 53,
+    "name": "Gabinete Compacto mATX",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/gabinete-compacto-matx-47018.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-mae-asus-prime-h610m-a-d4-chipset-h610-intel-lga-1700-matx-ddr4-90mb19p0-m0eay0_185746.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 54,
+    "name": "Gabinete Full Tower Premium",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/gabinete-full-tower-premium-46386.png",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/466661/Gabinete-Cooler-Master-Cosmos-C700p-Full-Tower-Lateral-Em-Vidro-Temperado-Preto-Mcc-c700p-kg5n-s00_1685386133_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 55,
+    "name": "Air Cooler 120mm Torre",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/air-cooler-120mm-torre-8558.jpg",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/153646/cooler-fan-rise-mode-laser-3-unidades-120mm-argb-preto-rm-rgb-05-5v_1663767095_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 56,
+    "name": "Air Cooler Dual Tower RGB",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/air-cooler-dual-tower-rgb-v2-40213.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/483572/Air-Cooler-P-Processador-Cooler-Master-Hyper-212-Spectrum-V3-Rr-s4na-17pa-r1_1693486110_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 57,
+    "name": "Water Cooler 120mm",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/water-cooler-120mm-82406.jpg",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/153646/cooler-fan-rise-mode-laser-3-unidades-120mm-argb-preto-rm-rgb-05-5v_1663767095_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 58,
+    "name": "Water Cooler 240mm ARGB",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/water-cooler-240mm-argb-72830.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/172572/Water-Cooler-Cooler-Master-MasterLiquid-ML240L-V2-RGB-240MM-MLW-D24M-A18PC-R2_1674676125_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 59,
+    "name": "Water Cooler 360mm ARGB",
+    "brand": "Cooler Master",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/water-cooler-360mm-argb-26222.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/486450/Water-Cooler-Cooler-Master-Masterliquid-360l-Core-ARGB-360mm-Preto_1728429957_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 60,
+    "name": "Fan 120mm Preto",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fan-120mm-preto-34493.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/cooler-para-gabinete-arctic-p12-pro-120mm-preto-acfan00305a_256731.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 61,
+    "name": "Fan 120mm RGB",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/fan-120mm-rgb-849.webp",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/153646/cooler-fan-rise-mode-laser-3-unidades-120mm-argb-preto-rm-rgb-05-5v_1663767095_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 62,
+    "name": "Kit 3 Fans RGB com Controladora",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-3-fans-rgb-com-controladora-30684.png",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/153646/cooler-fan-rise-mode-laser-3-unidades-120mm-argb-preto-rm-rgb-05-5v_1663767095_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 63,
+    "name": "Kit 6 Fans ARGB",
+    "brand": "Rise Mode",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-6-fans-argb-6351.png",
+    "newImage": "https://images6.kabum.com.br/produtos/fotos/153646/cooler-fan-rise-mode-laser-3-unidades-120mm-argb-preto-rm-rgb-05-5v_1663767095_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 64,
+    "name": "Monitor 21.5 Full HD 75Hz",
+    "brand": "LG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-21-5-full-hd-75hz-44623.jpg",
+    "newImage": "https://images4.kabum.com.br/produtos/fotos/magalu/449184/Monitor-Gamer-LG-22MP410-B-21-5-Full-HD-75Hz_1680099687_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 65,
+    "name": "Monitor 24 Full HD 75Hz IPS",
+    "brand": "LG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-24-full-hd-75hz-ips-70374.jpg",
+    "newImage": "https://images4.kabum.com.br/produtos/fotos/magalu/449184/Monitor-Gamer-LG-22MP410-B-21-5-Full-HD-75Hz_1680099687_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 66,
+    "name": "Monitor Gamer 24 144Hz",
+    "brand": "LG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-gamer-24-144hz-10392.jpg",
+    "newImage": "https://images9.kabum.com.br/produtos/fotos/614879/monitor-gamer-lg-ultragear-24-full-hd-ips-180hz-1ms-displayport-e-hdmi-nvidia-g-sync-amd-freesync-hdr10-srgb-99-24gs60f-b_1722881105_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 67,
+    "name": "Monitor Gamer 27 165Hz",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-gamer-27-165hz-70633.jpg",
+    "newImage": "https://images3.kabum.com.br/produtos/fotos/148833/monitor-gamer-asus-tuf-24-5-full-hd-165hz-1ms-ips-hdmi-e-displayport-adaptive-sync-ajuste-de-altura-som-integrado-vesa-vg259qr_1684955579_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 68,
+    "name": "Monitor 27 QHD 165Hz",
+    "brand": "ASUS",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-27-qhd-165hz-83633.jpg",
+    "newImage": "https://images3.kabum.com.br/produtos/fotos/148833/monitor-gamer-asus-tuf-24-5-full-hd-165hz-1ms-ips-hdmi-e-displayport-adaptive-sync-ajuste-de-altura-som-integrado-vesa-vg259qr_1684955579_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 69,
+    "name": "Monitor Ultrawide 29 IPS",
+    "brand": "LG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-ultrawide-29-ips-25548.png",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/281938/Monitor-Gamer-LG-29-Ultrawide-Led-IPS-Full-HD-29um69g-b-awz_1660237847_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 70,
+    "name": "Monitor 32 4K IPS",
+    "brand": "LG",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/monitor-32-4k-ips-96472.jpg",
+    "newImage": "https://www.kabum.com.br/_next/image?url=https%3A%2F%2Fimages2.kabum.com.br%2Fprodutos%2Ffotos%2F728072%2Fmonitor-lg-ultrafine-smart-4k-27-uhd-ips-hdr10-dci-p3-90-dynamic-action-sync-27us500-w-_1742911144_gg.jpg&w=1920&q=75",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 71,
+    "name": "PC Gamer Start Ryzen 5 4600G",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-gamer-start-ryzen-5-4600g-v2-806.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/368559/Processador-AMD-Ryzen-5-4600G-3-7GHz-4-2GHz-Cache-11MB-Hexa-Core-11MB-AM4_1674577721_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 72,
+    "name": "PC Gamer Ryzen 5 5600 + RX 6600",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-gamer-ryzen-5-5600-rx-6600-v2-33623.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/placa-de-video-asus-dual-amd-radeon-rx-6600-v2-8gb-gddr6-fsr-ray-tracing-dual-rx6600-8g-v2_197881.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 73,
+    "name": "PC Gamer Intel i5 + RTX 4060",
+    "brand": "Galax",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-gamer-intel-i5-rtx-4060-64775.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/470127/placa-de-video-rtx-4060-1-click-oc-2x-galax-nvidia-geforce-8gb-gddr6-dlss-g-sync-46nsl8md8loc_1692901044_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 74,
+    "name": "PC Gamer Ryzen 7 + RTX 4060 Ti",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-gamer-ryzen-7-rtx-4060-ti-v2-51111.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/532940/PC-Gamer-AMD-Ryzen-7-5700x3d-32GB-DDR4-3200mhz-rtx-4070-12GB-SSD-1tb-M-2-Nvme-700w-80-Plus-Watercooler-240mm-Windows-11-Pro-Nli86480_1712320684_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 76,
+    "name": "PC Workstation i7 + RTX 4070 Ti Super",
+    "brand": "Tecno Peças",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-workstation-i7-rtx-4070-ti-super-10630.jpg",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/c/c/cc-9011267-ww3.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 77,
+    "name": "PC Escritório Intel i3",
+    "brand": "Tecno Peças",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-escritorio-intel-i3-56130.png",
+    "newImage": "https://images8.kabum.com.br/produtos/fotos/sync_mirakl/615388/xlarge/Gabinete-Slim-Preto-Para-Computador-Com-Fonte-De-200w-Micro-Atx-Compacto_1747083880.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 78,
+    "name": "PC Gamer Branco RGB",
+    "brand": "Tecno Peças",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/pc-gamer-branco-rgb-90000.jpg",
+    "newImage": "https://images2.kabum.com.br/produtos/fotos/sync_mirakl/551412/Gabinete-Aqu-rio-Gamer-Hyrax-Mid-Tower-ATX-Frente-e-Lateral-em-Vidro-Temperado-Branco-HGB740W_1724349648_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 79,
+    "name": "Kit Gamer Teclado + Mouse + Headset",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-gamer-teclado-mouse-headset-64104.jpg",
+    "newImage": "https://images0.kabum.com.br/produtos/fotos/163150/kit-gamer-redragon-3-em-1-teclado-rgb-abnt2-mouse-3200dpi-6-botoes-mousepad-s107_1622822570_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 80,
+    "name": "Kit Gamer 4 em 1 RGB",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-gamer-4-em-1-rgb-73265.jpg",
+    "newImage": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/k/5/k552rgb-pro-pt-blue1.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 81,
+    "name": "Kit Upgrade Ryzen 5 5600 + B550M + 16GB",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-upgrade-ryzen-5-5600-b550m-16gb-57711.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/402232/Kit-Upgrade-AMD-Ryzen-5-5600g-Placa-M-e-Asus-Tuf-Gaming-B550m-plus-Mem-ria-8GB-3000mhz_1671029917_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 82,
+    "name": "Kit Upgrade Ryzen 7 5700X + B550M + 32GB ddr4",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-upgrade-ryzen-7-5700x-b550m-32gb-7724.png",
+    "newImage": "https://www.kabum.com.br/_next/image?url=https:%2F%2Fimages.kabum.com.br%2Fprodutos%2Ffotos%2Fsync_mirakl%2F623613%2FKit-Upgrade-Amd-Ryzen-7-5700x-Placa-M-e-Gigabyte-B550m-Aorus-Elite_1723147193_gg.jpg&w=2048&q=100",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 83,
+    "name": "Kit Upgrade AM5 Ryzen 5 7600 + B650 + 32GB DDR5",
+    "brand": "AMD",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/kit-upgrade-am5-ryzen-5-7600-b650-32gb-ddr5-62856.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/395830/kit-processador-amd-ryzen-5-5600-placa-mae-gigabyte-b550m-aorus-amd-am4-micro-atx-ddr4-memoria-vengeance-lpx-8gb-3200mhz-ddr4-preta_1666195402_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 84,
+    "name": "Teclado Mecânico RGB Switch Blue",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/teclado-mecanico-rgb-switch-blue-4752.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/144732/Teclado-Mec-nico-Gamer-Redragon-Mitra-Switch-RGB-Outemu-Blue-ABNT2-Double-Shot-K551RGB-1_1710276488_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 85,
+    "name": "Teclado Mecânico RGB Switch Red",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/teclado-mecanico-rgb-switch-red-93919.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/152256/Teclado-Mec-nico-Gamer-Redragon-Dark-Avenger-RGB-Switch-Red-PT-Com-Fio-K568-2_1709897887_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 86,
+    "name": "Teclado Gamer Membrana RGB",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/teclado-gamer-membrana-rgb-39960.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/594262/Teclado-Gamer-Com-Fio-Qwerty-Redragon-Harpe-K503-RGB-Cor-Preto_1718674842_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 87,
+    "name": "Teclado Mecânico 60% Wireless",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/teclado-mecanico-60-wireless-92586.jpg",
+    "newImage": "https://images4.kabum.com.br/produtos/fotos/sync_mirakl/195584/Teclado-Mec-nico-Sem-Fio-Redragon-Draconic-RGB-Switch-Brown-K530_1652224888_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 88,
+    "name": "Mouse Gamer 7200 DPI RGB",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/mouse-gamer-7200-dpi-rgb-57022.jpg",
+    "newImage": "https://images5.kabum.com.br/produtos/fotos/sync_mirakl/156665/Mouse-Gamer-Redragon-King-Cobra-Chroma-RGB-24000-DPI-Switch-a-Laser-Sensor-Pixart-3360-M711-FPS_1618930637_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 89,
+    "name": "Mouse Gamer 12000 DPI RGB",
+    "brand": "Logitech",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/mouse-gamer-12000-dpi-rgb-15040.png",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/174167/xlarge/Mouse-Gamer-Logitech-G502-Hero-RGB-16000-DPI-11-Bot-es-Lightsync-Ajuste-de-Peso-910-005550_1738966833.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 90,
+    "name": "Mouse Gamer Wireless 26000 DPI",
+    "brand": "Logitech",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/mouse-gamer-wireless-26000-dpi-18313.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/149990/mouse-sem-fio-gamer-logitech-g-pro-x-superlight-lightspeed-5-botoes-25000-dpi-branco-910-005941_1614261697_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 91,
+    "name": "Mouse Office Sem Fio",
+    "brand": "Logitech",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/mouse-office-sem-fio-31569.png",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/mouse-dr-office-sem-fio-1600-dpi-usb-20-black-mdr-0104-b_161112.png",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 92,
+    "name": "Headset Gamer P2 RGB",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/headset-gamer-p2-rgb-80012.jpg",
+    "newImage": "https://images8.kabum.com.br/produtos/fotos/93168/93168_1507643786_index_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 93,
+    "name": "Headset Gamer USB 7.1",
+    "brand": "Redragon",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/headset-gamer-usb-7-1-11595.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/229936/Headset-Gamer-Redragon-Zeus-X-7-1-Rgb-H510_1702924090_gg.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 94,
+    "name": "Headset Wireless Gamer",
+    "brand": "HyperX",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/headset-wireless-gamer-98851.jpg",
+    "newImage": "https://img.terabyteshop.com.br/produto/g/headset-gamer-marvo-pulz-70w-tri-mode-wireless-bluetooth-usb-drivers-de-40mm-black-hg9086w-bk_207970.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  },
+  {
+    "id": 100,
+    "name": "Cadeira Gamer Basic",
+    "brand": "Husky",
+    "oldImage": "https://zxqswntivzqutsvoilss.supabase.co/storage/v1/object/public/products/imported/cadeira-gamer-basic-46983.jpg",
+    "newImage": "https://images.kabum.com.br/produtos/fotos/92731/cadeira-gamer-husky-gaming-blizzard-preto-e-vermelho-com-almofadas-reclinavel-descanso-de-braco-2d-hbl-br_1672322913_original.jpg",
+    "sourceField": "image2",
+    "motivo": "Promoção de imagem oficial homologada (Kabum/Pichau/Terabyte)"
+  }
+]
