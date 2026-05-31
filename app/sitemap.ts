@@ -11,16 +11,13 @@ function slugify(value: string) {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecas.com.br";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecaspc.com.br";
 
   const routes = [
     "",
-    "/carrinho",
     "/promocoes",
     "/mais-vendidos",
     "/monte-seu-pc",
-    "/rastreamento",
-    "/cliente",
   ].map((route) => ({
     url: `${siteUrl}${route}`,
     lastModified: new Date(),

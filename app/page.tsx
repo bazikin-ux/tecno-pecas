@@ -484,12 +484,12 @@ export default function Home() {
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": "Tecno Peças",
-            "url": "https://www.tecnopecas.com.br",
+            "url": "https://www.tecnopecaspc.com.br",
             "potentialAction": {
               "@type": "SearchAction",
               "target": {
                 "@type": "EntryPoint",
-                "urlTemplate": "https://www.tecnopecas.com.br/?q={search_term_string}"
+                "urlTemplate": "https://www.tecnopecaspc.com.br/?q={search_term_string}"
               },
               "query-input": "required name=search_term_string"
             }
@@ -607,7 +607,7 @@ export default function Home() {
         </aside>
 
         <aside className="hidden bg-[#2b2d31] p-4 md:block">
-          <h1 className="text-2xl font-black text-white">Tecno Peças</h1>
+          <p className="text-2xl font-black text-white">Tecno Peças</p>
           <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
           <a href={`mailto:${storeContactEmail}`} className="mb-3 block rounded-lg bg-[#1e1f22] px-3 py-2 text-center text-sm font-bold text-[#23a559]">
             {storeContactEmail}
@@ -698,7 +698,7 @@ export default function Home() {
                 className="object-cover opacity-35"
               />
               <div className="relative max-w-2xl">
-                <h3 className="text-4xl font-black">Ofertas gamer da Tecno Pecas</h3>
+                <h1 className="text-4xl font-black text-white">Ofertas gamer da Tecno Peças</h1>
                 <p className="mt-3 text-[#eef0ff]">Hardware para montar, atualizar e turbinar seu setup com Pix, cartao, boleto e Mercado Pago.</p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <button onClick={() => setCategory("PCs Montados")} className="rounded-lg bg-[#23a559] px-4 py-3 font-black hover:bg-[#1f8f4d]">

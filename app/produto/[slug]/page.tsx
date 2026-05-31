@@ -74,7 +74,7 @@ export async function generateMetadata({
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecas.com.br";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecaspc.com.br";
   const productUrl = `${siteUrl}/produto/${product.slug}`;
 
   return {
@@ -163,7 +163,7 @@ export default async function ProductPage({
 
   const relatedProducts = await getRelatedProducts(product.category, product.id);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecas.com.br";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.tecnopecaspc.com.br";
   const productUrl = `${siteUrl}/produto/${product.slug}`;
   const jsonLd = {
     "@context": "https://schema.org",

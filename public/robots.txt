@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /cliente
+Disallow: /carrinho
+Disallow: /api
+
+Sitemap: https://www.tecnopecaspc.com.br/sitemap.xml

@@ -199,7 +199,7 @@ export default function PromotionsPage() {
 
         {/* Desktop Sidebar */}
         <aside className="hidden bg-[#2b2d31] p-4 md:block">
-          <h1 className="text-2xl font-black text-white">Tecno Peças</h1>
+          <p className="text-2xl font-black text-white">Tecno Peças</p>
           <p className="mb-5 text-sm text-[#b5bac1]">Loja de hardware</p>
           
           <Link href="/" className="mb-3 block rounded-lg bg-[#404249] px-3 py-2 text-center font-bold text-white hover:bg-[#5865f2]">
@@ -236,7 +236,7 @@ export default function PromotionsPage() {
           <header className="sticky top-0 z-20 border-b border-[#1e1f22] bg-[#313338] px-5 py-4">
             <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
               <div>
-                <h2 className="text-2xl font-black text-white">🔥 Ofertas Imperdíveis</h2>
+                <h1 className="text-2xl font-black text-white">🔥 Ofertas Imperdíveis</h1>
                 <p className="text-sm text-[#b5bac1]">Os melhores descontos da loja ordenados pela maior porcentagem de desconto.</p>
               </div>
               <div className="flex flex-wrap items-center gap-2">
