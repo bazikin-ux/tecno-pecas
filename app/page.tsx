@@ -173,6 +173,14 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [toast, setToast] = useState<{ visible: boolean; message: string }>({ visible: false, message: "" });
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
 
   function showToast(message: string) {
     setToast({ visible: true, message });
@@ -309,6 +317,41 @@ export default function Home() {
     () => storeProducts.filter((product) => favoriteIds.includes(product.id)),
     [storeProducts, favoriteIds]
   );
+
+  const weeklyDeals = useMemo(() => {
+    return storeProducts.filter((p) => p.oldPrice && p.oldPrice > p.price).slice(0, 4);
+  }, [storeProducts]);
+
+  const featuredKits = useMemo(() => {
+    return storeProducts.filter((p) => p.category.toLowerCase().includes("kit") || p.name.toLowerCase().includes("kit upgrade")).slice(0, 4);
+  }, [storeProducts]);
+
+  const slides = useMemo(() => [
+    {
+      title: "Ofertas Gamer da Tecno Peças",
+      desc: "Hardware premium para montar ou turbinar seu setup com frete rápido e suporte especializado.",
+      buttonText: "Montar Meu PC 🚀",
+      link: "/monte-seu-pc",
+      bgColor: "from-purple-900/40 to-indigo-900/40",
+      image: img.pc
+    },
+    {
+      title: "Kits Upgrade em Promoção",
+      desc: "Combos selecionados de Processador + Placa-mãe + RAM com descontos especiais de 5% no Pix.",
+      buttonText: "Ver Kits Upgrade 🔥",
+      action: () => setCategory("Kits Upgrade"),
+      bgColor: "from-rose-900/40 to-orange-950/40",
+      image: img.motherboard
+    },
+    {
+      title: "PCs Gamers Completos",
+      desc: "Computadores montados e testados por especialistas, prontos para rodar seus jogos favoritos.",
+      buttonText: "Ver PCs Gamer 🖥️",
+      action: () => setCategory("PCs Montados"),
+      bgColor: "from-emerald-950/40 to-teal-900/40",
+      image: img.pc
+    }
+  ], [img.pc, img.motherboard]);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const couponResult = appliedCoupon ? calculateCoupon(appliedCoupon, subtotal) : null;
@@ -714,25 +757,62 @@ export default function Home() {
           </header>
 
           <section className="p-5">
-            <div className="relative mb-6 min-h-64 overflow-hidden rounded-2xl bg-[#1e1f22] p-6">
-              <Image
-                src={img.pc}
-                alt="Setup gamer com hardware em destaque"
-                fill
-                priority
-                className="object-cover opacity-35"
-              />
-              <div className="relative max-w-2xl">
-                <h1 className="text-4xl font-black text-white">Ofertas gamer da Tecno Peças</h1>
-                <p className="mt-3 text-[#eef0ff]">Hardware para montar, atualizar e turbinar seu setup com Pix, cartao, boleto e Mercado Pago.</p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <button onClick={() => setCategory("PCs Montados")} className="rounded-lg bg-[#23a559] px-4 py-3 font-black hover:bg-[#1f8f4d]">
-                    Ver PCs Gamer
-                  </button>
-                  <Link href="/monte-seu-pc" className="rounded-lg bg-[#5865f2] px-4 py-3 font-black hover:bg-[#4752c4]">
-                    Montar meu PC
-                  </Link>
+            {/* Banner Principal Profissional (Slideshow) */}
+            <div className="relative mb-6 min-h-[300px] overflow-hidden rounded-2xl bg-gradient-to-br from-[#1e1f22] to-[#2b2d31] p-6 md:p-8 flex items-center shadow-2xl border border-[#1e1f22]">
+              {slides.map((slide, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                  }`}
+                >
+                  <Image
+                    src={slide.image}
+                    alt={slide.title}
+                    fill
+                    priority={index === 0}
+                    className="object-cover opacity-25"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-r ${slide.bgColor} mix-blend-multiply`} />
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-center max-w-2xl z-20">
+                    <h1 className="text-3xl md:text-5xl font-black text-white leading-tight tracking-tight drop-shadow-md">
+                      {slide.title}
+                    </h1>
+                    <p className="mt-3 text-sm md:text-base text-[#eef0ff] font-medium leading-relaxed drop-shadow-sm">
+                      {slide.desc}
+                    </p>
+                    <div className="mt-6">
+                      {slide.link ? (
+                        <Link
+                          href={slide.link}
+                          className="inline-block rounded-xl bg-[#5865f2] hover:bg-[#4752c4] px-6 py-3.5 font-black text-white transition duration-300 shadow-lg hover:shadow-[#5865f2]/30 text-sm md:text-base"
+                        >
+                          {slide.buttonText}
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={slide.action}
+                          className="rounded-xl bg-[#23a559] hover:bg-[#1f8f4d] px-6 py-3.5 font-black text-white transition duration-300 shadow-lg hover:shadow-[#23a559]/30 text-sm md:text-base"
+                        >
+                          {slide.buttonText}
+                        </button>
+                      )}
+                    </div>
+                  </div>
                 </div>
+              ))}
+              {/* Navigation dots */}
+              <div className="absolute bottom-4 right-4 flex gap-1.5 z-30">
+                {slides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? "w-6 bg-white" : "w-2 bg-white/40 hover:bg-white/70"
+                    }`}
+                    aria-label={`Slide ${index + 1}`}
+                  />
+                ))}
               </div>
             </div>
 
@@ -790,15 +870,156 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
                 {bestSellers.map((product) => (
-                  <button key={product.id} onClick={() => addToCart(product)} className="rounded-xl bg-[#1e1f22] p-3 text-left hover:bg-[#404249]">
-                    <p className="font-bold">{product.name}</p>
-                    <p className="text-sm text-[#23a559]">{formatCurrency(product.price)}</p>
-                    <p className="text-xs text-[#b5bac1]">{product.sold} vendidos</p>
-                  </button>
+                  <div
+                    key={product.id}
+                    className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-[#1e1f22] p-3 border border-[#2b2d31] hover:border-[#5865f2]/40 transition duration-300 hover:shadow-lg"
+                  >
+                    <div>
+                      <div className="relative h-32 w-full overflow-hidden rounded-lg bg-white p-2 mb-2">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="(max-w-768px) 100vw, 25vw"
+                          className="object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between text-xs text-[#b5bac1] mb-1">
+                        <span className="rounded bg-[#5865f2] px-1.5 py-0.5 text-[10px] font-bold text-white uppercase tracking-wider">
+                          {product.tag}
+                        </span>
+                        <span>⭐ {product.rating}</span>
+                      </div>
+                      <h4 className="font-bold text-sm text-white line-clamp-1 group-hover:text-[#5865f2] transition duration-200">
+                        {product.name}
+                      </h4>
+                      <p className="text-[11px] text-[#b5bac1] line-clamp-1 mt-0.5">{product.specs}</p>
+                    </div>
+                    <div className="mt-3">
+                      <p className="text-lg font-black text-[#23a559]">{formatCurrency(product.price)}</p>
+                      <div className="mt-2 grid grid-cols-2 gap-1.5">
+                        <Link
+                          href={`/produto/${product.slug || slugify(product.name)}`}
+                          className="rounded-lg bg-[#404249] py-2 text-center text-xs font-bold hover:bg-[#5865f2] text-white transition"
+                        >
+                          Detalhes
+                        </Link>
+                        <button
+                          onClick={() => addToCart(product)}
+                          className="rounded-lg bg-[#23a559] py-2 text-xs font-black text-white hover:bg-[#1f8f4d] transition"
+                        >
+                          Comprar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
+            </div>
+
+            {/* Seção: Ofertas da Semana */}
+            {weeklyDeals.length > 0 && (
+              <div className="mb-6 rounded-2xl bg-[#2b2d31] p-4">
+                <div className="mb-4">
+                  <span className="rounded bg-[#da373c] px-2 py-0.5 text-xs font-bold text-white uppercase tracking-wider">Descontos Reais</span>
+                  <h3 className="text-xl font-black text-white mt-1">Ofertas da Semana</h3>
+                  <p className="text-xs text-[#b5bac1]">Hardware de alta performance com os melhores preços por tempo limitado.</p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                  {weeklyDeals.map((product) => {
+                    const discountPct = product.oldPrice ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
+                    return (
+                      <div key={product.id} className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-[#1e1f22] p-3 border border-[#2b2d31] hover:border-[#da373c]/40 transition duration-300 hover:shadow-lg">
+                        {discountPct > 0 && (
+                          <span className="absolute left-3 top-3 z-10 rounded-lg bg-[#da373c] px-2 py-1 text-xs font-black text-white shadow-md">
+                            -{discountPct}% OFF
+                          </span>
+                        )}
+                        <div>
+                          <div className="relative h-32 w-full overflow-hidden rounded-lg bg-white p-2 mb-2">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              sizes="(max-w-768px) 100vw, 25vw"
+                              className="object-contain transition-transform duration-300 group-hover:scale-105"
+                            />
+                          </div>
+                          <h4 className="font-bold text-sm text-white line-clamp-1">{product.name}</h4>
+                          <p className="text-[11px] text-[#b5bac1] line-clamp-1 mt-0.5">{product.specs}</p>
+                        </div>
+                        <div className="mt-3">
+                          <p className="text-xs text-[#8e9297] line-through">{formatCurrency(product.oldPrice)}</p>
+                          <p className="text-lg font-black text-[#23a559]">{formatCurrency(product.price)}</p>
+                          <div className="mt-2 grid grid-cols-2 gap-1.5">
+                            <Link href={`/produto/${product.slug || slugify(product.name)}`} className="rounded-lg bg-[#404249] py-2 text-center text-xs font-bold hover:bg-[#5865f2] text-white transition">
+                              Detalhes
+                            </Link>
+                            <button onClick={() => addToCart(product)} className="rounded-lg bg-[#da373c] py-2 text-xs font-black text-white hover:bg-[#b92d32] transition">
+                              Comprar
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* Seção: Kits Upgrade em Destaque */}
+            {featuredKits.length > 0 && (
+              <div className="mb-6 rounded-2xl bg-[#2b2d31] p-4">
+                <div className="mb-4">
+                  <span className="rounded bg-[#5865f2] px-2 py-0.5 text-xs font-bold text-white uppercase tracking-wider">Combos Prontos</span>
+                  <h3 className="text-xl font-black text-white mt-1">Kits Upgrade em Destaque</h3>
+                  <p className="text-xs text-[#b5bac1]">Processadores, placas-mãe e memórias com compatibilidade garantida.</p>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                  {featuredKits.map((product) => (
+                    <div key={product.id} className="group relative flex flex-col justify-between overflow-hidden rounded-xl bg-[#1e1f22] p-3 border border-[#2b2d31] hover:border-[#5865f2]/40 transition duration-300 hover:shadow-lg">
+                      <div>
+                        <div className="relative h-32 w-full overflow-hidden rounded-lg bg-white p-2 mb-2">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            sizes="(max-w-768px) 100vw, 25vw"
+                            className="object-contain transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <h4 className="font-bold text-sm text-white line-clamp-1">{product.name}</h4>
+                        <p className="text-[11px] text-[#b5bac1] line-clamp-1 mt-0.5">{product.specs}</p>
+                      </div>
+                      <div className="mt-3">
+                        <p className="text-lg font-black text-[#23a559]">{formatCurrency(product.price)}</p>
+                        <div className="mt-2 grid grid-cols-2 gap-1.5">
+                          <Link href={`/produto/${product.slug || slugify(product.name)}`} className="rounded-lg bg-[#404249] py-2 text-center text-xs font-bold hover:bg-[#5865f2] text-white transition">
+                            Detalhes
+                          </Link>
+                          <button onClick={() => addToCart(product)} className="rounded-lg bg-[#5865f2] py-2 text-xs font-black text-white hover:bg-[#4752c4] transition">
+                            Comprar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Seção Interativa Monte Seu PC */}
+            <div className="mb-6 rounded-2xl bg-gradient-to-r from-[#5865f2]/30 to-[#23a559]/20 border border-[#5865f2]/20 p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="max-w-xl">
+                <span className="rounded bg-[#5865f2] px-2.5 py-1 text-xs font-bold text-white uppercase tracking-wider">Montador Inteligente</span>
+                <h3 className="text-2xl font-black text-white mt-2">Monte seu PC Peça por Peça</h3>
+                <p className="text-sm text-[#b5bac1] mt-2">Selecione componentes compatíveis. Nosso assistente verifica automaticamente os sockets de processadores e placas-mãe (AM4, AM5, LGA1700) em tempo real.</p>
+              </div>
+              <Link href="/monte-seu-pc" className="rounded-xl bg-[#5865f2] hover:bg-[#4752c4] px-6 py-4 font-black text-white transition duration-300 shadow-lg text-center w-full sm:w-auto shrink-0">
+                Iniciar Montagem 🖥️
+              </Link>
             </div>
 
             {favoriteProducts.length > 0 && (
@@ -831,49 +1052,79 @@ export default function Home() {
                 <div key={cat} className="mb-9">
                   <h3 className="mb-4 text-xl font-black text-white"># {cat}</h3>
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                    {items.map((product) => (
-                      <div key={product.id} className="relative overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg">
-                        <button
-                          onClick={() => toggleFavorite(product.id)}
-                          className="absolute right-3 top-3 z-10 rounded-full bg-[#1e1f22]/90 px-3 py-2 text-sm font-black hover:bg-[#5865f2]"
-                          aria-label={favoriteIds.includes(product.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
-                        >
-                          {favoriteIds.includes(product.id) ? "Favorito" : "Salvar"}
-                        </button>
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          width={480}
-                          height={240}
-                          className="h-40 w-full bg-white object-contain p-3"
-                        />
-                        <div className="p-4">
-                          <div className="mb-2 flex items-center justify-between gap-2">
-                            <span className="rounded-full bg-[#5865f2] px-2 py-1 text-xs font-bold">{product.tag}</span>
-                            <span className="text-xs text-[#b5bac1]">⭐ {product.rating}</span>
+                    {items.map((product) => {
+                      const discountPct = product.oldPrice && product.oldPrice > product.price ? Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100) : 0;
+                      return (
+                        <div key={product.id} className="group relative overflow-hidden rounded-2xl bg-[#2b2d31] shadow-lg border border-transparent hover:border-[#5865f2]/40 transition-all duration-300 hover:shadow-2xl">
+                          <button
+                            onClick={() => toggleFavorite(product.id)}
+                            className="absolute right-3 top-3 z-10 rounded-full bg-[#1e1f22]/90 px-3 py-2 text-sm font-black hover:bg-[#5865f2] transition duration-200"
+                            aria-label={favoriteIds.includes(product.id) ? "Remover dos favoritos" : "Adicionar aos favoritos"}
+                          >
+                            {favoriteIds.includes(product.id) ? "♥" : "♡"}
+                          </button>
+                          
+                          {discountPct > 0 && (
+                            <span className="absolute left-3 top-3 z-10 rounded-lg bg-[#da373c] px-2.5 py-1 text-xs font-black text-white shadow-md">
+                              -{discountPct}% OFF
+                            </span>
+                          )}
+
+                          <div className="relative h-44 w-full bg-white p-4">
+                            <Image
+                              src={product.image}
+                              alt={product.name}
+                              fill
+                              sizes="(max-w-768px) 100vw, 33vw"
+                              className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
+                            />
                           </div>
+                          
+                          <div className="p-4 flex flex-col justify-between min-h-[220px]">
+                            <div>
+                              <div className="mb-2 flex items-center justify-between gap-2">
+                                <span className="rounded-full bg-[#5865f2] px-2 py-0.5 text-xs font-bold">{product.tag}</span>
+                                <span className="text-xs text-[#b5bac1]">⭐ {product.rating}</span>
+                              </div>
 
-                          <h4 className="min-h-14 text-lg font-black text-white">{product.name}</h4>
-                          <p className="min-h-10 text-sm text-[#b5bac1]">{product.specs}</p>
+                              <h4 className="text-md font-bold text-white line-clamp-2 min-h-12 group-hover:text-[#5865f2] transition duration-200">
+                                {product.name}
+                              </h4>
+                              <p className="text-xs text-[#b5bac1] line-clamp-2 mt-1 min-h-8">{product.specs}</p>
+                            </div>
 
-                          <p className="mt-3 text-sm text-[#8e9297] line-through">{formatCurrency(product.oldPrice)}</p>
-                          <p className="text-2xl font-black text-[#23a559]">{formatCurrency(product.price)}</p>
-                          <p className="text-xs text-[#b5bac1]">Estoque: {product.stock} • {product.sold} vendidos</p>
+                            <div className="mt-3">
+                              <p className="text-xs text-[#8e9297] line-through min-h-4">
+                                {product.oldPrice > product.price ? formatCurrency(product.oldPrice) : ""}
+                              </p>
+                              
+                              <div className="flex items-baseline gap-1.5 mt-0.5">
+                                <p className="text-2xl font-black text-[#23a559]">
+                                  {formatCurrency(product.price * 0.95)}
+                                </p>
+                                <span className="text-xs text-[#23a559] font-bold">no Pix (5% OFF)</span>
+                              </div>
+                              <p className="text-xs text-[#b5bac1] mt-0.5">ou {formatCurrency(product.price)} no cartão</p>
 
-                          <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                            <Link
-                              href={`/produto/${product.slug || slugify(product.name)}`}
-                              className="rounded-lg bg-[#404249] py-3 text-center font-black hover:bg-[#5865f2]"
-                            >
-                              Ver produto
-                            </Link>
-                            <button onClick={() => addToCart(product)} className="rounded-lg bg-[#5865f2] py-3 font-black hover:bg-[#4752c4]">
-                              Comprar
-                            </button>
+                              <div className="mt-4 grid gap-2 grid-cols-2">
+                                <Link
+                                  href={`/produto/${product.slug || slugify(product.name)}`}
+                                  className="rounded-lg bg-[#404249] py-2.5 text-center text-sm font-bold hover:bg-[#5865f2] text-white transition duration-200"
+                                >
+                                  Ver produto
+                                </Link>
+                                <button
+                                  onClick={() => addToCart(product)}
+                                  className="rounded-lg bg-[#5865f2] py-2.5 text-sm font-bold hover:bg-[#4752c4] text-white transition duration-200"
+                                >
+                                  Comprar
+                                </button>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               );

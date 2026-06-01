@@ -151,7 +151,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Carrinho vazio." }, { status: 400 });
     }
 
-    const subtotal = cart.reduce(
+    const isPix = body.payment === "Pix";
+    const cartWithPrices = cart.map((item) => {
+      const originalPrice = Number(item.price);
+      const activePrice = isPix ? Number((originalPrice * 0.95).toFixed(2)) : originalPrice;
+      return {
+        ...item,
+        price: activePrice,
+      };
+    });
+
+    const subtotal = cartWithPrices.reduce(
       (sum, item) => sum + Number(item.price) * Number(item.quantity || 1),
       0
     );
@@ -174,7 +184,7 @@ export async function POST(request: Request) {
         discount,
         shipping,
         total,
-        items: cart,
+        items: cartWithPrices,
       })
       .select()
       .single();
@@ -187,7 +197,7 @@ export async function POST(request: Request) {
     }
 
     const preference = {
-      items: cart.map((item) => ({
+      items: cartWithPrices.map((item) => ({
         title: item.name,
         quantity: Number(item.quantity || 1),
         currency_id: "BRL",

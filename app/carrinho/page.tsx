@@ -63,6 +63,50 @@ export default function CartPage() {
   const [authPhone, setAuthPhone] = useState("");
   const [authPassword, setAuthPassword] = useState("");
 
+  const [recommendations, setRecommendations] = useState<Product[]>([]);
+
+  useEffect(() => {
+    async function loadRecommendations() {
+      try {
+        const response = await fetch("/api/products");
+        const data = await response.json();
+        if (Array.isArray(data)) {
+          setRecommendations(data);
+        }
+      } catch (e) {
+        console.error("Erro ao buscar recomendações:", e);
+      }
+    }
+    loadRecommendations();
+  }, []);
+
+  const crossSellProducts = useMemo(() => {
+    if (!recommendations.length) return [];
+    const cartIds = new Set(cart.map((item) => item.id));
+    return recommendations
+      .filter((p) => !cartIds.has(p.id) && p.stock > 0)
+      .sort((a, b) => {
+        const isAccessoryA = a.category.toLowerCase().includes("cooler") || a.category.toLowerCase().includes("armazenamento");
+        const isAccessoryB = b.category.toLowerCase().includes("cooler") || b.category.toLowerCase().includes("armazenamento");
+        if (isAccessoryA && !isAccessoryB) return -1;
+        if (!isAccessoryA && isAccessoryB) return 1;
+        return a.price - b.price;
+      })
+      .slice(0, 3);
+  }, [recommendations, cart]);
+
+  function addToCart(product: Product) {
+    setCart((prev) => {
+      const found = prev.find((item) => item.id === product.id);
+      if (found) {
+        return prev.map((item) =>
+          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+      }
+      return [...prev, { ...product, quantity: 1 } as CartItem];
+    });
+  }
+
   // Load from localStorage on mount
   useEffect(() => {
     setIsMounted(true);
@@ -265,6 +309,8 @@ export default function CartPage() {
         ? shippingQuote
         : estimateShipping(cleanCep, subtotal);
 
+      const finalTotal = payment === "Pix" ? Number((total * 0.95).toFixed(2)) : total;
+
       const response = await fetch("/api/create-preference", {
         method: "POST",
         headers: {
@@ -278,7 +324,7 @@ export default function CartPage() {
           cep: cleanCep,
           shippingQuote: activeShippingQuote,
           coupon: appliedCoupon,
-          total,
+          total: finalTotal,
         }),
       });
 
@@ -604,22 +650,63 @@ export default function CartPage() {
 
                 {/* Values Breakdown */}
                 {subtotal > 0 && (
-                  <div className="rounded-xl bg-[#1e1f22] p-3 border border-[#1e1f22] mb-2">
-                    <div className="flex justify-between items-center text-xs mb-1.5 font-bold">
+                  <div className="rounded-xl bg-[#1e1f22] p-4 border border-[#404249] mb-2">
+                    <div className="flex justify-between items-center text-xs mb-2 font-black">
                       {499 - subtotal > 0 ? (
-                        <span>
-                          Faltam <span className="text-[#23a559]">{formatCurrency(499 - subtotal)}</span> para <span className="text-[#5865f2]">Frete Grátis</span>
+                        <span className="flex items-center gap-1">
+                          🚚 Faltam <span className="text-[#23a559]">{formatCurrency(499 - subtotal)}</span> para <span className="text-[#5865f2]">Frete Grátis</span>
                         </span>
                       ) : (
-                        <span className="text-[#23a559]">🎉 Parabéns! Você ganhou Frete Grátis!</span>
+                        <span className="text-[#23a559] flex items-center gap-1 text-sm animate-bounce">
+                          🎉 Parabéns! Você ganhou Frete Grátis!
+                        </span>
                       )}
                       <span className="text-[#b5bac1]">{Math.round(Math.min((subtotal / 499) * 100, 100))}%</span>
                     </div>
-                    <div className="h-2 w-full rounded-full bg-[#313338] overflow-hidden">
+                    <div className="h-3 w-full rounded-full bg-[#313338] overflow-hidden p-[2px]">
                       <div 
-                        className={`h-full rounded-full transition-all duration-500 ${499 - subtotal > 0 ? 'bg-[#5865f2]' : 'bg-[#23a559]'}`}
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          499 - subtotal > 0 
+                            ? 'bg-gradient-to-r from-[#5865f2] to-[#4752c4]' 
+                            : 'bg-gradient-to-r from-[#23a559] to-[#1f8f4d] shadow-[0_0_10px_#23a559]'
+                        }`}
                         style={{ width: `${Math.min((subtotal / 499) * 100, 100)}%` }}
                       />
+                    </div>
+                  </div>
+                )}
+
+                {/* Cross-sell Recommendations */}
+                {subtotal > 0 && 499 - subtotal > 0 && crossSellProducts.length > 0 && (
+                  <div className="rounded-xl bg-[#1e1f22] p-4 border border-[#404249] mt-3">
+                    <p className="text-xs font-black text-white flex items-center gap-1.5 mb-3">
+                      <span>💡</span> Complete seu pedido para frete grátis:
+                    </p>
+                    <div className="space-y-3">
+                      {crossSellProducts.map((p) => (
+                        <div key={p.id} className="flex items-center justify-between gap-3 bg-[#2b2d31] p-2.5 rounded-lg border border-[#1e1f22] hover:border-[#404249] transition">
+                          <div className="flex items-center gap-2 min-w-0">
+                            <div className="relative h-10 w-10 overflow-hidden rounded bg-white p-0.5 flex-shrink-0">
+                              <Image
+                                src={p.image}
+                                alt={p.name}
+                                fill
+                                className="object-contain"
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs font-bold text-white truncate max-w-[145px]">{p.name}</p>
+                              <p className="text-[11px] text-[#23a559] font-black">{formatCurrency(p.price)}</p>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => addToCart(p)}
+                            className="rounded-lg bg-[#5865f2] hover:bg-[#4752c4] text-white px-2.5 py-1.5 text-xs font-black transition flex-shrink-0"
+                          >
+                            + Adicionar
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 )}
@@ -640,10 +727,27 @@ export default function CartPage() {
                     </span>
                   </div>
 
+                  {payment === "Pix" && (
+                    <div className="flex justify-between text-[#23a559] font-bold">
+                      <span>Desconto Pix (5%)</span>
+                      <span>- {formatCurrency(total * 0.05)}</span>
+                    </div>
+                  )}
+
                   <div className="flex justify-between items-center text-white text-xl font-black border-t border-[#1e1f22] pt-4">
                     <span>Total</span>
-                    <span className="text-[#23a559]">{formatCurrency(total)}</span>
+                    <span className="text-[#23a559]">{formatCurrency(payment === "Pix" ? total * 0.95 : total)}</span>
                   </div>
+
+                  {payment !== "Pix" && total > 0 && (
+                    <div 
+                      onClick={() => setPayment("Pix")}
+                      className="mt-2 rounded-xl bg-[#23a559]/10 hover:bg-[#23a559]/20 border border-[#23a559]/30 p-3 text-xs text-[#23a559] flex items-center justify-between cursor-pointer font-black transition animate-pulse"
+                    >
+                      <span>⚡ Pague no Pix e economize:</span>
+                      <span>{formatCurrency(total * 0.05)}</span>
+                    </div>
+                  )}
                 </div>
 
                 {/* Actions */}

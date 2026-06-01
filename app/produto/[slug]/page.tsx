@@ -7,6 +7,7 @@ import ProductImageGallery from "./ProductImageGallery";
 import BuyButton from "./BuyButton";
 import ProductShippingSimulator from "./ProductShippingSimulator";
 import type { Metadata } from "next";
+import BundleSelector from "./BundleSelector";
 
 type Product = {
   id: number;
@@ -155,7 +156,7 @@ export default async function ProductPage({
 }) {
   const { slug } = await params;
   const product = await getProduct(slug);
-  const pixPrice = Number(((product?.price || 0) * 0.85).toFixed(2));
+  const pixPrice = Number(((product?.price || 0) * 0.95).toFixed(2));
 
   if (!product) {
     notFound();
@@ -216,9 +217,26 @@ export default async function ProductPage({
           <div className="flex flex-col justify-center">
             <p className="text-sm font-bold text-[#b5bac1]">{product.category}</p>
             <h1 className="mt-2 text-4xl font-black text-white">{product.name}</h1>
-            <p className="mt-3 inline-block w-fit rounded-full bg-[#5865f2] px-3 py-1 text-sm font-bold">
-              {product.tag}
-            </p>
+            <div className="flex flex-wrap gap-2 mt-3 items-center">
+              <span className="inline-block rounded-full bg-[#5865f2] px-3 py-1 text-sm font-bold">
+                {product.tag}
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs font-black bg-[#23a559]/20 text-[#23a559] border border-[#23a559]/30 rounded-lg px-2.5 py-1">
+                ⚡ 5% OFF NO PIX
+              </span>
+              <span className="inline-flex items-center gap-1 text-xs font-black bg-[#5865f2]/20 text-[#5865f2] border border-[#5865f2]/30 rounded-lg px-2.5 py-1">
+                💳 ATÉ 12X SEM JUROS
+              </span>
+              {product.price >= 499 ? (
+                <span className="inline-flex items-center gap-1 text-xs font-black bg-[#23a559]/20 text-[#23a559] border border-[#23a559]/30 rounded-lg px-2.5 py-1 animate-pulse">
+                  🚚 FRETE GRÁTIS
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 text-xs font-bold bg-[#8e9297]/20 text-[#8e9297] border border-[#8e9297]/30 rounded-lg px-2.5 py-1">
+                  🚚 FRETE GRÁTIS A PARTIR DE R$ 499
+                </span>
+              )}
+            </div>
 
             <p className="mt-6 text-sm text-[#8e9297] line-through">
               {formatCurrency(product.oldPrice)}
@@ -227,7 +245,7 @@ export default async function ProductPage({
               {formatCurrency(product.price)}
             </p>
             <div className="mt-3 rounded-xl bg-[#1e1f22] p-4">
-              <p className="text-sm font-bold text-[#23a559]">Pix com 15% OFF</p>
+              <p className="text-sm font-bold text-[#23a559]">Pix com 5% OFF</p>
               <p className="text-3xl font-black text-[#23a559]">{formatCurrency(pixPrice)}</p>
               <p className="mt-1 text-sm text-[#b5bac1]">
                 Cartao, boleto ou Mercado Pago mantem o preco original de {formatCurrency(product.price)}.
@@ -280,6 +298,11 @@ export default async function ProductPage({
             </div>
           </div>
         </section>
+
+        {/* Bundle Selector (Comprados Juntos) */}
+        {relatedProducts.length > 0 && (
+          <BundleSelector mainProduct={product} bundleProduct={relatedProducts[0]} />
+        )}
 
         <section className="mt-6 grid gap-4 md:grid-cols-3">
           {[

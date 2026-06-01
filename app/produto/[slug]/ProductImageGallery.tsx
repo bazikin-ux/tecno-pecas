@@ -25,9 +25,23 @@ export default function ProductImageGallery({
     ? selectedImage
     : galleryImages[0];
 
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const currentIndex = galleryImages.indexOf(currentImage);
+    const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    setSelectedImage(galleryImages[prevIndex]);
+  };
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const currentIndex = galleryImages.indexOf(currentImage);
+    const nextIndex = (currentIndex + 1) % galleryImages.length;
+    setSelectedImage(galleryImages[nextIndex]);
+  };
+
   return (
     <>
-      <div className="overflow-hidden rounded-xl bg-[#1e1f22]">
+      <div className="overflow-hidden rounded-xl bg-[#1e1f22] relative group">
         <button
           type="button"
           onClick={() => setPreviewImage(currentImage)}
@@ -40,9 +54,30 @@ export default function ProductImageGallery({
             width={900}
             height={620}
             priority
-            className="h-[360px] w-full bg-white object-contain p-5 md:h-[560px] md:p-8"
+            className="h-[360px] w-full bg-white object-contain p-5 md:h-[560px] md:p-8 transition-transform duration-300 hover:scale-105"
           />
         </button>
+
+        {galleryImages.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 hover:bg-black/70 text-white transition md:opacity-0 md:group-hover:opacity-100 font-bold"
+              aria-label="Imagem anterior"
+            >
+              ⟨
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/40 hover:bg-black/70 text-white transition md:opacity-0 md:group-hover:opacity-100 font-bold"
+              aria-label="Próxima imagem"
+            >
+              ⟩
+            </button>
+          </>
+        )}
 
         {galleryImages.length > 1 && (
           <div className="grid gap-2 p-3 sm:grid-cols-4">
